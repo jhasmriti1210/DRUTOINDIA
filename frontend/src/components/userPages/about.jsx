@@ -64,7 +64,6 @@ const legalItems = [
 const About = () => {
   return (
     <main className="bg-[#FAF7F2] text-[#1F2937] font-['Inter'] overflow-hidden">
-
       {/* Hero */}
       <section className="pt-40 pb-24 relative">
         <div className="absolute top-24 right-0 w-96 h-96 bg-[#0F766E]/10 rounded-full blur-[130px]"></div>
@@ -80,7 +79,7 @@ const About = () => {
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.7 }}
-              className="uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
+              className="font-['Playfair_Display'] uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
             >
               About Us
             </motion.p>
@@ -88,7 +87,7 @@ const About = () => {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-7xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-5xl md:text-7xl font-black text-[#0F172A] leading-tight"
             >
               Helping Businesses
               <br />
@@ -98,7 +97,7 @@ const About = () => {
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.9 }}
-              className="text-lg text-[#1F2937]/75 mt-8 leading-8 max-w-3xl mx-auto"
+              className="font-['Playfair_Display'] text-lg text-[#1F2937]/75 mt-8 leading-8 max-w-3xl mx-auto"
             >
               We support Indian manufacturers, MSMEs, exporters, and
               international buyers through structured export management,
@@ -142,11 +141,11 @@ const About = () => {
                 viewport={{ once: true }}
                 className="absolute -bottom-8 left-8 bg-[#FAF7F2] border border-[#E7DFD2] rounded-2xl shadow-xl p-6 max-w-xs"
               >
-                <p className="uppercase tracking-[3px] text-[#0F766E] font-bold text-sm">
+                <p className="font-['Playfair_Display'] uppercase tracking-[3px] text-[#0F766E] font-bold text-sm">
                   Our Purpose
                 </p>
 
-                <h3 className="text-2xl font-black text-[#0F172A] mt-2">
+                <h3 className="font-['Playfair_Display'] text-2xl font-black text-[#0F172A] mt-2">
                   Simplifying Export Growth
                 </h3>
               </motion.div>
@@ -160,21 +159,21 @@ const About = () => {
             >
               <motion.p
                 variants={fadeUp}
-                className="uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
+                className="font-['Playfair_Display'] uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
               >
                 Founder Story
               </motion.p>
 
               <motion.h2
                 variants={fadeUp}
-                className="text-4xl md:text-5xl font-black text-[#0F172A] mb-6"
+                className="font-['Playfair_Display'] text-4xl md:text-5xl font-black text-[#0F172A] mb-6"
               >
                 Why We Started
               </motion.h2>
 
               <motion.p
                 variants={fadeUp}
-                className="text-[#1F2937]/75 leading-8 mb-6"
+                className="font-['Playfair_Display'] text-[#1F2937]/75 leading-8 mb-6"
               >
                 Many Indian businesses produce quality products but face
                 challenges when entering international markets due to
@@ -184,7 +183,7 @@ const About = () => {
 
               <motion.p
                 variants={fadeUp}
-                className="text-[#1F2937]/75 leading-8"
+                className="font-['Playfair_Display'] text-[#1F2937]/75 leading-8"
               >
                 Our goal is to simplify international trade by providing a
                 structured approach that helps businesses navigate export
@@ -209,21 +208,21 @@ const About = () => {
         >
           <motion.p
             variants={fadeUp}
-            className="uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
+            className="font-['Playfair_Display'] uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
           >
             Our Mission
           </motion.p>
 
           <motion.h2
             variants={fadeUp}
-            className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+            className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
           >
             Making Global Trade More Accessible
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
-            className="text-xl text-[#1F2937]/75 mt-8 leading-9"
+            className="font-['Playfair_Display'] text-xl text-[#1F2937]/75 mt-8 leading-9"
           >
             To help Indian businesses expand internationally and help global
             buyers source products from India through reliable onboarding,
@@ -245,14 +244,14 @@ const About = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
+              className="font-['Playfair_Display'] uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
             >
               Legal Status
             </motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-black text-[#0F172A]"
+              className="font-['Playfair_Display'] text-4xl md:text-5xl font-black text-[#0F172A]"
             >
               Operating With Transparency
             </motion.h2>
@@ -284,7 +283,7 @@ const About = () => {
                   <FaCheckCircle className="text-2xl" />
                 </motion.div>
 
-                <h3 className="text-xl font-black text-[#0F172A]">
+                <h3 className="font-['Playfair_Display'] text-xl font-black text-[#0F172A]">
                   {item}
                 </h3>
               </motion.div>
@@ -307,14 +306,14 @@ const About = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
+              className="font-['Playfair_Display'] uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
             >
               Core Values
             </motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-black text-[#0F172A]"
+              className="font-['Playfair_Display'] text-4xl md:text-5xl font-black text-[#0F172A]"
             >
               Principles That Guide Us
             </motion.h2>
@@ -346,11 +345,11 @@ const About = () => {
                   {item.icon}
                 </motion.div>
 
-                <h3 className="text-2xl font-black text-[#0F172A] mb-4">
+                <h3 className="font-['Playfair_Display'] text-2xl font-black text-[#0F172A] mb-4">
                   {item.title}
                 </h3>
 
-                <p className="text-[#1F2937]/75 leading-7">
+                <p className="font-['Playfair_Display'] text-[#1F2937]/75 leading-7">
                   {item.desc}
                 </p>
               </motion.div>
@@ -358,7 +357,6 @@ const About = () => {
           </motion.div>
         </div>
       </section>
-
     </main>
   );
 };

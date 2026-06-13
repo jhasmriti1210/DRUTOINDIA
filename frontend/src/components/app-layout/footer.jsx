@@ -51,6 +51,8 @@ const socialLinks = [
   { icon: <FaTwitter />, path: "#" },
 ];
 
+const currentYear = new Date().getFullYear();
+
 const Footer = () => {
   return (
     <footer className="relative bg-[#0F172A] text-white font-['Inter'] overflow-hidden">
@@ -76,7 +78,7 @@ const Footer = () => {
               />
             </Link>
 
-            <p className="text-white/70 leading-7 mb-6">
+            <p className="font-['Playfair_Display'] text-white/70 leading-7 mb-6">
               Helping Indian MSMEs export globally and supporting overseas
               buyers to source from India through one reliable execution
               partner.
@@ -99,7 +101,9 @@ const Footer = () => {
 
           {/* Quick Links */}
           <motion.div variants={fadeUp}>
-            <h3 className="text-2xl font-black mb-6">Quick Links</h3>
+            <h3 className="font-['Playfair_Display'] text-2xl font-black mb-6">
+              Quick Links
+            </h3>
 
             <ul className="space-y-4 text-white/70">
               {quickLinks.map((item) => (
@@ -118,7 +122,9 @@ const Footer = () => {
 
           {/* Services */}
           <motion.div variants={fadeUp}>
-            <h3 className="text-2xl font-black mb-6">Services</h3>
+            <h3 className="font-['Playfair_Display'] text-2xl font-black mb-6">
+              Services
+            </h3>
 
             <ul className="space-y-4 text-white/70">
               {services.map((item) => (
@@ -136,7 +142,9 @@ const Footer = () => {
 
           {/* Contact */}
           <motion.div variants={fadeUp}>
-            <h3 className="text-2xl font-black mb-6">Contact Us</h3>
+            <h3 className="font-['Playfair_Display'] text-2xl font-black mb-6">
+              Contact Us
+            </h3>
 
             <div className="space-y-5">
               {[
@@ -192,7 +200,7 @@ const Footer = () => {
       <div className="border-t border-white/10 relative">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/50 text-sm">
-            © 2026 Druto. All Rights Reserved.
+            Copyright © {currentYear} DRUTO INDIA. All rights reserved.
           </p>
 
           <div className="flex gap-6 mt-4 md:mt-0 text-white/50 text-sm">

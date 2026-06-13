@@ -65,7 +65,6 @@ const supportPoints = [
 const Contact = () => {
   return (
     <main className="bg-[#FAF7F2] text-[#1F2937] font-['Inter'] overflow-hidden">
-
       {/* Hero */}
       <section className="pt-40 pb-24 relative">
         <div className="absolute top-20 right-0 w-96 h-96 bg-[#0F766E]/10 rounded-full blur-[130px]"></div>
@@ -80,14 +79,13 @@ const Contact = () => {
             variants={fadeUp}
             className="max-w-5xl mx-auto text-center"
           >
-
-            <h1 className="text-5xl md:text-7xl font-black text-[#0F172A] leading-tight">
+            <h1 className="font-['Playfair_Display'] text-5xl md:text-7xl font-black text-[#0F172A] leading-tight">
               Let's Discuss Your Export
               <br />
               Requirements
             </h1>
 
-            <p className="text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8">
+            <p className="font-['Playfair_Display'] text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8">
               Whether you're an Indian exporter looking to enter international
               markets or a global buyer sourcing products from India, our team
               is ready to assist.
@@ -102,7 +100,6 @@ const Contact = () => {
 
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-
             {/* Contact Form */}
             <motion.div
               variants={fadeLeft}
@@ -120,14 +117,14 @@ const Contact = () => {
               >
                 <motion.h2
                   variants={fadeUp}
-                  className="text-3xl md:text-4xl font-black text-[#0F172A] mb-3"
+                  className="font-['Playfair_Display'] text-3xl md:text-4xl font-black text-[#0F172A] mb-3"
                 >
                   Send an Inquiry
                 </motion.h2>
 
                 <motion.p
                   variants={fadeUp}
-                  className="text-[#1F2937]/70 mb-8 leading-7"
+                  className="font-['Playfair_Display'] text-[#1F2937]/70 mb-8 leading-7"
                 >
                   Share your export, sourcing, or logistics requirement and our
                   team will get back with the next steps.
@@ -162,7 +159,7 @@ const Contact = () => {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     type="submit"
-                    className="group bg-[#0F172A] hover:bg-[#0F766E] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 transition"
+                    className="font-['Playfair_Display'] group bg-[#0F172A] hover:bg-[#0F766E] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 transition"
                   >
                     Submit Inquiry
                     <FaArrowRight className="group-hover:translate-x-1 transition" />
@@ -187,7 +184,7 @@ const Contact = () => {
               >
                 <motion.h2
                   variants={fadeUp}
-                  className="text-3xl md:text-4xl font-black text-[#0F172A] mb-8"
+                  className="font-['Playfair_Display'] text-3xl md:text-4xl font-black text-[#0F172A] mb-8"
                 >
                   Get In Touch
                 </motion.h2>
@@ -203,16 +200,16 @@ const Contact = () => {
                       }}
                       className="bg-[#F5F0E6] border border-[#E7DFD2] rounded-2xl p-6 flex gap-5"
                     >
-                      <div className="w-14 h-14 rounded-2xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center text-2xl shrink-0">
+                      <div className="font-['Playfair_Display'] w-14 h-14 rounded-2xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center text-2xl shrink-0">
                         {item.icon}
                       </div>
 
                       <div>
-                        <h3 className="font-black text-xl text-[#0F172A]">
+                        <h3 className="font-['Playfair_Display'] font-black text-xl text-[#0F172A]">
                           {item.title}
                         </h3>
 
-                        <p className="text-[#1F2937]/75 mt-2">
+                        <p className="font-['Playfair_Display'] text-[#1F2937]/75 mt-2">
                           {item.value}
                         </p>
                       </div>
@@ -226,18 +223,18 @@ const Contact = () => {
                   whileHover={{ y: -6 }}
                   className="mt-8 bg-[#0F172A] text-white rounded-[2rem] p-8 shadow-[0_24px_70px_rgba(15,23,42,0.16)]"
                 >
-                  <p className="uppercase tracking-[4px] text-[#5EEAD4] font-bold mb-4">
+                  <p className="font-['Playfair_Display'] uppercase tracking-[4px] text-[#5EEAD4] font-bold mb-4">
                     Business Support
                   </p>
 
-                  <h3 className="text-2xl md:text-3xl font-black mb-4">
+                  <h3 className="font-['Playfair_Display'] text-2xl md:text-3xl font-black mb-4">
                     Supporting Exporters & Global Buyers
                   </h3>
 
-                  <p className="text-white/75 leading-8 mb-6">
-                    We assist businesses with exporter onboarding,
-                    documentation support, logistics coordination, shipment
-                    execution, and India sourcing assistance.
+                  <p className="font-['Playfair_Display'] text-white/75 leading-8 mb-6">
+                    We assist businesses with exporter onboarding, documentation
+                    support, logistics coordination, shipment execution, and
+                    India sourcing assistance.
                   </p>
 
                   <div className="grid sm:grid-cols-2 gap-3">
@@ -255,7 +252,6 @@ const Contact = () => {
                 </motion.div>
               </motion.div>
             </motion.div>
-
           </div>
         </div>
       </section>

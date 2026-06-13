@@ -74,7 +74,6 @@ const workflow = [
 const Services = () => {
   return (
     <main className="bg-[#FAF7F2] text-[#1F2937] font-['Inter'] overflow-hidden">
-
       {/* Hero */}
       <section className="pt-40 pb-24 relative">
         <div className="absolute top-20 right-0 w-96 h-96 bg-[#0F766E]/10 rounded-full blur-[130px]"></div>
@@ -86,11 +85,9 @@ const Services = () => {
           className="max-w-7xl mx-auto px-6 relative"
         >
           <div className="max-w-5xl mx-auto text-center">
-            
-
             <motion.h1
               variants={fadeUp}
-              className="text-5xl md:text-7xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-5xl md:text-7xl font-black text-[#0F172A] leading-tight"
             >
               Export Services Designed
               <br />
@@ -99,7 +96,7 @@ const Services = () => {
 
             <motion.p
               variants={fadeUp}
-              className="text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8"
+              className="font-['Playfair_Display'] text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8"
             >
               We provide structured support for exporters and international
               buyers through onboarding, documentation, logistics coordination,
@@ -140,11 +137,11 @@ const Services = () => {
                   {service.icon}
                 </motion.div>
 
-                <h3 className="text-2xl font-black text-[#0F172A] mb-4">
+                <h3 className="font-['Playfair_Display'] text-2xl font-black text-[#0F172A] mb-4">
                   {service.title}
                 </h3>
 
-                <p className="text-[#1F2937]/75 leading-7">
+                <p className="font-['Playfair_Display'] text-[#1F2937]/75 leading-7">
                   {service.description}
                 </p>
               </motion.div>
@@ -172,7 +169,7 @@ const Services = () => {
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
               From Factory Door To Customer Warehouse
             </motion.h2>
@@ -199,7 +196,7 @@ const Services = () => {
                   0{index + 1}
                 </div>
 
-                <h3 className="font-black text-[#0F172A]">
+                <h3 className="font-['Playfair_Display'] font-black text-[#0F172A]">
                   {step}
                 </h3>
               </motion.div>
@@ -219,11 +216,11 @@ const Services = () => {
           viewport={{ once: true }}
           className="max-w-7xl mx-auto px-6 text-center relative"
         >
-          <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
+          <h2 className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-white leading-tight">
             Ready To Expand Internationally?
           </h2>
 
-          <p className="text-white/75 text-lg mt-6 max-w-3xl mx-auto leading-8">
+          <p className="font-['Playfair_Display'] text-white/75 text-lg mt-6 max-w-3xl mx-auto leading-8">
             Whether you are an Indian exporter or an overseas buyer, our team
             can help you navigate sourcing, documentation, logistics, and
             shipment execution.
@@ -232,7 +229,7 @@ const Services = () => {
           <motion.button
             whileHover={{ y: -4, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="mt-10 bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition"
+            className="font-['Playfair_Display'] mt-10 bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition"
           >
             Request Consultation
             <FaArrowRight />

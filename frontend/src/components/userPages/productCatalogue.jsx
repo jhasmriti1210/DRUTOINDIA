@@ -1,9 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  FaBoxOpen,
-  FaCheckCircle,
-  FaArrowRight,
-} from "react-icons/fa";
+import { FaBoxOpen, FaCheckCircle, FaArrowRight } from "react-icons/fa";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 45 },
@@ -74,7 +70,6 @@ const supportItems = [
 const ProductCatalogue = () => {
   return (
     <main className="bg-[#FAF7F2] text-[#1F2937] font-['Inter'] overflow-hidden">
-
       {/* Hero */}
       <section className="pt-40 pb-24 relative">
         <div className="absolute top-20 right-0 w-96 h-96 bg-[#0F766E]/10 rounded-full blur-[130px]"></div>
@@ -86,12 +81,9 @@ const ProductCatalogue = () => {
           className="max-w-7xl mx-auto px-6 relative"
         >
           <div className="max-w-5xl mx-auto text-center">
-          
-              
-
             <motion.h1
               variants={fadeUp}
-              className="text-5xl md:text-7xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-5xl md:text-7xl font-black text-[#0F172A] leading-tight"
             >
               Products Ready For
               <br />
@@ -100,7 +92,7 @@ const ProductCatalogue = () => {
 
             <motion.p
               variants={fadeUp}
-              className="text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8"
+              className="font-['Playfair_Display'] text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8"
             >
               Explore product categories supported through our sourcing,
               documentation, packaging, logistics, and export execution
@@ -145,7 +137,7 @@ const ProductCatalogue = () => {
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/45 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
 
-                  <div className="absolute top-5 left-5 bg-[#FAF7F2]/90 backdrop-blur-md text-[#0F172A] px-4 py-2 rounded-full text-sm font-bold">
+                  <div className="font-['Playfair_Display'] absolute top-5 left-5 bg-[#FAF7F2]/90 backdrop-blur-md text-[#0F172A] px-4 py-2 rounded-full text-sm font-bold">
                     Export Ready
                   </div>
                 </div>
@@ -158,37 +150,37 @@ const ProductCatalogue = () => {
                     <FaBoxOpen />
                   </motion.div>
 
-                  <h3 className="text-2xl font-black text-[#0F172A] mb-5">
+                  <h3 className="font-['Playfair_Display'] text-2xl font-black text-[#0F172A] mb-5">
                     {product.name}
                   </h3>
 
                   <div className="space-y-4">
                     <div className="border-l-2 border-[#0F766E] pl-4">
-                      <p className="font-bold text-[#0F172A]">
+                      <p className="font-['Playfair_Display'] font-bold text-[#0F172A]">
                         Specification
                       </p>
 
-                      <p className="text-[#1F2937]/75 text-sm mt-1 leading-6">
+                      <p className="font-['Playfair_Display'] text-[#1F2937]/75 text-sm mt-1 leading-6">
                         {product.specification}
                       </p>
                     </div>
 
                     <div className="border-l-2 border-[#0F766E]/50 pl-4">
-                      <p className="font-bold text-[#0F172A]">
+                      <p className="font-['Playfair_Display'] font-bold text-[#0F172A]">
                         Packaging
                       </p>
 
-                      <p className="text-[#1F2937]/75 text-sm mt-1 leading-6">
+                      <p className="font-['Playfair_Display'] text-[#1F2937]/75 text-sm mt-1 leading-6">
                         {product.packaging}
                       </p>
                     </div>
 
                     <div className="border-l-2 border-[#0F172A]/20 pl-4">
-                      <p className="font-bold text-[#0F172A]">
+                      <p className="font-['Playfair_Display'] font-bold text-[#0F172A]">
                         Compliance
                       </p>
 
-                      <p className="text-[#1F2937]/75 text-sm mt-1 leading-6">
+                      <p className="font-['Playfair_Display'] text-[#1F2937]/75 text-sm mt-1 leading-6">
                         {product.compliance}
                       </p>
                     </div>
@@ -212,25 +204,25 @@ const ProductCatalogue = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
+              className="font-['Playfair_Display'] uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
             >
               Product Support
             </motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
               More Than Product Listings
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
-              className="text-[#1F2937]/75 text-lg mt-6 leading-8"
+              className="font-['Playfair_Display'] text-[#1F2937]/75 text-lg mt-6 leading-8"
             >
-              We help buyers and exporters with real product details,
-              supplier coordination, packaging planning, documentation,
-              and shipment execution.
+              We help buyers and exporters with real product details, supplier
+              coordination, packaging planning, documentation, and shipment
+              execution.
             </motion.p>
           </motion.div>
 
@@ -258,7 +250,7 @@ const ProductCatalogue = () => {
                   <FaCheckCircle className="text-2xl" />
                 </motion.div>
 
-                <h3 className="text-xl font-black text-[#0F172A]">
+                <h3 className="font-['Playfair_Display'] text-xl font-black text-[#0F172A]">
                   {item}
                 </h3>
               </motion.div>
@@ -278,11 +270,11 @@ const ProductCatalogue = () => {
           viewport={{ once: true }}
           className="max-w-7xl mx-auto px-6 text-center relative"
         >
-          <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
+          <h2 className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-white leading-tight">
             Looking For A Specific Product?
           </h2>
 
-          <p className="text-white/75 text-lg mt-6 max-w-3xl mx-auto leading-8">
+          <p className="font-['Playfair_Display'] text-white/75 text-lg mt-6 max-w-3xl mx-auto leading-8">
             Share your sourcing requirements and our team will help identify
             suitable suppliers, coordinate documentation, and support shipment
             execution.
@@ -291,14 +283,13 @@ const ProductCatalogue = () => {
           <motion.button
             whileHover={{ y: -4, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="mt-10 bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition"
+            className="font-['Playfair_Display'] mt-10 bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition"
           >
             Send Product Inquiry
             <FaArrowRight />
           </motion.button>
         </motion.div>
       </section>
-
     </main>
   );
 };

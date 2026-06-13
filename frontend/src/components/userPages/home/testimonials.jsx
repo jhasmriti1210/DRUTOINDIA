@@ -49,7 +49,6 @@ const Testimonials = () => {
       <div className="absolute -top-20 right-0 w-80 h-80 bg-[#0F766E]/10 rounded-full blur-3xl"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
-
         {/* Heading */}
         <motion.div
           variants={stagger}
@@ -60,24 +59,22 @@ const Testimonials = () => {
         >
           <motion.p
             variants={fadeUp}
-            className="uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
-          >
-            
-          </motion.p>
+            className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
+          ></motion.p>
 
           <motion.h2
             variants={fadeUp}
-            className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+            className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
           >
             Trusted by businesses expanding globally.
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
-            className="text-[#1F2937]/75 text-lg mt-6 leading-8"
+            className="font-['Playfair_Display'] text-[#1F2937]/75 text-lg mt-6 leading-8"
           >
-            See how manufacturers, exporters, and international buyers work
-            with us to simplify sourcing, documentation, logistics, and shipment
+            See how manufacturers, exporters, and international buyers work with
+            us to simplify sourcing, documentation, logistics, and shipment
             execution.
           </motion.p>
         </motion.div>
@@ -123,16 +120,16 @@ const Testimonials = () => {
                 ))}
               </div>
 
-              <p className="text-[#1F2937]/80 leading-8 mb-8">
+              <p className="font-['Playfair_Display'] text-[#1F2937]/80 leading-8 mb-8">
                 “{item.quote}”
               </p>
 
               <div className="border-t border-[#E7DFD2] pt-5">
-                <h4 className="text-xl font-black text-[#0F172A]">
+                <h4 className="font-['Playfair_Display'] text-xl font-black text-[#0F172A]">
                   {item.name}
                 </h4>
 
-                <p className="text-[#1F2937]/65 mt-1">
+                <p className="font-['Playfair_Display'] text-[#1F2937]/65 mt-1">
                   {item.location}
                 </p>
               </div>
@@ -155,17 +152,16 @@ const Testimonials = () => {
               whileHover={{ y: -8, scale: 1.03 }}
               className="bg-[#0F172A] rounded-3xl p-8 text-center shadow-xl"
             >
-              <h3 className="text-4xl md:text-5xl font-black text-white">
+              <h3 className="font-['Playfair_Display'] text-4xl md:text-5xl font-black text-white">
                 {item.value}
               </h3>
 
-              <p className="text-white/70 mt-2 font-medium">
+              <p className="font-['Playfair_Display'] text-white/70 mt-2 font-medium">
                 {item.label}
               </p>
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

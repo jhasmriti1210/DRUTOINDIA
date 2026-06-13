@@ -30,7 +30,7 @@ const Navbar = () => {
           : "bg-[#FAF7F2]"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="font-['Playfair_Display'] max-w-7xl mx-auto px-6">
         <div className="h-24 flex justify-between items-center">
           <NavLink to="/" className="cursor-pointer flex items-center">
             <img

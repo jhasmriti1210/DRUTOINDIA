@@ -181,7 +181,7 @@ const Home = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[5px] text-[#5EEAD4] font-bold mb-6 mt-8"
+              className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#5EEAD4] font-bold mb-6 mt-8"
             >
               Export Management • India Sourcing • Global Trade
             </motion.p>
@@ -189,14 +189,14 @@ const Home = () => {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.9 }}
-              className="text-5xl md:text-7xl font-black leading-[1.05] text-white"
+              className="font-['Playfair_Display'] text-5xl md:text-7xl font-black leading-[1.05] text-white"
             >
               Helping Indian Businesses Export Globally
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="text-lg md:text-xl text-white/85 mt-8 max-w-3xl mx-auto leading-relaxed"
+              className="font-['Playfair_Display'] text-lg md:text-xl text-white/85 mt-8 max-w-3xl mx-auto leading-relaxed"
             >
               From exporter onboarding and documentation to logistics
               coordination and shipment execution, we help MSMEs sell
@@ -207,12 +207,12 @@ const Home = () => {
               variants={fadeUp}
               className="mt-10 flex flex-wrap gap-5 justify-center"
             >
-              <button className="group bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition flex items-center gap-3">
+              <button className="font-['Playfair_Display'] group bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition flex items-center gap-3">
                 Request Consultation
                 <FaArrowRight className="group-hover:translate-x-1 transition" />
               </button>
 
-              <button className="border border-white/40 text-white hover:bg-white hover:text-[#0F172A] px-8 py-4 rounded-full font-semibold transition">
+              <button className="font-['Playfair_Display'] border border-white/40 text-white hover:bg-white hover:text-[#0F172A] px-8 py-4 rounded-full font-semibold transition">
                 Explore Services
               </button>
             </motion.div>
@@ -258,21 +258,21 @@ const Home = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
+              className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
             >
               What We Do
             </motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
               End-to-end export support from India to global markets.
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
-              className="text-[#1F2937]/75 text-lg mt-6 leading-8"
+              className="font-['Playfair_Display'] text-[#1F2937]/75 text-lg mt-6 leading-8"
             >
               We support exporters and buyers with onboarding, documentation,
               logistics coordination, and shipment execution through a clear
@@ -299,16 +299,18 @@ const Home = () => {
               >
                 <motion.div
                   whileHover={{ rotate: 8, scale: 1.08 }}
-                  className="w-16 h-16 rounded-2xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center text-3xl mb-6"
+                  className="font-['Playfair_Display'] w-16 h-16 rounded-2xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center text-3xl mb-6"
                 >
                   {item.icon}
                 </motion.div>
 
-                <h3 className="text-2xl font-black text-[#0F172A] mb-4">
+                <h3 className="font-['Playfair_Display']text-2xl font-black text-[#0F172A] mb-4">
                   {item.title}
                 </h3>
 
-                <p className="text-[#1F2937]/75 leading-7">{item.desc}</p>
+                <p className="font-['Playfair_Display'] text-[#1F2937]/75 leading-7">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -327,14 +329,14 @@ const Home = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
+              className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
             >
               Who We Help
             </motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
               Built for Indian MSMEs and overseas buyers.
             </motion.h2>
@@ -356,15 +358,17 @@ const Home = () => {
                   {card.icon}
                 </div>
 
-                <p className="uppercase tracking-[4px] text-[#0F766E] font-bold mb-3">
+                <p className="font-['Playfair_Display'] uppercase tracking-[4px] text-[#0F766E] font-bold mb-3">
                   {card.subtitle}
                 </p>
 
-                <h3 className="text-3xl md:text-4xl font-black text-[#0F172A] mb-5">
+                <h3 className="font-['Playfair_Display'] text-3xl md:text-4xl font-black text-[#0F172A] mb-5">
                   {card.title}
                 </h3>
 
-                <p className="text-[#1F2937]/75 leading-8 mb-7">{card.desc}</p>
+                <p className="font-['Playfair_Display'] text-[#1F2937]/75 leading-8 mb-7">
+                  {card.desc}
+                </p>
 
                 <div className="grid sm:grid-cols-2 gap-3">
                   {card.points.map((point, i) => (
@@ -396,14 +400,14 @@ const Home = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
+              className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
             >
               How It Works
             </motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
               From factory door to customer warehouse.
             </motion.h2>
@@ -431,11 +435,11 @@ const Home = () => {
                   {step.icon}
                 </div>
 
-                <h3 className="text-xl font-black text-[#0F172A] mb-3">
+                <h3 className="font-['Playfair_Display'] text-xl font-black text-[#0F172A] mb-3">
                   {step.title}
                 </h3>
 
-                <p className="text-[#1F2937]/70 text-sm leading-6">
+                <p className="font-['Playfair_Display'] text-[#1F2937]/70 text-sm leading-6">
                   {step.desc}
                 </p>
               </motion.div>
@@ -457,21 +461,21 @@ const Home = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[5px] text-[#5EEAD4] font-bold mb-4"
+              className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#5EEAD4] font-bold mb-4"
             >
               Why Choose Us
             </motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-6xl font-black leading-tight"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black leading-tight"
             >
               One execution partner for export growth.
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
-              className="text-white/75 text-lg mt-6 leading-8"
+              className="font-['Playfair_Display'] text-white/75 text-lg mt-6 leading-8"
             >
               Our model reduces confusion for first-time exporters and gives
               overseas buyers a dependable India sourcing and shipment execution
@@ -513,14 +517,14 @@ const Home = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
+              className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#0F766E] font-bold mb-4"
             >
               Trust Signals
             </motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
               Build credibility with clear export information.
             </motion.h2>
@@ -547,11 +551,13 @@ const Home = () => {
                   <FaShieldAlt />
                 </div>
 
-                <h3 className="text-xl font-black text-[#0F172A] mb-3">
+                <h3 className="font-['Playfair_Display'] text-xl font-black text-[#0F172A] mb-3">
                   {item.title}
                 </h3>
 
-                <p className="text-[#1F2937]/70 leading-7">{item.desc}</p>
+                <p className="font-['Playfair_Display'] text-[#1F2937]/70 leading-7">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -564,18 +570,18 @@ const Home = () => {
             className="mt-16 bg-[#0F172A] rounded-3xl p-8 md:p-12 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-8 shadow-2xl"
           >
             <div>
-              <h3 className="text-3xl md:text-4xl font-black">
+              <h3 className="font-['Playfair_Display'] text-3xl md:text-4xl font-black">
                 Ready to start exporting or sourcing from India?
               </h3>
 
-              <p className="text-white/75 mt-4 max-w-2xl">
+              <p className="font-['Playfair_Display'] text-white/75 mt-4 max-w-2xl">
                 Send your inquiry and our team will help you with exporter
                 onboarding, documentation, logistics coordination, or buyer
                 sourcing support.
               </p>
             </div>
 
-            <button className="bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition flex items-center gap-3 whitespace-nowrap">
+            <button className="font-['Playfair_Display'] bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition flex items-center gap-3 whitespace-nowrap">
               Send Inquiry
               <FaArrowRight />
             </button>

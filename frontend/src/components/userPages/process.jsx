@@ -80,7 +80,6 @@ const workflowItems = [
 const Process = () => {
   return (
     <main className="bg-[#FAF7F2] text-[#1F2937] font-['Inter'] overflow-hidden">
-
       {/* Hero */}
       <section className="pt-40 pb-24 relative">
         <div className="absolute top-20 right-0 w-96 h-96 bg-[#0F766E]/10 rounded-full blur-[130px]"></div>
@@ -92,11 +91,9 @@ const Process = () => {
           className="max-w-7xl mx-auto px-6 relative"
         >
           <div className="max-w-5xl mx-auto text-center">
-           
-
             <motion.h1
               variants={fadeUp}
-              className="text-5xl md:text-7xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
               From Factory Door To
               <br />
@@ -105,7 +102,7 @@ const Process = () => {
 
             <motion.p
               variants={fadeUp}
-              className="text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8"
+              className="font-['Playfair_Display'] text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8"
             >
               Our operating model simplifies export execution for Indian MSMEs
               and overseas buyers by managing onboarding, documentation,
@@ -153,11 +150,11 @@ const Process = () => {
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-[#0F172A] mb-4">
+                <h3 className="font-['Playfair_Display'] text-2xl font-black text-[#0F172A] mb-4">
                   {step.title}
                 </h3>
 
-                <p className="text-[#1F2937]/75 leading-7">
+                <p className="font-['Playfair_Display'] text-[#1F2937]/75 leading-7">
                   {step.desc}
                 </p>
               </motion.div>
@@ -169,7 +166,6 @@ const Process = () => {
       {/* Operating Model */}
       <section className="py-24 bg-[#F5F0E6] relative">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
-
           <motion.div
             variants={fadeLeft}
             initial="hidden"
@@ -194,15 +190,15 @@ const Process = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true, amount: 0.25 }}
           >
-            <p className="uppercase tracking-[6px] text-[#0F766E] font-bold mb-5">
+            <p className="font-['Playfair_Display'] uppercase tracking-[6px] text-[#0F766E] font-bold mb-5">
               Operating Model
             </p>
 
-            <h2 className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight">
+            <h2 className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight">
               One clear workflow for exporters and buyers.
             </h2>
 
-            <p className="text-[#1F2937]/75 text-lg leading-8 mt-6">
+            <p className="font-['Playfair_Display'] text-[#1F2937]/75 text-lg leading-8 mt-6">
               Instead of managing multiple vendors separately, exporters and
               overseas buyers get coordinated support across documentation,
               freight, shipment updates, and delivery execution.
@@ -227,14 +223,13 @@ const Process = () => {
                 >
                   <FaCheckCircle className="text-[#0F766E] shrink-0" />
 
-                  <span className="font-semibold text-[#1F2937]">
+                  <span className="font-['Playfair_Display'] font-semibold text-[#1F2937]">
                     {item}
                   </span>
                 </motion.div>
               ))}
             </motion.div>
           </motion.div>
-
         </div>
       </section>
 
@@ -259,11 +254,11 @@ const Process = () => {
                 <FaTruck />
               </motion.div>
 
-              <h2 className="text-4xl md:text-5xl font-black leading-tight">
+              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl font-black leading-tight">
                 Need help planning your first export shipment?
               </h2>
 
-              <p className="text-white/75 text-lg mt-6 leading-8">
+              <p className="font-['Playfair_Display'] text-white/75 text-lg mt-6 leading-8">
                 Share your product details, destination country, quantity, and
                 buyer requirements. We will help you understand the next steps
                 for documentation, logistics, and shipment execution.
@@ -274,7 +269,7 @@ const Process = () => {
               <motion.button
                 whileHover={{ y: -4, scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition"
+                className="font-['Playfair_Display'] bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition"
               >
                 Start Export Process
                 <FaArrowRight />

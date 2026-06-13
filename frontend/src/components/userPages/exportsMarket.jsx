@@ -107,11 +107,9 @@ const ExportsMarket = () => {
           className="max-w-7xl mx-auto px-6 relative"
         >
           <div className="max-w-5xl mx-auto text-center">
-           
-
             <motion.h1
               variants={fadeUp}
-              className="text-5xl md:text-7xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-5xl md:text-7xl font-black text-[#0F172A] leading-tight"
             >
               Helping Indian Businesses
               <br />
@@ -120,7 +118,7 @@ const ExportsMarket = () => {
 
             <motion.p
               variants={fadeUp}
-              className="text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8"
+              className="font-['Playfair_Display'] text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8"
             >
               We support exporters and overseas buyers across key international
               markets with sourcing coordination, documentation support, freight
@@ -161,15 +159,15 @@ const ExportsMarket = () => {
                   <FaGlobeAsia />
                 </motion.div>
 
-                <h3 className="text-2xl font-black text-[#0F172A] mb-3">
+                <h3 className="font-['Playfair_Display'] text-2xl font-black text-[#0F172A] mb-3">
                   {item.region}
                 </h3>
 
-                <p className="text-[#0F766E] font-bold mb-4 leading-7">
+                <p className="font-['Playfair_Display'] text-[#0F766E] font-bold mb-4 leading-7">
                   {item.countries}
                 </p>
 
-                <p className="text-[#1F2937]/75 leading-7">
+                <p className="font-['Playfair_Display'] text-[#1F2937]/75 leading-7">
                   {item.desc}
                 </p>
               </motion.div>
@@ -205,15 +203,15 @@ const ExportsMarket = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true, amount: 0.25 }}
           >
-            <p className="uppercase tracking-[6px] text-[#0F766E] font-bold mb-5">
+            <p className="font-['Playfair_Display'] uppercase tracking-[6px] text-[#0F766E] font-bold mb-5">
               Market Support
             </p>
 
-            <h2 className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight">
+            <h2 className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight">
               From Indian factories to international warehouses.
             </h2>
 
-            <p className="text-[#1F2937]/75 text-lg leading-8 mt-6">
+            <p className="font-['Playfair_Display'] text-[#1F2937]/75 text-lg leading-8 mt-6">
               Every export market has different documentation, packaging,
               shipping, and buyer communication expectations. We help simplify
               the process by coordinating the operational details required to
@@ -239,7 +237,7 @@ const ExportsMarket = () => {
                 >
                   <FaCheckCircle className="text-[#0F766E] shrink-0" />
 
-                  <span className="font-semibold text-[#1F2937]">
+                  <span className="font-['Playfair_Display'] font-semibold text-[#1F2937]">
                     {item}
                   </span>
                 </motion.div>
@@ -263,14 +261,14 @@ const ExportsMarket = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
+              className="font-['Playfair_Display'] uppercase tracking-[6px] text-[#0F766E] font-bold mb-5"
             >
               Global Movement
             </motion.p>
 
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
               Export coordination through multiple shipping routes.
             </motion.h2>
@@ -301,11 +299,11 @@ const ExportsMarket = () => {
                   {item.icon}
                 </motion.div>
 
-                <h3 className="text-2xl font-black text-[#0F172A] mb-4">
+                <h3 className="font-['Playfair_Display'] text-2xl font-black text-[#0F172A] mb-4">
                   {item.title}
                 </h3>
 
-                <p className="text-[#1F2937]/75 leading-7">
+                <p className="font-['Playfair_Display'] text-[#1F2937]/75 leading-7">
                   {item.desc}
                 </p>
               </motion.div>
@@ -327,11 +325,11 @@ const ExportsMarket = () => {
         >
           <FaMapMarkedAlt className="text-[#5EEAD4] text-5xl mx-auto mb-6" />
 
-          <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
+          <h2 className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-white leading-tight">
             Looking to Export or Source From India?
           </h2>
 
-          <p className="text-white/75 text-lg mt-6 max-w-3xl mx-auto leading-8">
+          <p className="font-['Playfair_Display'] text-white/75 text-lg mt-6 max-w-3xl mx-auto leading-8">
             Share your target country, product category, and shipment
             requirement. Our team will help you understand the next steps for
             sourcing, documentation, logistics, and execution.
@@ -340,7 +338,7 @@ const ExportsMarket = () => {
           <motion.button
             whileHover={{ y: -4, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="mt-10 bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition"
+            className="font-['Playfair_Display'] mt-10 bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition"
           >
             Send Market Inquiry
             <FaArrowRight />

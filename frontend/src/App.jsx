@@ -7,7 +7,7 @@ import About from "./components/userPages/about";
 import Services from "./components/userPages/services";
 import PrivacyPolicy from "./components/userPages/privacyPolicy";
 import ExportMarket from "./components/userPages/exportsMarket";
-import TermsAndConditions from "./components/userPages/termsAndConditions";
+import TermsAndConditions from "./components/userPages/TermsAndConditions";
 import Contact from "./components/userPages/contact";
 
 function App() {

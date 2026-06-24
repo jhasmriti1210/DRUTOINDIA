@@ -16,9 +16,9 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
-    { name: "Process", path: "/process" },
+
     { name: "Export Market", path: "/export-market" },
-    { name: "Product Catalogue", path: "/product-catalogue" },
+
     { name: "Contact", path: "/contact" },
   ];
 
@@ -34,9 +34,9 @@ const Navbar = () => {
         <div className="h-24 flex justify-between items-center">
           <NavLink to="/" className="cursor-pointer flex items-center">
             <img
-              src="/logobg.png"
+              src="/logod-remove.png"
               alt="Druto Logo"
-              className="h-20 md:h-24 w-auto object-contain"
+              className="h-20 md:h-20 w-auto object-contain"
             />
           </NavLink>
 
@@ -65,7 +65,7 @@ const Navbar = () => {
               to="/contact"
               className="group bg-[#0F172A] hover:bg-[#0F766E] text-white px-6 py-3 rounded-full flex items-center gap-3 font-semibold transition"
             >
-              Request Consultation
+              Partner With Us
               <FaArrowRight className="group-hover:translate-x-1 transition" />
             </NavLink>
           </div>

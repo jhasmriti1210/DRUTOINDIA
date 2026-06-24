@@ -12,6 +12,32 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 
+const contactInfo = [
+  {
+    icon: <FaMapMarkerAlt />,
+    text: "JAITPUR, DELHI, INDIA",
+    clickable: false,
+  },
+  {
+    icon: <FaPhoneAlt />,
+    text: "+91 9220475166",
+    link: "tel:+919220475166",
+    clickable: true,
+  },
+  {
+    icon: <FaWhatsapp />,
+    text: "+91 9220475166",
+    link: "https://wa.me/919220475166",
+    clickable: true,
+  },
+  {
+    icon: <FaEnvelope />,
+    text: "support@drutoindia.com",
+    link: "mailto:support@drutoindia.com",
+    clickable: true,
+  },
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 45 },
   show: { opacity: 1, y: 0 },
@@ -30,9 +56,9 @@ const quickLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Services", path: "/services" },
-  { name: "Process", path: "/process" },
+
   { name: "Export Market", path: "/export-market" },
-  { name: "Product Catalogue", path: "/product-catalogue" },
+
   { name: "Contact", path: "/contact" },
 ];
 
@@ -140,58 +166,44 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Contact */}
           <motion.div variants={fadeUp}>
             <h3 className="font-['Playfair_Display'] text-2xl font-black mb-6">
               Contact Us
             </h3>
 
             <div className="space-y-5">
-              {[
-                {
-                  icon: <FaMapMarkerAlt />,
-                  text: "Hyderabad, Telangana, India",
-                },
-                {
-                  icon: <FaPhoneAlt />,
-                  text: "+91 XXXXX XXXXX",
-                },
-                {
-                  icon: <FaWhatsapp />,
-                  text: "+91 XXXXX XXXXX",
-                },
-                {
-                  icon: <FaEnvelope />,
-                  text: "info@yourcompany.com",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ x: 6 }}
-                  className="flex gap-3"
-                >
-                  <span className="text-[#5EEAD4] mt-1 shrink-0">
-                    {item.icon}
-                  </span>
-                  <p className="text-white/70">{item.text}</p>
-                </motion.div>
-              ))}
-            </div>
+              {contactInfo.map((item, index) =>
+                item.clickable ? (
+                  <motion.a
+                    key={index}
+                    href={item.link}
+                    target={item.link.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    whileHover={{ x: 6 }}
+                    className="flex gap-3 group cursor-pointer"
+                  >
+                    <span className="text-[#5EEAD4] mt-1 shrink-0 group-hover:scale-110 transition">
+                      {item.icon}
+                    </span>
 
-            <div className="mt-8">
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full p-3 rounded-xl bg-[#FAF7F2] text-[#1F2937] outline-none focus:ring-4 focus:ring-[#0F766E]/30 transition"
-              />
+                    <p className="text-white/70 group-hover:text-white transition">
+                      {item.text}
+                    </p>
+                  </motion.a>
+                ) : (
+                  <motion.div
+                    key={index}
+                    whileHover={{ x: 6 }}
+                    className="flex gap-3"
+                  >
+                    <span className="text-[#5EEAD4] mt-1 shrink-0">
+                      {item.icon}
+                    </span>
 
-              <motion.button
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                className="w-full mt-3 bg-[#0F766E] hover:bg-[#FAF7F2] hover:text-[#0F172A] py-3 rounded-xl font-semibold transition"
-              >
-                Subscribe
-              </motion.button>
+                    <p className="text-white/70">{item.text}</p>
+                  </motion.div>
+                ),
+              )}
             </div>
           </motion.div>
         </motion.div>
@@ -204,19 +216,23 @@ const Footer = () => {
           </p>
 
           <div className="flex gap-6 mt-4 md:mt-0 text-white/50 text-sm">
-            <motion.p
-              whileHover={{ y: -2 }}
-              className="hover:text-[#5EEAD4] cursor-pointer"
-            >
-              Privacy Policy
-            </motion.p>
+            <motion.div whileHover={{ y: -2 }}>
+              <Link
+                to="/privacy-policy"
+                className="hover:text-[#5EEAD4] transition-colors"
+              >
+                Privacy Policy
+              </Link>
+            </motion.div>
 
-            <motion.p
-              whileHover={{ y: -2 }}
-              className="hover:text-[#5EEAD4] cursor-pointer"
-            >
-              Terms & Conditions
-            </motion.p>
+            <motion.div whileHover={{ y: -2 }}>
+              <Link
+                to="/terms-and-conditions"
+                className="hover:text-[#5EEAD4] transition-colors"
+              >
+                Terms & Conditions
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>

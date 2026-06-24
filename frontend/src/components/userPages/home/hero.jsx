@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 import {
   FaArrowRight,
   FaGlobe,
@@ -40,7 +41,7 @@ const stagger = {
 };
 
 const heroStats = [
-  { icon: <FaGlobe />, value: "Global", text: "Export Support" },
+  { icon: <FaGlobe />, value: "MSME", text: "Exporter Support" },
   { icon: <FaShip />, value: "End-to-End", text: "Shipment Execution" },
   { icon: <FaBoxOpen />, value: "India", text: "Sourcing Partner" },
 ];
@@ -49,7 +50,7 @@ const services = [
   {
     icon: <FaUsers />,
     title: "Exporter Onboarding",
-    desc: "We help first-time Indian MSMEs understand export readiness, registrations, buyer communication, and international selling basics.",
+    desc: "We help first-time Indian MSMEs understand export readiness, registrations, buyer communication, and export fundamentals.",
   },
   {
     icon: <FaFileInvoice />,
@@ -83,15 +84,10 @@ const helpCards = [
   },
   {
     icon: <FaHandshake />,
-    title: "For Global Buyers",
+    title: "For Overseas Buyers",
     subtitle: "Source from India with one partner",
     desc: "We help overseas buyers source products from India through one execution partner handling supplier coordination, documentation, shipping, and delivery updates.",
-    points: [
-      "Importers",
-      "Distributors",
-      "Retail buyers",
-      "Global sourcing teams",
-    ],
+    points: ["Importers", "Distributors", "Retail buyers", "Sourcing teams"],
   },
 ];
 
@@ -124,7 +120,7 @@ const steps = [
 ];
 
 const whyChoose = [
-  "Single execution partner for exporters and buyers",
+  "Single execution partner for Indian exporters and overseas buyers",
   "Support for first-time exporters and MSMEs",
   "Export documentation and compliance coordination",
   "Factory-to-warehouse shipment operating model",
@@ -170,7 +166,7 @@ const Home = () => {
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 6, repeat: Infinity }}
           className="absolute right-20 top-40 hidden lg:block w-40 h-40 rounded-full border border-white/20"
-        ></motion.div>
+        />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-24">
           <motion.div
@@ -181,45 +177,49 @@ const Home = () => {
           >
             <motion.p
               variants={fadeUp}
-              className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#5EEAD4] font-bold mb-6 mt-8"
+              className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#5EEAD4] font-bold mb-6 mt-12"
             >
-              Export Management • India Sourcing • Global Trade
+              Exporter Support • India Sourcing • Shipment Execution
             </motion.p>
 
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.9 }}
-              className="font-['Playfair_Display'] text-5xl md:text-7xl font-black leading-[1.05] text-white"
+              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black leading-[1.05] text-white"
             >
-              Helping Indian Businesses Export Globally
+              Helping Indian MSMEs Start Exporting With Confidence
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="font-['Playfair_Display'] text-lg md:text-xl text-white/85 mt-8 max-w-3xl mx-auto leading-relaxed"
+              className="font-['Inter'] text-lg md:text-xl text-white/85 mt-8 max-w-3xl mx-auto leading-relaxed"
             >
               From exporter onboarding and documentation to logistics
-              coordination and shipment execution, we help MSMEs sell
-              internationally and help global buyers source from India.
+              coordination and shipment execution, we help Indian MSMEs start
+              selling internationally and help overseas buyers source from India
+              with one execution partner.
             </motion.p>
 
             <motion.div
               variants={fadeUp}
               className="mt-10 flex flex-wrap gap-5 justify-center"
             >
-              <button className="font-['Playfair_Display'] group bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition flex items-center gap-3">
-                Request Consultation
+              <NavLink
+                to="/contact"
+                className="font-['Inter'] group bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition flex items-center gap-3"
+              >
+                Partner With Us
                 <FaArrowRight className="group-hover:translate-x-1 transition" />
-              </button>
+              </NavLink>
 
-              <button className="font-['Playfair_Display'] border border-white/40 text-white hover:bg-white hover:text-[#0F172A] px-8 py-4 rounded-full font-semibold transition">
+              <button className="font-['Inter'] border border-white/40 text-white hover:bg-white hover:text-[#0F172A] px-8 py-4 rounded-full font-semibold transition">
                 Explore Services
               </button>
             </motion.div>
 
             <motion.div
               variants={stagger}
-              className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16 max-w-4xl mx-auto"
+              className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16 max-w-4xl mx-auto mb-8"
             >
               {heroStats.map((item, i) => (
                 <motion.div
@@ -245,7 +245,7 @@ const Home = () => {
       </section>
 
       {/* WHAT WE DO */}
-      <section className="py-24 bg-[#FAF7F2] relative">
+      <section className="py-20 bg-[#FAF7F2] relative">
         <div className="absolute left-0 top-20 w-72 h-72 bg-[#0F766E]/10 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative">
@@ -267,12 +267,13 @@ const Home = () => {
               variants={fadeUp}
               className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
-              End-to-end export support from India to global markets.
+              End-to-end export support for Indian businesses and overseas
+              buyers.
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
-              className="font-['Playfair_Display'] text-[#1F2937]/75 text-lg mt-6 leading-8"
+              className="font-['Inter'] text-[#1F2937]/75 text-lg mt-6 leading-8"
             >
               We support exporters and buyers with onboarding, documentation,
               logistics coordination, and shipment execution through a clear
@@ -299,16 +300,16 @@ const Home = () => {
               >
                 <motion.div
                   whileHover={{ rotate: 8, scale: 1.08 }}
-                  className="font-['Playfair_Display'] w-16 h-16 rounded-2xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center text-3xl mb-6"
+                  className="w-16 h-16 rounded-2xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center text-3xl mb-6"
                 >
                   {item.icon}
                 </motion.div>
 
-                <h3 className="font-['Playfair_Display']text-2xl font-black text-[#0F172A] mb-4">
+                <h3 className="font-['Playfair_Display'] text-2xl font-black text-[#0F172A] mb-4">
                   {item.title}
                 </h3>
 
-                <p className="font-['Playfair_Display'] text-[#1F2937]/75 leading-7">
+                <p className="font-['Inter'] text-[#1F2937]/75 leading-7">
                   {item.desc}
                 </p>
               </motion.div>
@@ -318,7 +319,7 @@ const Home = () => {
       </section>
 
       {/* WHO WE HELP */}
-      <section className="py-24 bg-[#F5F0E6]">
+      <section className="py-12 bg-[#F5F0E6]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={stagger}
@@ -358,7 +359,7 @@ const Home = () => {
                   {card.icon}
                 </div>
 
-                <p className="font-['Playfair_Display'] uppercase tracking-[4px] text-[#0F766E] font-bold mb-3">
+                <p className="font-['Inter'] uppercase tracking-[4px] text-[#0F766E] font-bold mb-3">
                   {card.subtitle}
                 </p>
 
@@ -366,7 +367,7 @@ const Home = () => {
                   {card.title}
                 </h3>
 
-                <p className="font-['Playfair_Display'] text-[#1F2937]/75 leading-8 mb-7">
+                <p className="font-['Inter'] text-[#1F2937]/75 leading-8 mb-7">
                   {card.desc}
                 </p>
 
@@ -389,7 +390,7 @@ const Home = () => {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-24 bg-[#FAF7F2]">
+      <section className="py-12 bg-[#FAF7F2]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={stagger}
@@ -439,7 +440,7 @@ const Home = () => {
                   {step.title}
                 </h3>
 
-                <p className="font-['Playfair_Display'] text-[#1F2937]/70 text-sm leading-6">
+                <p className="font-['Inter'] text-[#1F2937]/70 text-sm leading-6">
                   {step.desc}
                 </p>
               </motion.div>
@@ -449,7 +450,7 @@ const Home = () => {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="py-24 bg-[#0F172A] text-white relative">
+      <section className="py-20 bg-[#0F172A] text-white relative">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#0F766E]/20 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center relative">
@@ -475,7 +476,7 @@ const Home = () => {
 
             <motion.p
               variants={fadeUp}
-              className="font-['Playfair_Display'] text-white/75 text-lg mt-6 leading-8"
+              className="font-['Inter'] text-white/75 text-lg mt-6 leading-8"
             >
               Our model reduces confusion for first-time exporters and gives
               overseas buyers a dependable India sourcing and shipment execution
@@ -555,36 +556,11 @@ const Home = () => {
                   {item.title}
                 </h3>
 
-                <p className="font-['Playfair_Display'] text-[#1F2937]/70 leading-7">
+                <p className="font-['Inter'] text-[#1F2937]/70 leading-7">
                   {item.desc}
                 </p>
               </motion.div>
             ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 60, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mt-16 bg-[#0F172A] rounded-3xl p-8 md:p-12 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-8 shadow-2xl"
-          >
-            <div>
-              <h3 className="font-['Playfair_Display'] text-3xl md:text-4xl font-black">
-                Ready to start exporting or sourcing from India?
-              </h3>
-
-              <p className="font-['Playfair_Display'] text-white/75 mt-4 max-w-2xl">
-                Send your inquiry and our team will help you with exporter
-                onboarding, documentation, logistics coordination, or buyer
-                sourcing support.
-              </p>
-            </div>
-
-            <button className="font-['Playfair_Display'] bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition flex items-center gap-3 whitespace-nowrap">
-              Send Inquiry
-              <FaArrowRight />
-            </button>
           </motion.div>
         </div>
       </section>

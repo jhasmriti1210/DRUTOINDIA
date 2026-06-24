@@ -5,9 +5,9 @@ import Footer from "./components/app-layout/footer";
 import Home from "./components/userPages/home";
 import About from "./components/userPages/about";
 import Services from "./components/userPages/services";
-import Process from "./components/userPages/process";
+import PrivacyPolicy from "./components/userPages/privacyPolicy";
 import ExportMarket from "./components/userPages/exportsMarket";
-import ProductCatalogue from "./components/userPages/productCatalogue";
+import TermsAndConditions from "./components/userPages/termsAndConditions";
 import Contact from "./components/userPages/contact";
 
 function App() {
@@ -19,10 +19,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/process" element={<Process />} />
+
         <Route path="/export-market" element={<ExportMarket />} />
-        <Route path="/product-catalogue" element={<ProductCatalogue />} />
+
         <Route path="/contact" element={<Contact />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
 
       <Footer />

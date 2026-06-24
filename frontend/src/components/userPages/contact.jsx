@@ -190,32 +190,14 @@ const formFields = {
   partner: [
     { label: "First Name", type: "text", required: true },
     { label: "Last Name", type: "text", required: true },
-    { label: "Organization Name", type: "text", required: true },
     { label: "Title / Designation", type: "text" },
     { label: "Email", type: "email", required: true },
     { label: "Phone", type: "tel" },
-    { label: "Country", type: "select", options: countries },
-    { label: "Website", type: "text" },
     {
-      label: "Partnership Type",
-      type: "select",
+      label: "Resume / Profile Upload",
+      type: "file",
       required: true,
-      options: [
-        "Logistics Partner",
-        "Freight Forwarder",
-        "Customs Broker",
-        "Sourcing Partner",
-        "Distributor",
-        "Export Consultant",
-        "Sales Partner",
-        "Career / Job Applicant",
-        "Other",
-      ],
     },
-    { label: "Years of Experience", type: "text" },
-    { label: "Services Offered", type: "text", required: true },
-    { label: "Preferred Location / Territory", type: "text" },
-    { label: "Resume / Profile Upload", type: "file" },
   ],
 };
 
@@ -233,6 +215,7 @@ const textAreas = {
         "Mention product details, packaging, shipment size, existing buyer inquiry, or target export plan...",
     },
   ],
+
   buyer: [
     {
       label: "Request for Quotation Details / Special Request",
@@ -246,14 +229,8 @@ const textAreas = {
         "Share current product lines, represented brands, importing categories, or supplier network...",
     },
   ],
-  partner: [
-    {
-      label: "Message / Partnership Details",
-      placeholder:
-        "Share your partnership proposal, service capabilities, territory, business experience, or job application details...",
-      required: true,
-    },
-  ],
+
+  partner: [],
 };
 
 const supportPoints = [
@@ -450,40 +427,39 @@ const Contact = () => {
                     </div>
                   ))}
 
-                  <div>
-                    <label className="block text-sm font-semibold text-[#0F172A] mb-2">
-                      Would you like to be on our mailing list?
-                    </label>
+                  {activeTab !== "partner" && (
+                    <>
+                      <div>
+                        <label className="block text-sm font-semibold text-[#0F172A] mb-2">
+                          Would you like to be on our mailing list?
+                        </label>
 
-                    <select className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition">
-                      <option>Yes</option>
-                      <option>No</option>
-                    </select>
-                  </div>
+                        <select className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition">
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-[#0F172A] mb-2">
-                      How did you find us?
-                    </label>
+                      <div>
+                        <label className="block text-sm font-semibold text-[#0F172A] mb-2">
+                          How did you find us?
+                        </label>
 
-                    <select className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition">
-                      <option value="">Select option</option>
-                      {howFoundOptions.map((option) => (
-                        <option key={option}>{option}</option>
-                      ))}
-                    </select>
-                  </div>
+                        <select className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition">
+                          <option value="">Select option</option>
+                          {howFoundOptions.map((option) => (
+                            <option key={option}>{option}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </>
+                  )}
 
                   <div className="md:col-span-2 bg-[#FAF7F2] border border-[#E7DFD2] rounded-2xl p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
                       <p className="font-semibold text-[#0F172A]">
                         Confirm that you are not a bot{" "}
                         <span className="text-[#0F766E]">*</span>
-                      </p>
-
-                      <p className="text-sm text-[#1F2937]/60 mt-1">
-                        Add Google reCAPTCHA or Cloudflare Turnstile here when
-                        backend form handling is connected.
                       </p>
                     </div>
 

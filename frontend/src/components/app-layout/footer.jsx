@@ -32,8 +32,8 @@ const contactInfo = [
   },
   {
     icon: <FaEnvelope />,
-    text: "support@drutoindia.com",
-    link: "mailto:support@drutoindia.com",
+    text: "info@drutoindia.com",
+    link: "mailto:info@drutoindia.com",
     clickable: true,
   },
 ];

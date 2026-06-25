@@ -8,7 +8,7 @@ import {
   FaUsers,
   FaUpload,
 } from "react-icons/fa";
-
+import { toast } from "react-toastify";
 const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbxCgc2Hb4aHQ88cSRbG4AKkVKrDyfTTMgclmorKoZiioVsxVm36e2L0_noQ0NAGtRNz4Q/exec";
 
@@ -279,7 +279,7 @@ const Contact = () => {
 
     for (const field of requiredFields) {
       if (!formData[field.label]) {
-        alert(`Please fill: ${field.label}`);
+        toast.error(`Please fill ${field.label}`);
         return false;
       }
     }
@@ -290,13 +290,13 @@ const Contact = () => {
 
     for (const field of requiredTextAreas) {
       if (!formData[field.label]) {
-        alert(`Please fill: ${field.label}`);
+        toast.error(`Please fill ${field.label}`);
         return false;
       }
     }
 
     if (!isBotChecked) {
-      alert("Please confirm you're not a bot.");
+      toast.error("Please confirm you're not a bot.");
       return false;
     }
 
@@ -310,6 +310,7 @@ const Contact = () => {
 
     try {
       setIsSubmitting(true);
+      const toastId = toast.loading("Submitting your inquiry...");
 
       const payload = {
         formType: activeTab,
@@ -329,15 +330,30 @@ const Contact = () => {
       const result = await response.json();
 
       if (result.success) {
-        alert("Inquiry submitted successfully.");
+        toast.update(toastId, {
+          render: "Inquiry submitted successfully!",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
         setFormData({});
         setIsBotChecked(false);
       } else {
-        alert("Failed to submit inquiry.");
+        toast.update(toastId, {
+          render: "Failed to submit inquiry.",
+          type: "error",
+          isLoading: false,
+          autoClose: 3000,
+        });
       }
     } catch (error) {
       console.error(error);
-      alert("Submission failed. Please try again.");
+      toast.update(toastId, {
+        render: "Submission failed. Please try again.",
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -573,8 +589,36 @@ const Contact = () => {
                           : "bg-[#0F172A] hover:bg-[#0F766E] text-white"
                       }`}
                     >
-                      {isSubmitting ? "Submitting..." : "Submit Inquiry"}
-                      <FaArrowRight className="group-hover:translate-x-1 transition" />
+                      {isSubmitting ? (
+                        <>
+                          <svg
+                            className="animate-spin h-5 w-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            />
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                            />
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Submit Inquiry
+                          <FaArrowRight className="group-hover:translate-x-1 transition" />
+                        </>
+                      )}
                     </motion.button>
                   </div>
                 </form>

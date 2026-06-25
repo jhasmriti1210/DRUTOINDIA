@@ -9,6 +9,9 @@ import {
   FaUpload,
 } from "react-icons/fa";
 
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxCgc2Hb4aHQ88cSRbG4AKkVKrDyfTTMgclmorKoZiioVsxVm36e2L0_noQ0NAGtRNz4Q/exec";
+
 const fadeUp = {
   hidden: { opacity: 0, y: 45 },
   show: { opacity: 1, y: 0 },
@@ -43,8 +46,7 @@ const tabs = [
     title: "Prospective Employee Contact Form",
     shortTitle: "Prospective Employee",
     icon: <FaUsers />,
-    intro:
-      "For logistics partners, sourcing partners, consultants, distributors, and professionals interested in working with Druto.",
+    intro: "For professionals interested in working with Druto.",
   },
 ];
 
@@ -215,7 +217,6 @@ const textAreas = {
         "Mention product details, packaging, shipment size, existing buyer inquiry, or target export plan...",
     },
   ],
-
   buyer: [
     {
       label: "Request for Quotation Details / Special Request",
@@ -229,7 +230,6 @@ const textAreas = {
         "Share current product lines, represented brands, importing categories, or supplier network...",
     },
   ],
-
   employee: [],
 };
 
@@ -240,18 +240,108 @@ const supportPoints = [
   "Shipment execution",
 ];
 
-const howFoundOptions = [
-  "Google",
-  "LinkedIn",
-  "Instagram",
-  "Referral",
-  "Website",
-  "Other",
-];
-
 const Contact = () => {
   const [activeTab, setActiveTab] = useState("msme");
+  const [formData, setFormData] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isBotChecked, setIsBotChecked] = useState(false);
+
   const activeTabData = tabs.find((tab) => tab.id === activeTab);
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setFormData({});
+    setIsBotChecked(false);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleFileChange = (e, fieldName) => {
+    const file = e.target.files?.[0];
+
+    setFormData((prev) => ({
+      ...prev,
+      [fieldName]: file ? file.name : "",
+    }));
+  };
+
+  const validateRequiredFields = () => {
+    const requiredFields = formFields[activeTab].filter(
+      (field) => field.required,
+    );
+
+    for (const field of requiredFields) {
+      if (!formData[field.label]) {
+        alert(`Please fill: ${field.label}`);
+        return false;
+      }
+    }
+
+    const requiredTextAreas = textAreas[activeTab].filter(
+      (field) => field.required,
+    );
+
+    for (const field of requiredTextAreas) {
+      if (!formData[field.label]) {
+        alert(`Please fill: ${field.label}`);
+        return false;
+      }
+    }
+
+    if (!isBotChecked) {
+      alert("Please confirm you're not a bot.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateRequiredFields()) return;
+
+    try {
+      setIsSubmitting(true);
+
+      const payload = {
+        formType: activeTab,
+        formTitle: activeTabData?.title,
+        timestamp: new Date().toISOString(),
+        ...formData,
+      };
+
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("Inquiry submitted successfully.");
+        setFormData({});
+        setIsBotChecked(false);
+      } else {
+        alert("Failed to submit inquiry.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Submission failed. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main className="bg-[#FAF7F2] text-[#1F2937] font-['Inter'] overflow-hidden">
@@ -302,7 +392,7 @@ const Contact = () => {
                 <motion.button
                   key={tab.id}
                   variants={fadeUp}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => handleTabChange(tab.id)}
                   className={`w-full flex items-center gap-4 p-5 rounded-2xl text-left transition mb-3 ${
                     activeTab === tab.id
                       ? "bg-[#0F172A] text-white shadow-lg"
@@ -375,7 +465,10 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <form className="grid md:grid-cols-2 gap-5">
+                <form
+                  onSubmit={handleSubmit}
+                  className="grid md:grid-cols-2 gap-5"
+                >
                   {formFields[activeTab].map((field, index) => (
                     <div key={index}>
                       <label className="block text-sm font-semibold text-[#0F172A] mb-2">
@@ -386,9 +479,14 @@ const Contact = () => {
                       </label>
 
                       {field.type === "select" ? (
-                        <select className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition">
+                        <select
+                          name={field.label}
+                          value={formData[field.label] || ""}
+                          onChange={handleChange}
+                          className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition"
+                        >
                           <option value="">Select option</option>
-                          {field.options.map((option) => (
+                          {field.options?.map((option) => (
                             <option key={option} value={option}>
                               {option}
                             </option>
@@ -397,12 +495,22 @@ const Contact = () => {
                       ) : field.type === "file" ? (
                         <label className="w-full p-4 rounded-xl border border-dashed border-[#0F766E]/50 bg-[#FAF7F2] outline-none flex items-center gap-3 cursor-pointer hover:bg-white transition">
                           <FaUpload className="text-[#0F766E]" />
-                          <span className="text-[#1F2937]/70">Upload file</span>
-                          <input type="file" className="hidden" />
+                          <span className="text-[#1F2937]/70">
+                            {formData[field.label] || "Upload file"}
+                          </span>
+
+                          <input
+                            type="file"
+                            className="hidden"
+                            onChange={(e) => handleFileChange(e, field.label)}
+                          />
                         </label>
                       ) : (
                         <input
                           type={field.type}
+                          name={field.label}
+                          value={formData[field.label] || ""}
+                          onChange={handleChange}
                           placeholder={field.label}
                           className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition"
                         />
@@ -421,6 +529,9 @@ const Contact = () => {
 
                       <textarea
                         rows={index === 0 ? 7 : 6}
+                        name={area.label}
+                        value={formData[area.label] || ""}
+                        onChange={handleChange}
                         placeholder={area.placeholder}
                         className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition"
                       />
@@ -428,15 +539,19 @@ const Contact = () => {
                   ))}
 
                   <div className="md:col-span-2 bg-[#FAF7F2] border border-[#E7DFD2] rounded-2xl p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <div>
-                      <p className="font-semibold text-[#0F172A]">
-                        Confirm that you are not a bot{" "}
-                        <span className="text-[#0F766E]">*</span>
-                      </p>
-                    </div>
+                    <p className="font-semibold text-[#0F172A]">
+                      Confirm that you are not a bot{" "}
+                      <span className="text-[#0F766E]">*</span>
+                    </p>
 
                     <label className="flex items-center gap-3 bg-white border border-[#E7DFD2] rounded-xl px-5 py-4 cursor-pointer">
-                      <input type="checkbox" className="w-5 h-5" />
+                      <input
+                        type="checkbox"
+                        checked={isBotChecked}
+                        onChange={(e) => setIsBotChecked(e.target.checked)}
+                        className="w-5 h-5"
+                      />
+
                       <span className="text-sm font-medium">I'm not a bot</span>
                     </label>
                   </div>
@@ -451,9 +566,14 @@ const Contact = () => {
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                       type="submit"
-                      className="group bg-[#0F172A] hover:bg-[#0F766E] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 transition"
+                      disabled={isSubmitting}
+                      className={`group px-8 py-4 rounded-full font-semibold flex items-center gap-3 transition ${
+                        isSubmitting
+                          ? "bg-[#0F172A]/60 text-white cursor-not-allowed"
+                          : "bg-[#0F172A] hover:bg-[#0F766E] text-white"
+                      }`}
                     >
-                      Submit Inquiry
+                      {isSubmitting ? "Submitting..." : "Submit Inquiry"}
                       <FaArrowRight className="group-hover:translate-x-1 transition" />
                     </motion.button>
                   </div>

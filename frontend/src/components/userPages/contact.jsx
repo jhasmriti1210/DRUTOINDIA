@@ -39,9 +39,9 @@ const tabs = [
       "For overseas buyers, importers, distributors, retailers, and sourcing teams looking to source products from India.",
   },
   {
-    id: "partner",
-    title: "Partnership / Career Contact Form",
-    shortTitle: "Partnership",
+    id: "employee",
+    title: "Prospective Employee Contact Form",
+    shortTitle: "Prospective Employee",
     icon: <FaUsers />,
     intro:
       "For logistics partners, sourcing partners, consultants, distributors, and professionals interested in working with Druto.",
@@ -187,7 +187,7 @@ const formFields = {
     { label: "Target Delivery City / Warehouse", type: "text" },
   ],
 
-  partner: [
+  employee: [
     { label: "First Name", type: "text", required: true },
     { label: "Last Name", type: "text", required: true },
     { label: "Title / Designation", type: "text" },
@@ -230,7 +230,7 @@ const textAreas = {
     },
   ],
 
-  partner: [],
+  employee: [],
 };
 
 const supportPoints = [
@@ -279,8 +279,8 @@ const Contact = () => {
               className="text-lg text-[#1F2937]/75 mt-8 max-w-3xl mx-auto leading-8"
             >
               Whether you are an Indian MSME starting exports, an overseas buyer
-              sourcing from India, or a business partner, share your details and
-              our team will get back with the next steps.
+              sourcing from India, or a prospective employee, share your details
+              and our team will get back with the next steps.
             </motion.p>
           </div>
         </motion.div>
@@ -426,34 +426,6 @@ const Contact = () => {
                       />
                     </div>
                   ))}
-
-                  {activeTab !== "partner" && (
-                    <>
-                      <div>
-                        <label className="block text-sm font-semibold text-[#0F172A] mb-2">
-                          Would you like to be on our mailing list?
-                        </label>
-
-                        <select className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition">
-                          <option>Yes</option>
-                          <option>No</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-[#0F172A] mb-2">
-                          How did you find us?
-                        </label>
-
-                        <select className="w-full p-4 rounded-xl border border-[#E7DFD2] bg-[#FAF7F2] outline-none focus:border-[#0F766E] focus:ring-4 focus:ring-[#0F766E]/10 transition">
-                          <option value="">Select option</option>
-                          {howFoundOptions.map((option) => (
-                            <option key={option}>{option}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </>
-                  )}
 
                   <div className="md:col-span-2 bg-[#FAF7F2] border border-[#E7DFD2] rounded-2xl p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>

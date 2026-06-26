@@ -255,7 +255,7 @@ const Home = () => {
 
             <motion.div
               variants={stagger}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 max-w-5xl mx-auto"
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 max-w-5xl mx-auto"
             >
               {heroStats.map((item, i) => (
                 <motion.div

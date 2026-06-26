@@ -168,31 +168,26 @@ const Home = () => {
           className="absolute right-20 top-40 hidden lg:block w-40 h-40 rounded-full border border-white/20"
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-24">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-32 lg:py-36">
           <motion.div
             variants={stagger}
             initial="hidden"
             animate="show"
-            className="max-w-5xl mx-auto text-center"
+            className="max-w-4xl mx-auto text-center"
           >
-            <motion.p
-              variants={fadeUp}
-              className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#5EEAD4] font-bold mb-6 mt-12"
-            >
-              Exporter Support • India Sourcing • Shipment Execution
-            </motion.p>
-
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.9 }}
-              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black leading-[1.05] text-white"
+              className="font-['Playfair_Display'] text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] text-white"
             >
-              Helping Indian MSMEs Start Exporting With Confidence
+              Exporting Indian Manufacturing
+              <br />
+              with Deep Local Market Expertise
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="font-['Inter'] text-lg md:text-xl text-white/85 mt-8 max-w-3xl mx-auto leading-relaxed"
+              className="font-['Inter'] text-lg md:text-xl text-white/85 mt-8 max-w-2xl mx-auto leading-8"
             >
               From exporter onboarding and documentation to logistics
               coordination and shipment execution, we help Indian MSMEs start
@@ -202,7 +197,7 @@ const Home = () => {
 
             <motion.div
               variants={fadeUp}
-              className="mt-10 flex flex-wrap gap-5 justify-center"
+              className="mt-12 flex flex-wrap items-center justify-center gap-5"
             >
               <NavLink
                 to="/contact"
@@ -219,7 +214,7 @@ const Home = () => {
 
             <motion.div
               variants={stagger}
-              className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16 max-w-4xl mx-auto mb-8"
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 max-w-5xl mx-auto"
             >
               {heroStats.map((item, i) => (
                 <motion.div

@@ -308,25 +308,6 @@ const OverseasBuyers = () => {
               className="w-full rounded-[1.5rem] object-cover"
             />
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 45 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="mt-16 bg-[#0F172A] text-white rounded-[2rem] p-8 md:p-12 text-center"
-          >
-            <h3 className="font-['Playfair_Display'] text-3xl md:text-4xl font-black">
-              Druto India: Your Eyes and Ears on the Ground.
-            </h3>
-
-            <p className="text-white/75 text-lg mt-5 leading-8 max-w-3xl mx-auto">
-              Experience full India sourcing transparency with a dedicated local
-              partner managing supplier scouting, due diligence, production
-              monitoring, quality control, compliance, logistics, and final
-              delivery updates.
-            </p>
-          </motion.div>
         </div>
       </section>
 

@@ -113,9 +113,7 @@ const OverseasBuyers = () => {
             >
               India offers a vast and highly competitive manufacturing
               ecosystem. But navigating it from thousands of miles away comes
-              with risks. Fragmented supplier markets, communication gaps,
-              inconsistent quality control, and logistical uncertainty can turn
-              a profitable sourcing strategy into a logistical nightmare.
+              with risks.
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-5">

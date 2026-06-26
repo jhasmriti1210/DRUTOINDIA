@@ -142,7 +142,7 @@ const OverseasBuyers = () => {
           >
             <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-white/10 backdrop-blur-xl p-4">
               <img
-                src="/sourcing-process.jpg"
+                src="/buyerhero.jpeg"
                 alt="Druto India end-to-end sourcing process"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />

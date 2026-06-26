@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+
 import {
   FaArrowRight,
   FaGlobe,
@@ -40,7 +41,7 @@ const stagger = {
     },
   },
 };
-
+const heroImages = ["/img1.png", "/img2.png", "/img3.png", "/img4.png"];
 const heroStats = [
   { icon: <FaGlobe />, value: "MSME", text: "Exporter Support" },
   { icon: <FaShip />, value: "End-to-End", text: "Shipment Execution" },
@@ -195,19 +196,42 @@ const trustSignals = [
 const Home = () => {
   const [activeProcess, setActiveProcess] = useState("msme");
 
+  const [activeHero, setActiveHero] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveHero((prev) => (prev + 1) % heroImages.length);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="bg-[#FAF7F2] text-[#1F2937] overflow-hidden font-['Inter']">
       {/* HERO */}
-      <section
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{
-          backgroundImage: "url('/heroimg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-[#0F172A]/75"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/80"></div>
+      <section className="relative min-h-screen flex items-center overflow-hidden ">
+        {/* Background Carousel */}
+        <div className="absolute inset-0">
+          {heroImages.map((img, index) => (
+            <motion.div
+              key={index}
+              initial={false}
+              animate={{
+                opacity: activeHero === index ? 1 : 0,
+                scale: activeHero === index ? 1.05 : 1,
+              }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: `url(${img})`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-[#0F172A]/65"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/85"></div> */}
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-32 lg:py-36">
           <motion.div
@@ -219,7 +243,7 @@ const Home = () => {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.9 }}
-              className="font-['Playfair_Display'] text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] text-white"
+              className="font-['Playfair_Display'] text-2xl md:text-4xl lg:text-5xl font-black leading-[1.05] text-white "
             >
               Exporting Indian Manufacturing
               <br />
@@ -230,10 +254,8 @@ const Home = () => {
               variants={fadeUp}
               className="font-['Inter'] text-lg md:text-xl text-white/85 mt-8 max-w-2xl mx-auto leading-8"
             >
-              From exporter onboarding and documentation to logistics
-              coordination and shipment execution, we help Indian MSMEs start
-              selling internationally and help overseas buyers source from India
-              with one execution partner.
+              We help Indian MSMEs export globally and enable overseas buyers to
+              source from India through one trusted execution partner.
             </motion.p>
 
             <motion.div
@@ -255,7 +277,7 @@ const Home = () => {
 
             <motion.div
               variants={stagger}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 max-w-5xl mx-auto"
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 max-w-5xl mx-auto -mb-24"
             >
               {heroStats.map((item, i) => (
                 <motion.div
@@ -276,6 +298,21 @@ const Home = () => {
                 </motion.div>
               ))}
             </motion.div>
+
+            {/* Carousel Dots */}
+            <div className="flex justify-center gap-3 mt-8">
+              {heroImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveHero(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    activeHero === index
+                      ? "w-8 bg-[#5EEAD4]"
+                      : "w-2 bg-white/50 hover:bg-white"
+                  }`}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>

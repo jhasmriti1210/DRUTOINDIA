@@ -233,7 +233,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-[#0F172A]/65"></div>
         {/* <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/85"></div> */}
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-32 lg:py-36">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-32 lg:py-36 ">
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -243,7 +243,7 @@ const Home = () => {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.9 }}
-              className="font-['Playfair_Display'] text-2xl md:text-4xl lg:text-5xl font-black leading-[1.05] text-white "
+              className="font-['Playfair_Display'] text-2xl md:text-4xl lg:text-5xl font-black leading-[1.05] text-white mt-6"
             >
               Exporting Indian Manufacturing
               <br />

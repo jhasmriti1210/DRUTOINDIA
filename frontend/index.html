@@ -5,7 +5,23 @@
     <link rel="icon" type="image/png" href="/logobg.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DRUTO INDIA</title>
+
+    <script>
+      window.googleTranslateElementInit = function () {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "en,hi,fr,es,ar,de,zh-CN,it,ja,ko",
+            autoDisplay: false,
+          },
+          "google_translate_element",
+        );
+      };
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

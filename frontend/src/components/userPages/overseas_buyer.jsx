@@ -91,7 +91,7 @@ const OverseasBuyers = () => {
       <section className="relative pt-36 pb-24 bg-[#0F172A] text-white">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] via-[#111D32] to-[#0F766E]/30" />
 
-        <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
+        <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center mt-10">
           <motion.div variants={stagger} initial="hidden" animate="show">
             <motion.p
               variants={fadeUp}
@@ -159,7 +159,7 @@ const OverseasBuyers = () => {
       </section>
 
       {/* CHALLENGE */}
-      <section className="py-24">
+      <section className="py-10">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
           <motion.div
             variants={stagger}
@@ -216,14 +216,15 @@ const OverseasBuyers = () => {
       </section>
 
       {/* DRUTO ROLE */}
-      <section className="py-24 bg-[#F5F0E6]">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-8 bg-[#F5F0E6] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-2">
+          {/* SECTION HEADING */}
           <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
-            className="max-w-5xl mx-auto text-center"
+            viewport={{ once: true }}
+            className="text-center max-w-4xl mx-auto mb-16"
           >
             <motion.p
               variants={fadeUp}
@@ -234,35 +235,99 @@ const OverseasBuyers = () => {
 
             <motion.h2
               variants={fadeUp}
-              className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
+              className="font-['Playfair_Display'] text-2xl md:text-4xl font-black text-[#0F172A] leading-tight"
             >
-              Druto India acts as your dedicated boots-on-the-ground as sourcing
-              office.
+              Your Trusted Procurement Partner in India
             </motion.h2>
-
-            <motion.p
-              variants={fadeUp}
-              className="text-[#1F2937]/75 text-lg mt-7 leading-8"
-            >
-              We remove the friction of cross-border procurement, allowing you
-              to leverage India’s manufacturing strength with the security,
-              transparency, and accountability of a trusted local partner.
-            </motion.p>
-
-            <motion.p
-              variants={fadeUp}
-              className="text-[#1F2937]/75 text-lg mt-5 leading-8"
-            >
-              We work intimately with Indian MSMEs on a daily basis. We know who
-              is capable of meeting global standards, who has the capacity to
-              scale, and who can offer the most competitive pricing.
-            </motion.p>
           </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* IMAGE */}
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative overflow-hidden rounded-[32px] shadow-2xl">
+                <img
+                  src="/overseas_drutorole_img.png"
+                  alt="Druto India Procurement Office"
+                  className="w-full h-full object-cover"
+                />
+
+                <div className="absolute left-6 bottom-6 bg-white/95 backdrop-blur-md rounded-2xl px-6 py-5 shadow-xl">
+                  <p className="text-[#0F766E] text-sm font-bold uppercase tracking-widest">
+                    Local Presence
+                  </p>
+
+                  <h4 className="text-[#0F172A] text-lg font-bold mt-2">
+                    Your Eyes & Ears in India
+                  </h4>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* CONTENT */}
+            <motion.div
+              variants={stagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              <motion.h3
+                variants={fadeUp}
+                className="font-['Playfair_Display'] text-lg md:text-xl font-black text-[#0F172A] leading-tight"
+              >
+                Druto India acts as your dedicated procurement office in India.
+              </motion.h3>
+
+              <motion.p
+                variants={fadeUp}
+                className="mt-7 text-[#1F2937]/75 text-lg leading-8"
+              >
+                We simplify cross-border procurement by helping you leverage
+                India's manufacturing strength with the security, transparency,
+                and reliability of a trusted local partner.
+              </motion.p>
+
+              <motion.p
+                variants={fadeUp}
+                className="mt-5 text-[#1F2937]/75 text-lg leading-8"
+              >
+                Working closely with Indian MSMEs every day, we identify
+                manufacturers that meet global standards, can scale production,
+                and offer competitive pricing.
+              </motion.p>
+
+              {/* HIGHLIGHTS */}
+              <motion.div
+                variants={fadeUp}
+                className="grid sm:grid-cols-2 gap-4 mt-10"
+              >
+                {[
+                  "Dedicated Local Office",
+                  "Verified MSME Network",
+                  "Global Quality Standards",
+                  "Competitive Pricing",
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 bg-white rounded-2xl border border-[#E7DFD2] px-5 py-4 shadow-sm hover:shadow-md transition"
+                  >
+                    <div className="w-3 h-3 rounded-full bg-[#0F766E]" />
+
+                    <span className="font-semibold text-[#0F172A]">{item}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* SOURCING PROCESS IMAGE */}
-      <section id="sourcing-process" className="py-24 bg-[#FAF7F2]">
+      <section id="sourcing-process" className="py-10 bg-[#FAF7F2]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={stagger}
@@ -312,25 +377,27 @@ const OverseasBuyers = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-[#0F172A]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-white leading-tight">
-            Need a trusted procurement office in India?
-          </h2>
+      <section className="py-24 bg-[#FAF7F2]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-[#0F172A] rounded-[40px] md:rounded-[48px] px-8 md:px-16 py-16 md:py-20 text-center shadow-[0_30px_80px_rgba(15,23,42,0.25)]">
+            <h2 className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-white leading-tight">
+              Need a trusted procurement office in India?
+            </h2>
 
-          <p className="text-white/75 text-lg mt-6 max-w-3xl mx-auto leading-8">
-            Share your sourcing requirement, target product, quantity, and
-            delivery destination. Druto India will help you source with
-            security, transparency, and local execution.
-          </p>
+            <p className="text-white/75 text-lg mt-6 max-w-3xl mx-auto leading-8">
+              Share your sourcing requirement, target product, quantity, and
+              delivery destination. Druto India will help you source with
+              security, transparency, and local execution.
+            </p>
 
-          <NavLink
-            to="/contact"
-            className="mt-10 bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center gap-3 transition"
-          >
-            Send Buyer Inquiry
-            <FaArrowRight />
-          </NavLink>
+            <NavLink
+              to="/contact"
+              className="mt-10 inline-flex items-center gap-3 bg-[#0F766E] hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition-all duration-300"
+            >
+              Send Buyer Inquiry
+              <FaArrowRight />
+            </NavLink>
+          </div>
         </div>
       </section>
     </main>

@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaTwitter,
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
@@ -54,12 +52,12 @@ const stagger = {
 
 const quickLinks = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Services", path: "/services" },
+  { name: "About Us", path: "/about" },
+  { name: "Products", path: "/services" },
 
-  { name: "Export Market", path: "/export-market" },
+  { name: "News", path: "/export-market" },
 
-  { name: "Contact", path: "/contact" },
+  { name: "Contact Us", path: "/contact" },
 ];
 
 const services = [
@@ -71,10 +69,16 @@ const services = [
 ];
 
 const socialLinks = [
-  { icon: <FaInstagram />, path: "https://www.instagram.com/drutoindia" },
+  {
+    icon: <FaInstagram />,
+    path: "https://www.instagram.com/drutoindia",
+    className:
+      "bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] text-white",
+  },
   {
     icon: <FaLinkedinIn />,
     path: "https://www.linkedin.com/company/drutoindia",
+    className: "bg-gradient-to-br from-[#0A66C2] to-[#004182] text-white",
   },
 ];
 
@@ -116,11 +120,13 @@ const Footer = () => {
                 <motion.a
                   key={index}
                   href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ y: -5, scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 bg-[#0F766E] rounded-full flex items-center justify-center hover:bg-[#FAF7F2] hover:text-[#0F172A] transition"
+                  className={`w-11 h-11 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 ${item.className}`}
                 >
-                  {item.icon}
+                  <span className="text-xl">{item.icon}</span>
                 </motion.a>
               ))}
             </div>

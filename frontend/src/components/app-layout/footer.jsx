@@ -71,10 +71,11 @@ const services = [
 ];
 
 const socialLinks = [
-  { icon: <FaFacebookF />, path: "#" },
-  { icon: <FaInstagram />, path: "#" },
-  { icon: <FaLinkedinIn />, path: "#" },
-  { icon: <FaTwitter />, path: "#" },
+  { icon: <FaInstagram />, path: "https://www.instagram.com/drutoindia" },
+  {
+    icon: <FaLinkedinIn />,
+    path: "https://www.linkedin.com/company/drutoindia",
+  },
 ];
 
 const currentYear = new Date().getFullYear();

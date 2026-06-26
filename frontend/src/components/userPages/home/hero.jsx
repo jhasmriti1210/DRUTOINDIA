@@ -431,51 +431,6 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* PROCESS RESULT */}
-          <motion.div
-            key={activeProcess}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mt-14 bg-[#FAF7F2] border border-[#E7DFD2] rounded-[2rem] p-8 md:p-10"
-          >
-            <div className="max-w-4xl mx-auto text-center mb-10">
-              <h3 className="font-['Playfair_Display'] text-3xl md:text-5xl font-black text-[#0F172A]">
-                {processFlows[activeProcess].title}
-              </h3>
-
-              <p className="font-['Inter'] text-[#1F2937]/75 text-lg mt-5 leading-8">
-                {processFlows[activeProcess].desc}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-5 gap-5">
-              {processFlows[activeProcess].steps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -8 }}
-                  className="bg-[#F5F0E6] border border-[#E7DFD2] rounded-3xl p-6"
-                >
-                  <span className="text-[#0F766E] font-black text-sm">
-                    0{index + 1}
-                  </span>
-
-                  <div className="w-14 h-14 rounded-2xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center text-2xl my-5">
-                    {step.icon}
-                  </div>
-
-                  <h4 className="font-['Playfair_Display'] text-xl font-black text-[#0F172A] mb-3">
-                    {step.title}
-                  </h4>
-
-                  <p className="font-['Inter'] text-[#1F2937]/70 text-sm leading-6">
-                    {step.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 

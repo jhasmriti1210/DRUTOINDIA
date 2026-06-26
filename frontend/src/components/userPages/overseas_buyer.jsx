@@ -236,7 +236,7 @@ const OverseasBuyers = () => {
               variants={fadeUp}
               className="font-['Playfair_Display'] text-4xl md:text-6xl font-black text-[#0F172A] leading-tight"
             >
-              Druto India acts as your dedicated boots-on-the-ground sourcing
+              Druto India acts as your dedicated boots-on-the-ground as sourcing
               office.
             </motion.h2>
 

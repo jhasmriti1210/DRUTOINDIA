@@ -41,7 +41,14 @@ const stagger = {
     },
   },
 };
-const heroImages = ["/img1.png", "/img2.png", "/img3.png", "/img4.png"];
+const heroImages = [
+  "/img1.png",
+  "/img2.png",
+  "/img3.png",
+  "/img4.png",
+  "/img5.png",
+  "/img6.png",
+];
 const heroStats = [
   { icon: <FaGlobe />, value: "MSME", text: "Exporter Support" },
   { icon: <FaShip />, value: "End-to-End", text: "Shipment Execution" },
@@ -209,7 +216,7 @@ const Home = () => {
   return (
     <main className="bg-[#FAF7F2] text-[#1F2937] overflow-hidden font-['Inter']">
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center overflow-hidden ">
+      <section className="relative min-h-screen flex items-center overflow-hidden pb-20">
         {/* Background Carousel */}
         <div className="absolute inset-0">
           {heroImages.map((img, index) => (
@@ -230,7 +237,7 @@ const Home = () => {
         </div>
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-[#0F172A]/65"></div>
+        <div className="absolute inset-0 bg-[#0F172A]/70"></div>
         {/* <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/85"></div> */}
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-32 lg:py-36 ">
@@ -243,7 +250,7 @@ const Home = () => {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.9 }}
-              className="font-['Playfair_Display'] text-2xl md:text-4xl lg:text-5xl font-black leading-[1.05] text-white mt-6"
+              className="font-['Playfair_Display'] text-2xl md:text-4xl lg:text-[3.6rem] font-black leading-[1.05] text-white mt-6"
             >
               Exporting Indian Manufacturing
               <br />
@@ -269,10 +276,6 @@ const Home = () => {
                 Partner With Us
                 <FaArrowRight className="group-hover:translate-x-1 transition" />
               </NavLink>
-
-              <button className="font-['Inter'] border border-white/40 text-white hover:bg-white hover:text-[#0F172A] px-8 py-4 rounded-full font-semibold transition">
-                Explore Services
-              </button>
             </motion.div>
 
             <motion.div
@@ -300,7 +303,7 @@ const Home = () => {
             </motion.div>
 
             {/* Carousel Dots */}
-            <div className="flex justify-center gap-3 mt-8">
+            <div className="absolute -bottom-8 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
               {heroImages.map((_, index) => (
                 <button
                   key={index}
@@ -308,8 +311,9 @@ const Home = () => {
                   className={`h-2 rounded-full transition-all duration-300 ${
                     activeHero === index
                       ? "w-8 bg-[#5EEAD4]"
-                      : "w-2 bg-white/50 hover:bg-white"
+                      : "w-2 bg-white/60 hover:bg-white"
                   }`}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>

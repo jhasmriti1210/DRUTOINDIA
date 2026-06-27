@@ -10,6 +10,7 @@ import {
   FaInstagram,
   FaChevronDown,
   FaGlobe,
+  FaFacebookF,
 } from "react-icons/fa";
 
 const Navbar = () => {
@@ -97,6 +98,14 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            <a
+              href="https://facebook.com/drutoindia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded bg-[#1877F2] text-white flex items-center justify-center hover:opacity-80 transition"
+            >
+              <FaFacebookF size={13} />
+            </a>
             <a
               href="https://instagram.com/drutoindia"
               target="_blank"
@@ -186,10 +195,6 @@ const Navbar = () => {
               <li className="relative group">
                 <button className="relative flex items-center gap-2 text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition">
                   Services
-                  <FaChevronDown
-                    size={12}
-                    className="group-hover:rotate-180 transition"
-                  />
                   <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
                 </button>
 

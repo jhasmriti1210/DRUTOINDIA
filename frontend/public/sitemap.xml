@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://www.drutoindia.com/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://www.drutoindia.com/about</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.drutoindia.com/services</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.drutoindia.com/products</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.drutoindia.com/news</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.drutoindia.com/contact</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service Pages -->
+  <url>
+    <loc>https://www.drutoindia.com/msme-buyers</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.drutoindia.com/overseas-buyers</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://www.drutoindia.com/privacy-policy</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.drutoindia.com/terms-and-conditions</loc>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>

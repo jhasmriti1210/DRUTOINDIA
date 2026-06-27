@@ -318,7 +318,7 @@ const Home = () => {
       </section>
 
       {/* WHAT WE DO */}
-      <section className="py-20 bg-[#FAF7F2] relative">
+      <section className="py-10 bg-[#FAF7F2] relative">
         <div className="absolute left-0 top-20 w-72 h-72 bg-[#0F766E]/10 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative">
@@ -393,7 +393,7 @@ const Home = () => {
       </section>
 
       {/* WHO WE HELP */}
-      <section className="py-16 bg-[#F5F0E6]">
+      <section className="py-10 bg-[#F5F0E6]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={stagger}
@@ -472,7 +472,7 @@ const Home = () => {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="py-20 bg-[#0F172A] text-white relative">
+      <section className="py-10 bg-[#0F172A] text-white relative">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#0F766E]/20 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center relative">
@@ -529,7 +529,7 @@ const Home = () => {
       </section>
 
       {/* TRUST SIGNALS */}
-      <section className="py-24 bg-[#FAF7F2]">
+      <section className="py-10 bg-[#FAF7F2]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={stagger}

@@ -26,9 +26,9 @@ const highlights = [
 
 const CTA = () => {
   return (
-    <section className="py-12 bg-[#FAF7F2] overflow-hidden font-['Inter'] relative">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#0F766E]/10 rounded-full blur-[140px]"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0F172A]/10 rounded-full blur-[140px]"></div>
+    <section className=" bg-[#FAF7F2] overflow-hidden font-['Inter'] relative mb-10">
+      <div className="absolute top-0 left-0 w-96 h-72 bg-[#0F766E]/10 rounded-full blur-[140px]"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-72 bg-[#0F172A]/10 rounded-full blur-[140px]"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
         <motion.div

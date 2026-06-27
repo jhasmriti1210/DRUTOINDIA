@@ -8,11 +8,15 @@ import {
   FaMapMarkerAlt,
   FaLinkedinIn,
   FaInstagram,
+  FaChevronDown,
+  FaGlobe,
 } from "react-icons/fa";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [selectedLang, setSelectedLang] = useState("English");
 
   useEffect(() => {
     const handleScroll = () => setScroll(window.scrollY > 30);
@@ -28,40 +32,45 @@ const Navbar = () => {
     { name: "Contact Us", path: "/contact" },
   ];
 
-  const [selectedLang, setSelectedLang] = useState("🇺🇸 English");
+  const serviceItems = [
+    { name: "MSME Process", path: "/msme-buyers" },
+    { name: "Buyer Process", path: "/overseas-buyers" },
+  ];
 
   const languages = [
-    { label: "🇺🇸 English", code: "en" },
-    { label: "🇮🇳 Hindi", code: "hi" },
-    { label: "🇪🇸 Español", code: "es" },
-    { label: "🇫🇷 Français", code: "fr" },
-    { label: "🇩🇪 Deutsch", code: "de" },
-    { label: "🇮🇹 Italiano", code: "it" },
-    { label: "🇸🇦 العربية", code: "ar" },
-    { label: "🇨🇳 中文", code: "zh-CN" },
-    { label: "🇯🇵 日本語", code: "ja" },
-    { label: "🇰🇷 한국어", code: "ko" },
+    { label: "English", code: "en" },
+    { label: "Hindi", code: "hi" },
+    { label: "Odia", code: "or" },
+    { label: "Telugu", code: "te" },
+    { label: "Tamil", code: "ta" },
+    { label: "Kannada", code: "kn" },
+    { label: "Bengali", code: "bn" },
+    { label: "Marathi", code: "mr" },
+    { label: "Gujarati", code: "gu" },
+    { label: "Spanish", code: "es" },
+    { label: "Japanese", code: "ja" },
+    { label: "Portuguese", code: "pt" },
+    { label: "Arabic", code: "ar" },
+    { label: "German", code: "de" },
+    { label: "French", code: "fr" },
   ];
 
   const changeLanguage = (lang) => {
     setSelectedLang(lang.label);
 
-    const tryTranslate = () => {
+    const interval = setInterval(() => {
       const select = document.querySelector(".goog-te-combo");
 
-      if (!select) {
-        console.log("Google Translate select not found");
-        return;
+      if (select) {
+        select.value = lang.code;
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+        clearInterval(interval);
       }
+    }, 300);
 
-      select.value = lang.code;
-
-      select.dispatchEvent(new Event("change", { bubbles: true }));
-      select.dispatchEvent(new Event("input", { bubbles: true }));
-    };
-
-    setTimeout(tryTranslate, 500);
+    setTimeout(() => clearInterval(interval), 5000);
   };
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
@@ -70,6 +79,9 @@ const Navbar = () => {
           : "bg-[#FAF7F2]"
       }`}
     >
+      {/* Google Translate Hidden Element */}
+      <div id="google_translate_element" />
+
       {/* Top Banner */}
       <div className="hidden md:block bg-[#0F172A] text-[#D8D8D8] text-sm">
         <div className="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between">
@@ -85,12 +97,11 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <a
               href="https://instagram.com/drutoindia"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
               className="w-8 h-8 rounded bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] text-white flex items-center justify-center hover:opacity-80 transition"
             >
               <FaInstagram size={13} />
@@ -100,44 +111,39 @@ const Navbar = () => {
               href="https://linkedin.com/company/drutoindia"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
               className="w-8 h-8 rounded bg-[#0077B5] text-white flex items-center justify-center hover:opacity-80 transition"
             >
               <FaLinkedinIn size={13} />
             </a>
 
+            {/* Language Dropdown */}
             <div className="relative group">
-              <div id="google_translate_element" className="hidden" />
-              {/* <div
-                id="google_translate_element"
-                style={{ position: "absolute", left: "-9999px", top: "0" }}
-              />
-
-              {/* <button
+              <button
                 type="button"
-                className="flex items-center gap-2 bg-white text-[#111827] px-3 py-1.5 rounded text-sm min-w-[140px] justify-between"
+                className="flex items-center gap-2 bg-white text-[#0F172A] px-3 py-1.5 rounded-md text-sm font-semibold min-w-[130px] justify-between"
               >
-                <span>{selectedLang}</span>
-                <span className="text-gray-500">▼</span>
-              </button> */}
+                <span className="flex items-center gap-2">
+                  <FaGlobe size={13} />
+                  {selectedLang}
+                </span>
+                <FaChevronDown size={11} />
+              </button>
 
-              {/* <div className="absolute right-0 top-full mt-1 w-[190px] bg-white rounded shadow-xl border border-gray-200 hidden group-hover:block z-[9999] overflow-hidden">
-                {languages.map((lang) => (
-                  <button
-                    type="button"
-                    key={lang.code}
-                    onClick={() => changeLanguage(lang)}
-                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#0F766E] hover:text-white transition"
-                  >
-                    {lang.label}
-                  </button>
-                ))}
-              </div> */}
+              <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[9999]">
+                <div className="w-52 max-h-80 overflow-y-auto bg-white rounded-xl shadow-xl border border-[#E7DFD2]">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      type="button"
+                      onClick={() => changeLanguage(lang)}
+                      className="w-full text-left px-4 py-2.5 text-sm text-[#1F2937] hover:bg-[#0F766E] hover:text-white transition"
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-
-            {/* <span className="hidden lg:inline text-[#BDBDBD] ml-2">
-              Translations by Google™
-            </span> */}
           </div>
         </div>
       </div>
@@ -145,14 +151,12 @@ const Navbar = () => {
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto px-6">
         <div className="h-20 flex justify-between items-center">
-          {/* Logo */}
           <NavLink to="/" className="flex items-center gap-2 select-none">
             <img
               src="/logobg.png"
               alt="Druto Logo"
               className="h-14 md:h-16 w-auto object-contain"
             />
-
             <img
               src="/text.png"
               alt="DRUTO"
@@ -160,15 +164,14 @@ const Navbar = () => {
             />
           </NavLink>
 
-          {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-10">
             <ul className="flex items-center gap-8">
-              {navItems.map((item) => (
+              {navItems.slice(0, 2).map((item) => (
                 <li key={item.name}>
                   <NavLink
                     to={item.path}
                     className={({ isActive }) =>
-                      `font-['Inter'] relative group text-[15px] font-semibold tracking-wide transition ${
+                      `relative group text-[15px] font-semibold tracking-wide transition ${
                         isActive
                           ? "text-[#0F766E]"
                           : "text-[#1F2937] hover:text-[#0F766E]"
@@ -176,26 +179,69 @@ const Navbar = () => {
                     }
                   >
                     {item.name}
+                    <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                  </NavLink>
+                </li>
+              ))}
 
-                    <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full"></span>
+              <li className="relative group">
+                <button className="relative flex items-center gap-2 text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition">
+                  Services
+                  <FaChevronDown
+                    size={12}
+                    className="group-hover:rotate-180 transition"
+                  />
+                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                </button>
+
+                <div className="absolute left-0 top-full pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="w-56 bg-white rounded-2xl shadow-xl border border-[#E7DFD2] overflow-hidden">
+                    {serviceItems.map((item) => (
+                      <NavLink
+                        key={item.name}
+                        to={item.path}
+                        className={({ isActive }) =>
+                          `block px-5 py-4 text-sm font-semibold transition ${
+                            isActive
+                              ? "bg-[#0F766E] text-white"
+                              : "text-[#1F2937] hover:bg-[#F5F0E6] hover:text-[#0F766E]"
+                          }`
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              </li>
+
+              {navItems.slice(2).map((item) => (
+                <li key={item.name}>
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `relative group text-[15px] font-semibold tracking-wide transition ${
+                        isActive
+                          ? "text-[#0F766E]"
+                          : "text-[#1F2937] hover:text-[#0F766E]"
+                      }`
+                    }
+                  >
+                    {item.name}
+                    <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
                   </NavLink>
                 </li>
               ))}
             </ul>
 
-            <button
-              aria-label="Search"
-              className="w-11 h-11 rounded-full border border-[#D8D0C3] flex items-center justify-center text-[#0F172A] hover:bg-[#0F766E] hover:text-white hover:border-[#0F766E] transition-all duration-300"
-            >
+            <button className="w-11 h-11 rounded-full border border-[#D8D0C3] flex items-center justify-center text-[#0F172A] hover:bg-[#0F766E] hover:text-white transition">
               <FaSearch size={16} />
             </button>
           </div>
 
-          {/* Mobile Icon */}
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden text-[#0F172A] transition"
-            aria-label="Toggle Menu"
+            className="lg:hidden text-[#0F172A]"
           >
             {open ? <FaTimes size={28} /> : <FaBars size={28} />}
           </button>
@@ -204,43 +250,85 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-500 ${
-          open ? "max-h-[560px]" : "max-h-0"
-        }`}
+        className={`lg:hidden overflow-hidden transition-all duration-500 ${open ? "max-h-[850px]" : "max-h-0"}`}
       >
         <div className="bg-[#F5F0E6] border-t border-[#E7DFD2] shadow-xl">
           <ul className="p-6 space-y-5">
-            {navItems.map((item) => (
+            {navItems.slice(0, 2).map((item) => (
               <li key={item.name}>
                 <NavLink
                   to={item.path}
                   onClick={() => setOpen(false)}
-                  className={({ isActive }) =>
-                    `block font-semibold transition ${
-                      isActive
-                        ? "text-[#0F766E]"
-                        : "text-[#1F2937] hover:text-[#0F766E]"
-                    }`
-                  }
+                  className="block font-semibold"
                 >
                   {item.name}
                 </NavLink>
               </li>
             ))}
 
-            <div className="pt-4 border-t border-[#DDD2C2] space-y-3 text-sm text-[#4B5563]">
-              <div className="flex items-center gap-2">
-                <FaPhoneAlt className="text-[#0F766E]" />
-                <span>+91 98765 43210</span>
-              </div>
+            <li>
+              <button
+                onClick={() => setServicesOpen(!servicesOpen)}
+                className="w-full flex items-center justify-between font-semibold text-[#1F2937]"
+              >
+                Services
+                <FaChevronDown
+                  size={12}
+                  className={`transition ${servicesOpen ? "rotate-180" : ""}`}
+                />
+              </button>
 
-              <div className="flex items-center gap-2">
-                <FaMapMarkerAlt className="text-[#0F766E]" />
-                <span>New Delhi, India</span>
+              <div
+                className={`overflow-hidden transition-all duration-300 ${servicesOpen ? "max-h-40 mt-4" : "max-h-0"}`}
+              >
+                <div className="space-y-3 pl-4 border-l-2 border-[#0F766E]/30">
+                  {serviceItems.map((item) => (
+                    <NavLink
+                      key={item.name}
+                      to={item.path}
+                      onClick={() => setOpen(false)}
+                      className="block text-sm font-semibold text-[#4B5563]"
+                    >
+                      {item.name}
+                    </NavLink>
+                  ))}
+                </div>
               </div>
+            </li>
+
+            {navItems.slice(2).map((item) => (
+              <li key={item.name}>
+                <NavLink
+                  to={item.path}
+                  onClick={() => setOpen(false)}
+                  className="block font-semibold"
+                >
+                  {item.name}
+                </NavLink>
+              </li>
+            ))}
+
+            <div className="pt-4 border-t border-[#DDD2C2]">
+              <p className="font-bold mb-3">Language</p>
+              <select
+                value={selectedLang}
+                onChange={(e) => {
+                  const lang = languages.find(
+                    (l) => l.label === e.target.value,
+                  );
+                  if (lang) changeLanguage(lang);
+                }}
+                className="w-full p-3 rounded-xl bg-white border border-[#E7DFD2]"
+              >
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.label}>
+                    {lang.label}
+                  </option>
+                ))}
+              </select>
             </div>
 
-            <button className="w-full flex items-center justify-center gap-3 mt-4 bg-[#0F172A] hover:bg-[#0F766E] text-white py-3 rounded-full font-semibold transition">
+            <button className="w-full flex items-center justify-center gap-3 bg-[#0F172A] hover:bg-[#0F766E] text-white py-3 rounded-full font-semibold transition">
               <FaSearch size={15} />
               Search
             </button>

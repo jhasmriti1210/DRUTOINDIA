@@ -26,3 +26,23 @@ iframe.goog-te-banner-frame {
 body {
   top: 0 !important;
 }
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+html {
+  margin-top: 0px !important;
+}
+
+.skiptranslate iframe {
+  display: none !important;
+}

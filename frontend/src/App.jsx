@@ -10,10 +10,12 @@ import MSMEBuyers from "./components/userPages/msme_buyer";
 import OverseasBuyers from "./components/userPages/overseas_buyer";
 import TermsAndConditions from "./components/userPages/TermsAndConditions";
 import Contact from "./components/userPages/contact";
+import ScrollToTop from "./components/app-layout/ScrollToTop";
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
 
       <Routes>

@@ -71,6 +71,29 @@ const Navbar = () => {
     setTimeout(() => clearInterval(interval), 5000);
   };
 
+  const [productsOpen, setProductsOpen] = useState(false);
+
+  const productItems = [
+    { name: "Textiles, handloom & Apparel", path: "/products/agriculture" },
+    { name: "handicraft & Home Decor", path: "/products/food-beverages" },
+    { name: "Ayush Beauty & Personal Care", path: "/products/textiles" },
+    {
+      name: "Engineering Goods and Auto Parts",
+      path: "/products/engineering-goods",
+    },
+    {
+      name: "Sustainable Packaging & Althernative",
+      path: "/products/handicrafts",
+    },
+    { name: "home decor and hardware", path: "/products/leather" },
+    { name: "Leather & Light Engineering", path: "/products/chemicals" },
+    {
+      name: "Semi precious & limitation jewellery",
+      path: "/products/healthcare",
+    },
+    { name: "Engineering goods & Auto Parts", path: "/products/packaging" },
+  ];
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
@@ -79,7 +102,6 @@ const Navbar = () => {
           : "bg-[#FAF7F2]"
       }`}
     >
-      {/* Google Translate Hidden Element */}
       <div id="google_translate_element" />
 
       {/* Top Banner */}
@@ -99,13 +121,14 @@ const Navbar = () => {
 
           <div className="flex items-center gap-3">
             <a
-              href="https://facebook.com/drutoindia"
+              href="https://www.facebook.com/share/195f5VEshx/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 rounded bg-[#1877F2] text-white flex items-center justify-center hover:opacity-80 transition"
             >
               <FaFacebookF size={13} />
             </a>
+
             <a
               href="https://instagram.com/drutoindia"
               target="_blank"
@@ -172,28 +195,28 @@ const Navbar = () => {
             />
           </NavLink>
 
+          {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-10">
             <ul className="flex items-center gap-8">
-              {navItems.slice(0, 2).map((item) => (
-                <li key={item.name}>
-                  <NavLink
-                    to={item.path}
-                    className={({ isActive }) =>
-                      `relative group text-[15px] font-semibold tracking-wide transition ${
-                        isActive
-                          ? "text-[#0F766E]"
-                          : "text-[#1F2937] hover:text-[#0F766E]"
-                      }`
-                    }
-                  >
-                    {item.name}
-                    <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
-                  </NavLink>
-                </li>
-              ))}
+              <li>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    `relative group text-[15px] font-semibold tracking-wide transition ${
+                      isActive
+                        ? "text-[#0F766E]"
+                        : "text-[#1F2937] hover:text-[#0F766E]"
+                    }`
+                  }
+                >
+                  About Us
+                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                </NavLink>
+              </li>
 
+              {/* Services Dropdown */}
               <li className="relative group">
-                <button className="relative flex items-center gap-2 text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition">
+                <button className="relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition">
                   Services
                   <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
                 </button>
@@ -219,23 +242,65 @@ const Navbar = () => {
                 </div>
               </li>
 
-              {navItems.slice(2).map((item) => (
-                <li key={item.name}>
-                  <NavLink
-                    to={item.path}
-                    className={({ isActive }) =>
-                      `relative group text-[15px] font-semibold tracking-wide transition ${
-                        isActive
-                          ? "text-[#0F766E]"
-                          : "text-[#1F2937] hover:text-[#0F766E]"
-                      }`
-                    }
-                  >
-                    {item.name}
-                    <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
-                  </NavLink>
-                </li>
-              ))}
+              {/* Products Dropdown without arrow */}
+              <li className="relative group">
+                <button className="relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition">
+                  Products
+                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                </button>
+
+                <div className="absolute left-0 top-full pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="w-64 bg-white rounded-2xl shadow-xl border border-[#E7DFD2] overflow-hidden">
+                    {productItems.map((item) => (
+                      <NavLink
+                        key={item.name}
+                        to={item.path}
+                        className={({ isActive }) =>
+                          `block px-5 py-4 text-sm font-semibold transition ${
+                            isActive
+                              ? "bg-[#0F766E] text-white"
+                              : "text-[#1F2937] hover:bg-[#F5F0E6] hover:text-[#0F766E]"
+                          }`
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/news"
+                  className={({ isActive }) =>
+                    `relative group text-[15px] font-semibold tracking-wide transition ${
+                      isActive
+                        ? "text-[#0F766E]"
+                        : "text-[#1F2937] hover:text-[#0F766E]"
+                    }`
+                  }
+                >
+                  News
+                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    `relative group text-[15px] font-semibold tracking-wide transition ${
+                      isActive
+                        ? "text-[#0F766E]"
+                        : "text-[#1F2937] hover:text-[#0F766E]"
+                    }`
+                  }
+                >
+                  Contact Us
+                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                </NavLink>
+              </li>
             </ul>
 
             <button className="w-11 h-11 rounded-full border border-[#D8D0C3] flex items-center justify-center text-[#0F172A] hover:bg-[#0F766E] hover:text-white transition">
@@ -254,22 +319,23 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-500 ${open ? "max-h-[850px]" : "max-h-0"}`}
+        className={`lg:hidden overflow-hidden transition-all duration-500 ${
+          open ? "max-h-[1000px]" : "max-h-0"
+        }`}
       >
         <div className="bg-[#F5F0E6] border-t border-[#E7DFD2] shadow-xl">
           <ul className="p-6 space-y-5">
-            {navItems.slice(0, 2).map((item) => (
-              <li key={item.name}>
-                <NavLink
-                  to={item.path}
-                  onClick={() => setOpen(false)}
-                  className="block font-semibold"
-                >
-                  {item.name}
-                </NavLink>
-              </li>
-            ))}
+            <li>
+              <NavLink
+                to="/about"
+                onClick={() => setOpen(false)}
+                className="block font-semibold"
+              >
+                About Us
+              </NavLink>
+            </li>
 
+            {/* Mobile Services */}
             <li>
               <button
                 onClick={() => setServicesOpen(!servicesOpen)}
@@ -283,7 +349,9 @@ const Navbar = () => {
               </button>
 
               <div
-                className={`overflow-hidden transition-all duration-300 ${servicesOpen ? "max-h-40 mt-4" : "max-h-0"}`}
+                className={`overflow-hidden transition-all duration-300 ${
+                  servicesOpen ? "max-h-40 mt-4" : "max-h-0"
+                }`}
               >
                 <div className="space-y-3 pl-4 border-l-2 border-[#0F766E]/30">
                   {serviceItems.map((item) => (
@@ -300,17 +368,58 @@ const Navbar = () => {
               </div>
             </li>
 
-            {navItems.slice(2).map((item) => (
-              <li key={item.name}>
-                <NavLink
-                  to={item.path}
-                  onClick={() => setOpen(false)}
-                  className="block font-semibold"
-                >
-                  {item.name}
-                </NavLink>
-              </li>
-            ))}
+            {/* Mobile Products */}
+            <li>
+              <button
+                onClick={() => setProductsOpen(!productsOpen)}
+                className="w-full flex items-center justify-between font-semibold text-[#1F2937]"
+              >
+                Products
+                <FaChevronDown
+                  size={12}
+                  className={`transition ${productsOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  productsOpen ? "max-h-96 mt-4" : "max-h-0"
+                }`}
+              >
+                <div className="space-y-3 pl-4 border-l-2 border-[#0F766E]/30">
+                  {productItems.map((item) => (
+                    <NavLink
+                      key={item.name}
+                      to={item.path}
+                      onClick={() => setOpen(false)}
+                      className="block text-sm font-semibold text-[#4B5563]"
+                    >
+                      {item.name}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <NavLink
+                to="/news"
+                onClick={() => setOpen(false)}
+                className="block font-semibold"
+              >
+                News
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="block font-semibold"
+              >
+                Contact Us
+              </NavLink>
+            </li>
 
             <div className="pt-4 border-t border-[#DDD2C2]">
               <p className="font-bold mb-3">Language</p>
@@ -342,5 +451,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;

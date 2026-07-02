@@ -8,6 +8,7 @@ import {
   FaEnvelope,
   FaWhatsapp,
   FaArrowRight,
+  FaFacebookF,
 } from "react-icons/fa";
 
 const contactInfo = [
@@ -69,6 +70,11 @@ const services = [
 ];
 
 const socialLinks = [
+  {
+    icon: <FaFacebookF />,
+    path: "https://www.facebook.com/share/195f5VEshx/",
+    className: "bg-[#1877F2] text-white hover:opacity-90",
+  },
   {
     icon: <FaInstagram />,
     path: "https://www.instagram.com/drutoindia",

@@ -169,8 +169,6 @@ export default function TextileProducts() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

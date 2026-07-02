@@ -11,6 +11,7 @@ import OverseasBuyers from "./components/userPages/overseas_buyer";
 import TermsAndConditions from "./components/userPages/TermsAndConditions";
 import Contact from "./components/userPages/contact";
 import ScrollToTop from "./components/app-layout/ScrollToTop";
+import TextileProducts from "./components/userPages/products/Textiles, Home Loom & Apparel";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route
+          path="/products/Textiles-handloom-Apparel"
+          element={<TextileProducts />}
+        />
       </Routes>
 
       <Footer />

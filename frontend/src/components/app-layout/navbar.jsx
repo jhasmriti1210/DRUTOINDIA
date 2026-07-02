@@ -74,7 +74,10 @@ const Navbar = () => {
   const [productsOpen, setProductsOpen] = useState(false);
 
   const productItems = [
-    { name: "Textiles, handloom & Apparel", path: "/products/agriculture" },
+    {
+      name: "Textiles, handloom & Apparel",
+      path: "/products/Textiles-handloom-Apparel",
+    },
     { name: "handicraft & Home Decor", path: "/products/food-beverages" },
     { name: "Ayush Beauty & Personal Care", path: "/products/textiles" },
     {

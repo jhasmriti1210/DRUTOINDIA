@@ -80,7 +80,7 @@ const Navbar = () => {
       name: "Textiles, handloom & Apparel",
       path: "/products/Textiles-handloom-Apparel",
     },
-    { name: "handicraft & Home Decor", path: "/products/food-beverages" },
+    { name: "Handicraft & Home Decor", path: "/products/food-beverages" },
     { name: "Ayush Beauty & Personal Care", path: "/products/textiles" },
     {
       name: "Engineering Goods and Auto Parts",
@@ -90,7 +90,7 @@ const Navbar = () => {
       name: "Sustainable Packaging & Althernative",
       path: "/products/handicrafts",
     },
-    { name: "home decor and hardware", path: "/products/leather" },
+    { name: "Spices, Superfood & Wellness", path: "/products/leather" },
     { name: "Leather & Light Engineering", path: "/products/chemicals" },
     {
       name: "Semi precious & limitation jewellery",

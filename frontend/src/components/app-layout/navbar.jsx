@@ -18,6 +18,8 @@ const Navbar = () => {
   const [scroll, setScroll] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState("English");
+  const [desktopServicesOpen, setDesktopServicesOpen] = useState(false);
+  const [desktopProductsOpen, setDesktopProductsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScroll(window.scrollY > 30);
@@ -218,18 +220,33 @@ const Navbar = () => {
               </li>
 
               {/* Services Dropdown */}
-              <li className="relative group">
-                <button className="relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition">
+              <li
+                className="relative"
+                onMouseEnter={() => setDesktopServicesOpen(true)}
+                onMouseLeave={() => setDesktopServicesOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setDesktopServicesOpen(!desktopServicesOpen)}
+                  className="relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition"
+                >
                   Services
-                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 hover:w-full" />
                 </button>
 
-                <div className="absolute left-0 top-full pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div
+                  className={`absolute left-0 top-full pt-5 transition-all duration-300 ${
+                    desktopServicesOpen
+                      ? "opacity-100 visible"
+                      : "opacity-0 invisible"
+                  }`}
+                >
                   <div className="w-56 bg-white rounded-2xl shadow-xl border border-[#E7DFD2] overflow-hidden">
                     {serviceItems.map((item) => (
                       <NavLink
                         key={item.name}
                         to={item.path}
+                        onClick={() => setDesktopServicesOpen(false)}
                         className={({ isActive }) =>
                           `block px-5 py-4 text-sm font-semibold transition ${
                             isActive
@@ -246,18 +263,33 @@ const Navbar = () => {
               </li>
 
               {/* Products Dropdown without arrow */}
-              <li className="relative group">
-                <button className="relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition">
+              <li
+                className="relative"
+                onMouseEnter={() => setDesktopProductsOpen(true)}
+                onMouseLeave={() => setDesktopProductsOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setDesktopProductsOpen(!desktopProductsOpen)}
+                  className="relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition"
+                >
                   Products
-                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 hover:w-full" />
                 </button>
 
-                <div className="absolute left-0 top-full pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                  <div className="w-64 bg-white rounded-2xl shadow-xl border border-[#E7DFD2] overflow-hidden">
+                <div
+                  className={`absolute left-0 top-full pt-5 transition-all duration-300 ${
+                    desktopProductsOpen
+                      ? "opacity-100 visible"
+                      : "opacity-0 invisible"
+                  }`}
+                >
+                  <div className="w-72 bg-white rounded-2xl shadow-xl border border-[#E7DFD2] overflow-hidden">
                     {productItems.map((item) => (
                       <NavLink
                         key={item.name}
                         to={item.path}
+                        onClick={() => setDesktopProductsOpen(false)}
                         className={({ isActive }) =>
                           `block px-5 py-4 text-sm font-semibold transition ${
                             isActive
@@ -272,7 +304,6 @@ const Navbar = () => {
                   </div>
                 </div>
               </li>
-
               <li>
                 <NavLink
                   to="/news"

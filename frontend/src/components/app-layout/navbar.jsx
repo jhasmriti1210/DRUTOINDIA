@@ -30,8 +30,13 @@ const Navbar = () => {
   const navItems = [
     { name: "About Us", path: "/about" },
     { name: "Products", path: "/products" },
-    { name: "News", path: "/news" },
+
     { name: "Contact Us", path: "/contact" },
+  ];
+
+  const newsItems = [
+    { name: "DRUTO INDIA News", path: "/news/druto" },
+    { name: "Export / Import Industry News", path: "/news/industry" },
   ];
 
   const serviceItems = [
@@ -312,20 +317,31 @@ const Navbar = () => {
                   </div>
                 </div>
               </li>
-              <li>
-                <NavLink
-                  to="/news"
-                  className={({ isActive }) =>
-                    `relative group text-[15px] font-semibold tracking-wide transition ${
-                      isActive
-                        ? "text-[#0F766E]"
-                        : "text-[#1F2937] hover:text-[#0F766E]"
-                    }`
-                  }
-                >
+              <li className="relative group">
+                <button className="font-['Inter'] relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition">
                   News
                   <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
-                </NavLink>
+                </button>
+
+                <div className="absolute left-0 top-full pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="w-72 bg-white rounded-2xl shadow-xl border border-[#E7DFD2] overflow-hidden">
+                    {newsItems.map((item) => (
+                      <NavLink
+                        key={item.name}
+                        to={item.path}
+                        className={({ isActive }) =>
+                          `block px-5 py-4 text-sm font-semibold transition ${
+                            isActive
+                              ? "bg-[#0F766E] text-white"
+                              : "text-[#1F2937] hover:bg-[#F5F0E6] hover:text-[#0F766E]"
+                          }`
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
               </li>
 
               <li>

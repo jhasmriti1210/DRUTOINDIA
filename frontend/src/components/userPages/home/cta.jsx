@@ -109,9 +109,12 @@ const CTA = () => {
               <FaArrowRight className="group-hover:translate-x-1 transition" />
             </NavLink>
 
-            <button className="font-['Inter'] border border-white/20 hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition-all duration-300">
+            <a
+              href={`mailto:info@drutoindia.com?subject=Business Inquiry&body=Hello Druto India Team,%0D%0A%0D%0AI would like to discuss my sourcing/export requirements.%0D%0A%0D%0AName:%0D%0ACompany:%0D%0ACountry:%0D%0ARequirement:%0D%0A`}
+              className="font-['Inter'] border border-white/20 hover:bg-white hover:text-[#0F172A] text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 inline-flex items-center justify-center"
+            >
               Send Inquiry
-            </button>
+            </a>
           </motion.div>
 
           <motion.div

@@ -53,8 +53,6 @@ export default function NewsDetails() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

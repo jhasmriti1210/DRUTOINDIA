@@ -80,23 +80,31 @@ const Navbar = () => {
       name: "Textiles, handloom & Apparel",
       path: "/products/Textiles-handloom-Apparel",
     },
-    { name: "Handicraft & Home Decor", path: "/products/food-beverages" },
-    { name: "Ayush Beauty & Personal Care", path: "/products/textiles" },
+    { name: "Handicraft & Home Decor", path: "/products/Handcraft&homedecor" },
+    {
+      name: "Ayush Beauty & Personal Care",
+      path: "/products/Ayush-beauty&personalcare",
+    },
     {
       name: "Engineering Goods and Auto Parts",
-      path: "/products/engineering-goods",
+      path: "/products/Engineeringgoods&autoparts",
     },
     {
       name: "Sustainable Packaging & Althernative",
-      path: "/products/handicrafts",
+      path: "/products/Sustainablepackaging&alternative",
     },
-    { name: "Spices, Superfood & Wellness", path: "/products/leather" },
-    { name: "Leather & Light Engineering", path: "/products/chemicals" },
+    {
+      name: "Spices, Superfood & Wellness",
+      path: "/products/Spices-Superfood&Wellness",
+    },
+    {
+      name: "Leather & Light Engineering",
+      path: "/products/Leather&LightEngineering",
+    },
     {
       name: "Semi precious & limitation jewellery",
-      path: "/products/healthcare",
+      path: "/products/semiprecious&limitationjewellery",
     },
-    { name: "Engineering goods & Auto Parts", path: "/products/packaging" },
   ];
 
   return (

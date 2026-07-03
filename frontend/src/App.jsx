@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-
 import Navbar from "./components/app-layout/navbar";
 import Footer from "./components/app-layout/footer";
 import Home from "./components/userPages/home";
@@ -12,6 +11,13 @@ import TermsAndConditions from "./components/userPages/TermsAndConditions";
 import Contact from "./components/userPages/contact";
 import ScrollToTop from "./components/app-layout/ScrollToTop";
 import TextileProducts from "./components/userPages/products/Textiles, Home Loom & Apparel";
+import BeautyProducts from "./components/userPages/products/Ayush-beauty&personalcare";
+import HandcraftProducts from "./components/userPages/products/Handcraft&homedecor";
+import EngineeringgoodsProducts from "./components/userPages/products/Engineeringgoods&autoparts";
+import LeatherProducts from "./components/userPages/products/leather&lightengineering";
+import JewelleryProducts from "./components/userPages/products/semiprecious&limitationjewellery";
+import SpicesProducts from "./components/userPages/products/spices,superfood&wellness";
+import SustainableProducts from "./components/userPages/products/sustainablepackaging&alternative";
 
 function App() {
   return (
@@ -31,6 +37,34 @@ function App() {
         <Route
           path="/products/Textiles-handloom-Apparel"
           element={<TextileProducts />}
+        />
+        <Route
+          path="/products/Ayush-beauty&personalcare"
+          element={<BeautyProducts />}
+        />
+        <Route
+          path="/products/Handcraft&homedecor"
+          element={<HandcraftProducts />}
+        />
+        <Route
+          path="/products/Engineeringgoods&autoparts"
+          element={<EngineeringgoodsProducts />}
+        />
+        <Route
+          path="/products/leather&lightengineering"
+          element={<LeatherProducts />}
+        />
+        <Route
+          path="/products/semiprecious&limitationjewellery"
+          element={<JewelleryProducts />}
+        />
+        <Route
+          path="/products/Spices-Superfood&Wellness"
+          element={<SpicesProducts />}
+        />
+        <Route
+          path="/products/SustainablePackaging&Alternative"
+          element={<SustainableProducts />}
         />
       </Routes>
 

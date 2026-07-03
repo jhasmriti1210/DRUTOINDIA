@@ -38,6 +38,14 @@ const CTA = () => {
           viewport={{ once: true, amount: 0.25 }}
           className="relative rounded-[40px] bg-[#0F172A] p-10 md:p-16 lg:p-20 overflow-hidden shadow-[0_30px_100px_rgba(15,23,42,0.25)]"
         >
+          {/* Left Bubble */}
+          <motion.div
+            animate={{ y: [0, 20, 0] }}
+            transition={{ duration: 6, repeat: Infinity }}
+            className="absolute top-10 left-10 w-48 h-48 border border-white/10 rounded-full hidden lg:block"
+          />
+
+          {/* Right Bubble */}
           <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 6, repeat: Infinity }}

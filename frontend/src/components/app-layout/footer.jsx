@@ -54,19 +54,33 @@ const stagger = {
 const quickLinks = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about" },
-  { name: "Products", path: "/services" },
-
-  { name: "News", path: "/export-market" },
-
+  { name: "News", path: "/news" },
   { name: "Contact Us", path: "/contact" },
 ];
 
-const services = [
-  "Exporter Onboarding",
-  "Documentation Support",
-  "Logistics Coordination",
-  "Shipment Execution",
-  "Buyer Sourcing Support",
+const productLinks = [
+  { name: "Textiles & Apparel", path: "/products/textiles" },
+  {
+    name: "Ayush & Personal Care",
+    path: "/products/ayush-beauty-personal-care",
+  },
+  { name: "Engineering Goods", path: "/products/engineering-goods-auto-parts" },
+  {
+    name: "Handicrafts & Home Décor",
+    path: "/products/handicrafts-home-decor",
+  },
+  {
+    name: "Leather & Light Engineering",
+    path: "/products/leather-light-engineering",
+  },
+  { name: "Jewellery", path: "/products/jewellery" },
+  { name: "Spices & Wellness", path: "/products/spices-superfoods-wellness" },
+  { name: "Sustainable Packaging", path: "/products/sustainable-packaging" },
+];
+
+const serviceLinks = [
+  { name: "MSME Process", path: "/msme-buyers" },
+  { name: "Buyer Process", path: "/overseas-buyers" },
 ];
 
 const socialLinks = [
@@ -93,8 +107,8 @@ const currentYear = new Date().getFullYear();
 const Footer = () => {
   return (
     <footer className="relative bg-[#0F172A] text-white font-['Inter'] overflow-hidden">
-      <div className="absolute -top-20 left-0 w-96 h-96 bg-[#0F766E]/20 rounded-full blur-[150px]"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FAF7F2]/5 rounded-full blur-[150px]"></div>
+      <div className="absolute -top-20 left-0 w-96 h-96 bg-[#0F766E]/20 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FAF7F2]/5 rounded-full blur-[150px]" />
 
       <div className="max-w-7xl mx-auto px-6 py-20 relative">
         <motion.div
@@ -102,15 +116,14 @@ const Footer = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-12"
+          className="grid md:grid-cols-2 lg:grid-cols-5 gap-12"
         >
-          {/* Company */}
-          <motion.div variants={fadeUp}>
+          <motion.div variants={fadeUp} className="lg:col-span-1">
             <Link to="/" className="inline-block">
               <motion.img
                 whileHover={{ scale: 1.04 }}
                 src="/logobg.png"
-                alt="Druto Logo"
+                alt="DRUTO INDIA Logo"
                 className="h-16 w-auto object-contain mb-6 bg-[#FAF7F2] rounded-xl p-2"
               />
             </Link>
@@ -138,7 +151,6 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
           <motion.div variants={fadeUp}>
             <h3 className="font-['Playfair_Display'] text-2xl font-black mb-6">
               Quick Links
@@ -159,21 +171,41 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Services */}
           <motion.div variants={fadeUp}>
             <h3 className="font-['Playfair_Display'] text-2xl font-black mb-6">
               Services
             </h3>
 
             <ul className="space-y-4 text-white/70">
-              {services.map((item) => (
-                <motion.li
-                  key={item}
-                  whileHover={{ x: 6 }}
-                  className="flex items-center gap-2"
-                >
-                  <FaArrowRight className="text-xs text-[#0F766E]" />
-                  <span>{item}</span>
+              {serviceLinks.map((item) => (
+                <motion.li key={item.name} whileHover={{ x: 6 }}>
+                  <Link
+                    to={item.path}
+                    className="hover:text-[#5EEAD4] transition inline-flex items-center gap-2"
+                  >
+                    <FaArrowRight className="text-xs text-[#0F766E]" />
+                    {item.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div variants={fadeUp}>
+            <h3 className="font-['Playfair_Display'] text-2xl font-black mb-6">
+              Products
+            </h3>
+
+            <ul className="space-y-4 text-white/70">
+              {productLinks.map((item) => (
+                <motion.li key={item.name} whileHover={{ x: 6 }}>
+                  <Link
+                    to={item.path}
+                    className="hover:text-[#5EEAD4] transition inline-flex items-center gap-2"
+                  >
+                    <FaArrowRight className="text-xs text-[#0F766E]" />
+                    {item.name}
+                  </Link>
                 </motion.li>
               ))}
             </ul>

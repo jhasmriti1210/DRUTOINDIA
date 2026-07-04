@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/news";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/news";
 
 export const getNews = async (category = "") => {
     const url = category ? `${API_URL}?category=${category}` : API_URL;

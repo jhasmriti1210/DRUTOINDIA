@@ -563,3 +563,20 @@ System.Threading.Channels.ChannelClosedException: The channel has been closed.
 2026-07-03 20:22:15.713 +05:30 [VRB] Converting params for Notification $/setTrace to OmniSharp.Extensions.LanguageServer.Protocol.Models.SetTraceParams
 2026-07-03 20:22:15.723 +05:30 [DBG] Finished: Routing Notification $/setTrace in 10ms
 2026-07-03 20:22:15.723 +05:30 [DBG] Finished: Processing notification $/setTrace in 11ms
+2026-07-04 04:24:11.828 +05:30 [DBG] Finding descriptors for shutdown
+2026-07-04 04:24:11.921 +05:30 [DBG] Swapping from "Parallel" to "Serial"
+2026-07-04 04:24:11.929 +05:30 [DBG] Cancelling any outstanding requests (switch from parallel to serial)
+2026-07-04 04:24:11.933 +05:30 [DBG] Completing existing request process type "Parallel"
+2026-07-04 04:24:11.943 +05:30 [DBG] Queueing "Serial":shutdown:1 request for processing
+2026-07-04 04:24:11.952 +05:30 [DBG] Starting: Processing request shutdown 1
+2026-07-04 04:24:11.954 +05:30 [DBG] Starting: Routing Request (1) shutdown
+2026-07-04 04:24:11.956 +05:30 [VRB] Converting params for Request (1) shutdown to OmniSharp.Extensions.LanguageServer.Protocol.Models.ShutdownParams
+2026-07-04 04:24:11.958 +05:30 [VRB] Converting params for Notification shutdown to OmniSharp.Extensions.LanguageServer.Protocol.Models.ShutdownParams
+2026-07-04 04:24:12.078 +05:30 [VRB] Response value was null
+2026-07-04 04:24:12.082 +05:30 [DBG] Finished: Routing Request (1) shutdown in 126ms
+2026-07-04 04:24:12.083 +05:30 [DBG] Finished: Processing request shutdown 1 in 129ms
+2026-07-04 04:24:12.097 +05:30 [DBG] Finding descriptors for exit
+2026-07-04 04:24:12.098 +05:30 [DBG] Queueing "Serial":exit request for processing
+2026-07-04 04:24:12.098 +05:30 [DBG] Starting: Processing notification exit
+2026-07-04 04:24:12.099 +05:30 [DBG] Starting: Routing Notification exit
+2026-07-04 04:24:12.099 +05:30 [VRB] Converting params for Notification exit to OmniSharp.Extensions.LanguageServer.Protocol.Models.ExitParams

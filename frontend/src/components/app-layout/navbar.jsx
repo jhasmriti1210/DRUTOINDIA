@@ -16,10 +16,16 @@ import {
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
+
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("English");
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [newsOpen, setNewsOpen] = useState(false);
+
   const [desktopServicesOpen, setDesktopServicesOpen] = useState(false);
   const [desktopProductsOpen, setDesktopProductsOpen] = useState(false);
+  const [desktopNewsOpen, setDesktopNewsOpen] = useState(false);
+
+  const [selectedLang, setSelectedLang] = useState("English");
 
   useEffect(() => {
     const handleScroll = () => setScroll(window.scrollY > 30);
@@ -27,21 +33,49 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { name: "About Us", path: "/about" },
-    { name: "Products", path: "/products" },
-
-    { name: "Contact Us", path: "/contact" },
-  ];
-
-  const newsItems = [
-    { name: "DRUTO INDIA News", path: "/news/druto" },
-    { name: "Export / Import Industry News", path: "/news/industry" },
-  ];
-
   const serviceItems = [
     { name: "MSME Process", path: "/msme-buyers" },
     { name: "Buyer Process", path: "/overseas-buyers" },
+  ];
+
+  const newsItems = [
+    { name: "DRUTO INDIA", path: "/news/druto" },
+    { name: "INDUSTRY", path: "/news/industry" },
+  ];
+
+  const productItems = [
+    {
+      name: "Textiles, Handloom & Apparel",
+      path: "/products/Textiles-handloom-Apparel",
+    },
+    {
+      name: "Handicraft & Home Decor",
+      path: "/products/Handcraft&homedecor",
+    },
+    {
+      name: "Ayush Beauty & Personal Care",
+      path: "/products/Ayush-beauty&personalcare",
+    },
+    {
+      name: "Engineering Goods and Auto Parts",
+      path: "/products/Engineeringgoods&autoparts",
+    },
+    {
+      name: "Sustainable Packaging & Alternative",
+      path: "/products/Sustainablepackaging&alternative",
+    },
+    {
+      name: "Spices, Superfood & Wellness",
+      path: "/products/Spices-Superfood&Wellness",
+    },
+    {
+      name: "Leather & Light Engineering",
+      path: "/products/Leather&LightEngineering",
+    },
+    {
+      name: "Semi Precious & Imitation Jewellery",
+      path: "/products/semiprecious&limitationjewellery",
+    },
   ];
 
   const languages = [
@@ -78,39 +112,12 @@ const Navbar = () => {
     setTimeout(() => clearInterval(interval), 5000);
   };
 
-  const [productsOpen, setProductsOpen] = useState(false);
-
-  const productItems = [
-    {
-      name: "Textiles, handloom & Apparel",
-      path: "/products/Textiles-handloom-Apparel",
-    },
-    { name: "Handicraft & Home Decor", path: "/products/Handcraft&homedecor" },
-    {
-      name: "Ayush Beauty & Personal Care",
-      path: "/products/Ayush-beauty&personalcare",
-    },
-    {
-      name: "Engineering Goods and Auto Parts",
-      path: "/products/Engineeringgoods&autoparts",
-    },
-    {
-      name: "Sustainable Packaging & Althernative",
-      path: "/products/Sustainablepackaging&alternative",
-    },
-    {
-      name: "Spices, Superfood & Wellness",
-      path: "/products/Spices-Superfood&Wellness",
-    },
-    {
-      name: "Leather & Light Engineering",
-      path: "/products/Leather&LightEngineering",
-    },
-    {
-      name: "Semi precious & limitation jewellery",
-      path: "/products/semiprecious&limitationjewellery",
-    },
-  ];
+  const closeMobileMenu = () => {
+    setOpen(false);
+    setServicesOpen(false);
+    setProductsOpen(false);
+    setNewsOpen(false);
+  };
 
   return (
     <nav
@@ -203,12 +210,12 @@ const Navbar = () => {
           <NavLink to="/" className="flex items-center gap-2 select-none">
             <img
               src="/logobg.png"
-              alt="Druto Logo"
+              alt="Druto India Logo"
               className="h-14 md:h-16 w-auto object-contain"
             />
             <img
               src="/text.png"
-              alt="DRUTO"
+              alt="DRUTO INDIA"
               className="h-7 md:h-8 w-auto object-contain"
             />
           </NavLink>
@@ -275,7 +282,7 @@ const Navbar = () => {
                 </div>
               </li>
 
-              {/* Products Dropdown without arrow */}
+              {/* Products Dropdown */}
               <li
                 className="relative"
                 onMouseEnter={() => setDesktopProductsOpen(true)}
@@ -317,18 +324,35 @@ const Navbar = () => {
                   </div>
                 </div>
               </li>
-              <li className="relative group">
-                <button className="font-['Inter'] relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition">
+
+              {/* News Dropdown - Desktop + iPad */}
+              <li
+                className="relative"
+                onMouseEnter={() => setDesktopNewsOpen(true)}
+                onMouseLeave={() => setDesktopNewsOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setDesktopNewsOpen(!desktopNewsOpen)}
+                  className="relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition"
+                >
                   News
-                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 hover:w-full" />
                 </button>
 
-                <div className="absolute left-0 top-full pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div
+                  className={`absolute left-0 top-full pt-5 transition-all duration-300 ${
+                    desktopNewsOpen
+                      ? "opacity-100 visible"
+                      : "opacity-0 invisible"
+                  }`}
+                >
                   <div className="w-72 bg-white rounded-2xl shadow-xl border border-[#E7DFD2] overflow-hidden">
                     {newsItems.map((item) => (
                       <NavLink
                         key={item.name}
                         to={item.path}
+                        onClick={() => setDesktopNewsOpen(false)}
                         className={({ isActive }) =>
                           `block px-5 py-4 text-sm font-semibold transition ${
                             isActive
@@ -366,9 +390,11 @@ const Navbar = () => {
             </button>
           </div>
 
+          {/* Mobile Button */}
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden text-[#0F172A]"
+            aria-label="Toggle Menu"
           >
             {open ? <FaTimes size={28} /> : <FaBars size={28} />}
           </button>
@@ -378,7 +404,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-500 ${
-          open ? "max-h-[1000px]" : "max-h-0"
+          open ? "max-h-[1200px]" : "max-h-0"
         }`}
       >
         <div className="bg-[#F5F0E6] border-t border-[#E7DFD2] shadow-xl">
@@ -386,8 +412,8 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/about"
-                onClick={() => setOpen(false)}
-                className="block font-semibold"
+                onClick={closeMobileMenu}
+                className="block font-semibold text-[#1F2937]"
               >
                 About Us
               </NavLink>
@@ -416,7 +442,7 @@ const Navbar = () => {
                     <NavLink
                       key={item.name}
                       to={item.path}
-                      onClick={() => setOpen(false)}
+                      onClick={closeMobileMenu}
                       className="block text-sm font-semibold text-[#4B5563]"
                     >
                       {item.name}
@@ -449,7 +475,40 @@ const Navbar = () => {
                     <NavLink
                       key={item.name}
                       to={item.path}
-                      onClick={() => setOpen(false)}
+                      onClick={closeMobileMenu}
+                      className="block text-sm font-semibold text-[#4B5563]"
+                    >
+                      {item.name}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            </li>
+
+            {/* Mobile News */}
+            <li>
+              <button
+                onClick={() => setNewsOpen(!newsOpen)}
+                className="w-full flex items-center justify-between font-semibold text-[#1F2937]"
+              >
+                News
+                <FaChevronDown
+                  size={12}
+                  className={`transition ${newsOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  newsOpen ? "max-h-40 mt-4" : "max-h-0"
+                }`}
+              >
+                <div className="space-y-3 pl-4 border-l-2 border-[#0F766E]/30">
+                  {newsItems.map((item) => (
+                    <NavLink
+                      key={item.name}
+                      to={item.path}
+                      onClick={closeMobileMenu}
                       className="block text-sm font-semibold text-[#4B5563]"
                     >
                       {item.name}
@@ -461,26 +520,16 @@ const Navbar = () => {
 
             <li>
               <NavLink
-                to="/news"
-                onClick={() => setOpen(false)}
-                className="block font-semibold"
-              >
-                News
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
                 to="/contact"
-                onClick={() => setOpen(false)}
-                className="block font-semibold"
+                onClick={closeMobileMenu}
+                className="block font-semibold text-[#1F2937]"
               >
                 Contact Us
               </NavLink>
             </li>
 
             <div className="pt-4 border-t border-[#DDD2C2]">
-              <p className="font-bold mb-3">Language</p>
+              <p className="font-bold mb-3 text-[#1F2937]">Language</p>
               <select
                 value={selectedLang}
                 onChange={(e) => {
@@ -509,4 +558,5 @@ const Navbar = () => {
     </nav>
   );
 };
+
 export default Navbar;

@@ -121,7 +121,7 @@ const About = () => {
                   alt="Founder"
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.6 }}
-                  className="w-full h-[320px] sm:h-[420px] md:h-[500px] lg:h-[550px] xl:h-[620px] object-cover"
+                  className="w-full h-auto max-h-[620px] object-contain bg-[#F5F0E6]"
                 />
               </div>
 

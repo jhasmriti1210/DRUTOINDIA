@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../app-layout/footer";
 import { getSingleNews } from "../services/newsApi";
-import { BACKEND_URL, getSingleNews } from "../services/newsApi";
+import { BACKEND_URL } from "../services/newsApi";
 
 export default function NewsDetails() {
   const { slug } = useParams();

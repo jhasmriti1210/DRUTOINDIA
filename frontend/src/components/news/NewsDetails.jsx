@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../app-layout/footer";
 import { getSingleNews } from "../services/newsApi";
+import { BACKEND_URL, getSingleNews } from "../services/newsApi";
 
 export default function NewsDetails() {
   const { slug } = useParams();
@@ -29,7 +30,7 @@ export default function NewsDetails() {
       <section className="pt-36 pb-24 bg-[#FAF7F2] min-h-screen">
         <div className="max-w-5xl mx-auto px-6">
           <img
-            src={`http://localhost:5000${news.image}`}
+            src={`${BACKEND_URL}${news.image}`}
             alt={news.title}
             className="w-full h-[480px] object-cover rounded-[32px] shadow-xl"
           />

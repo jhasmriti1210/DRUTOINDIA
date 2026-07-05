@@ -3,6 +3,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import { getNews } from "../services/newsApi";
+import { BACKEND_URL } from "../services/newsApi";
 
 const categoryTitles = {
   druto: "DRUTO INDIA News",
@@ -48,7 +49,7 @@ export default function NewsList() {
                 className="bg-white rounded-3xl overflow-hidden shadow-lg border border-[#ECE6DA]"
               >
                 <img
-                  src={`http://localhost:5000${item.image}`}
+                  src={`${BACKEND_URL}${item.image}`}
                   alt={item.title}
                   className="w-full h-64 object-cover"
                 />

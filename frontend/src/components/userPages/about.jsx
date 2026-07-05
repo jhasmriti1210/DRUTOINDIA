@@ -122,7 +122,7 @@ const About = () => {
             >
               <div className="rounded-3xl overflow-hidden shadow-[0_24px_70px_rgba(15,23,42,0.12)] border border-[#E7DFD2]">
                 <motion.img
-                  src="/founder.jpg"
+                  src="/founder.png"
                   alt="Founder"
                   whileHover={{ scale: 1.06 }}
                   transition={{ duration: 0.6 }}

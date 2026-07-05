@@ -104,7 +104,7 @@ const About = () => {
       </section>
 
       {/* FOUNDER STORY */}
-      <section className="py-14 sm:py-16 md:py-20 lg:py-24 bg-[#F5F0E6] relative">
+      <section className="py-14 sm:py-16 md:py-20 lg:py-10 bg-[#F5F0E6] relative">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-14 lg:gap-16 items-center">
             <motion.div
@@ -115,13 +115,13 @@ const About = () => {
               viewport={{ once: true, amount: 0.25 }}
               className="relative pb-16 sm:pb-10 lg:pb-0"
             >
-              <div className="rounded-3xl overflow-hidden shadow-[0_24px_70px_rgba(15,23,42,0.12)] border border-[#E7DFD2]">
+              <div className="rounded-3xl overflow-hidden ">
                 <motion.img
                   src="/founder.png"
                   alt="Founder"
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.6 }}
-                  className="w-full h-auto max-h-[620px] object-contain bg-[#F5F0E6]"
+                  className="w-full h-auto max-h-[620px] object-contain"
                 />
               </div>
 

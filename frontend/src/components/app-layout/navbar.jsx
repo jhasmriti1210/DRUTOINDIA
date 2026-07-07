@@ -211,14 +211,9 @@ const Navbar = () => {
         <div className="h-20 flex justify-between items-center">
           <NavLink to="/" className="flex items-center select-none">
             <img
-              src="/logobg.png"
-              alt="Druto India Logo"
-              className="h-14 md:h-16 w-auto object-contain"
-            />
-            <img
               src="/textlogo.png"
               alt="DRUTO INDIA"
-              className="h-7 md:h-9 w-auto object-contain"
+              className="h-7 md:h-14 w-auto object-contain"
             />
           </NavLink>
 

@@ -41,6 +41,8 @@ const Navbar = () => {
   const newsItems = [
     { name: "DRUTO INDIA", path: "/news/druto" },
     { name: "INDUSTRY", path: "/news/industry" },
+
+    { name: "Rules & Regulations", path: "/news/rules" },
   ];
 
   const productItems = [
@@ -325,47 +327,20 @@ const Navbar = () => {
                 </div>
               </li>
 
-              {/* News Dropdown - Desktop + iPad */}
-              <li
-                className="relative"
-                onMouseEnter={() => setDesktopNewsOpen(true)}
-                onMouseLeave={() => setDesktopNewsOpen(false)}
-              >
-                <button
-                  type="button"
-                  onClick={() => setDesktopNewsOpen(!desktopNewsOpen)}
-                  className="relative text-[15px] font-semibold tracking-wide text-[#1F2937] hover:text-[#0F766E] transition"
+              <li>
+                <NavLink
+                  to="/blog"
+                  className={({ isActive }) =>
+                    `relative group text-[15px] font-semibold tracking-wide transition ${
+                      isActive
+                        ? "text-[#0F766E]"
+                        : "text-[#1F2937] hover:text-[#0F766E]"
+                    }`
+                  }
                 >
-                  News
-                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 hover:w-full" />
-                </button>
-
-                <div
-                  className={`absolute left-0 top-full pt-5 transition-all duration-300 ${
-                    desktopNewsOpen
-                      ? "opacity-100 visible"
-                      : "opacity-0 invisible"
-                  }`}
-                >
-                  <div className="w-72 bg-white rounded-2xl shadow-xl border border-[#E7DFD2] overflow-hidden">
-                    {newsItems.map((item) => (
-                      <NavLink
-                        key={item.name}
-                        to={item.path}
-                        onClick={() => setDesktopNewsOpen(false)}
-                        className={({ isActive }) =>
-                          `block px-5 py-4 text-sm font-semibold transition ${
-                            isActive
-                              ? "bg-[#0F766E] text-white"
-                              : "text-[#1F2937] hover:bg-[#F5F0E6] hover:text-[#0F766E]"
-                          }`
-                        }
-                      >
-                        {item.name}
-                      </NavLink>
-                    ))}
-                  </div>
-                </div>
+                  Blog
+                  <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
+                </NavLink>
               </li>
 
               <li>

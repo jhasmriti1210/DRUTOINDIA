@@ -216,9 +216,9 @@ const Navbar = () => {
               className="h-14 md:h-16 w-auto object-contain"
             />
             <img
-              src="/text.png"
+              src="/textlogo.png"
               alt="DRUTO INDIA"
-              className="h-7 md:h-8 w-auto object-contain"
+              className="h-7 md:h-9 w-auto object-contain"
             />
           </NavLink>
 

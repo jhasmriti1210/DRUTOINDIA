@@ -236,7 +236,7 @@ const Navbar = () => {
                     }`
                   }
                 >
-                  About Us
+                  About Druto
                   <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[#0F766E] transition-all duration-300 group-hover:w-full" />
                 </NavLink>
               </li>
@@ -390,7 +390,7 @@ const Navbar = () => {
                 onClick={closeMobileMenu}
                 className="block font-semibold text-[#1F2937]"
               >
-                About Us
+                About Druto
               </NavLink>
             </li>
 
@@ -460,39 +460,15 @@ const Navbar = () => {
               </div>
             </li>
 
-            {/* Mobile News */}
             <li>
-              <button
-                onClick={() => setNewsOpen(!newsOpen)}
-                className="w-full flex items-center justify-between font-semibold text-[#1F2937]"
+              <NavLink
+                to="/blog"
+                onClick={closeMobileMenu}
+                className="block font-semibold text-[#1F2937]"
               >
-                News
-                <FaChevronDown
-                  size={12}
-                  className={`transition ${newsOpen ? "rotate-180" : ""}`}
-                />
-              </button>
-
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  newsOpen ? "max-h-40 mt-4" : "max-h-0"
-                }`}
-              >
-                <div className="space-y-3 pl-4 border-l-2 border-[#0F766E]/30">
-                  {newsItems.map((item) => (
-                    <NavLink
-                      key={item.name}
-                      to={item.path}
-                      onClick={closeMobileMenu}
-                      className="block text-sm font-semibold text-[#4B5563]"
-                    >
-                      {item.name}
-                    </NavLink>
-                  ))}
-                </div>
-              </div>
+                Blog
+              </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/contact"

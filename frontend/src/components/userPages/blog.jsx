@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import {
@@ -5,7 +6,9 @@ import {
   FaBuilding,
   FaGlobe,
   FaScaleBalanced,
+  FaCalendar,
 } from "react-icons/fa6";
+import { getNews } from "../services/newsApi";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 45 },
@@ -14,28 +17,51 @@ const fadeUp = {
 
 const categories = [
   {
+    key: "druto",
     title: "DRUTO Updates",
-    desc: "Latest announcements, company updates, and official DRUTO INDIA news.",
-    path: "/news/druto",
     icon: <FaBuilding />,
   },
   {
+    key: "industry",
     title: "Industry News",
-    desc: "Export-import business updates, trade trends, logistics, and market insights.",
-    path: "/news/industry",
     icon: <FaGlobe />,
   },
   {
+    key: "rules",
     title: "Rules & Regulations",
-    desc: "Export policies, import rules, compliance updates, and trade regulations.",
-    path: "/news/rules",
     icon: <FaScaleBalanced />,
   },
 ];
 
 export default function Blog() {
+  const [selectedCategory, setSelectedCategory] = useState("druto");
+  const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const selectedTitle =
+    categories.find((item) => item.key === selectedCategory)?.title ||
+    "Latest News";
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        setLoading(true);
+        const data = await getNews(selectedCategory);
+        setNews(data);
+      } catch (error) {
+        console.error(error);
+        setNews([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, [selectedCategory]);
+
   return (
     <main className="bg-[#FAF7F2] min-h-screen font-['Inter']">
+      {/* HERO */}
       <section
         className="relative min-h-[75vh] flex items-center justify-center overflow-hidden"
         style={{
@@ -79,49 +105,103 @@ export default function Blog() {
         </motion.div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24">
+      {/* BLOG SECTION */}
+      <section className="py-14 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* CATEGORY TABS */}
+          <div className="mb-14">
+            <div className="flex flex-wrap justify-center gap-8 sm:gap-10 border-b border-[#E5E0D6] pb-5">
+              {categories.map((item) => (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() => setSelectedCategory(item.key)}
+                  className={`relative flex items-center gap-2 text-sm sm:text-base md:text-lg transition-all duration-300 ${
+                    selectedCategory === item.key
+                      ? "text-[#0F766E] font-semibold"
+                      : "text-[#6B7280] hover:text-[#0F766E]"
+                  }`}
+                >
+                  <span className="text-base sm:text-lg">{item.icon}</span>
+                  {item.title}
+
+                  {selectedCategory === item.key && (
+                    <span className="absolute left-0 -bottom-[21px] w-full h-[3px] bg-[#0F766E] rounded-full" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* TITLE */}
           <div className="text-center mb-12">
             <p className="uppercase tracking-[5px] text-[#0F766E] font-bold">
-              Choose Category
+              Latest Articles
             </p>
 
             <h2 className="font-['Playfair_Display'] text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] mt-4">
-              What Would You Like to Read?
+              {selectedTitle}
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {categories.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.12, duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <NavLink
-                  to={item.path}
-                  className="group block h-full bg-white border border-[#E7DFD2] rounded-[32px] p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+          {/* NEWS */}
+          {loading ? (
+            <p className="text-center text-[#4B5563] text-lg">
+              Loading news...
+            </p>
+          ) : news.length === 0 ? (
+            <p className="text-center text-[#4B5563] text-lg">
+              No news available yet.
+            </p>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {news.map((item) => (
+                <motion.div
+                  key={item._id}
+                  whileHover={{ y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-white rounded-3xl overflow-hidden shadow-lg border border-[#ECE6DA]"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center text-3xl mb-7 group-hover:bg-[#0F766E] group-hover:text-white transition">
-                    {item.icon}
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-56 sm:h-60 lg:h-64 object-cover"
+                    />
+                  )}
+
+                  <div className="p-6 sm:p-8">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <p className="text-xs uppercase tracking-widest text-[#0F766E] font-bold">
+                        {selectedTitle}
+                      </p>
+
+                      <span className="flex items-center gap-2 text-xs text-[#6B7280]">
+                        <FaCalendar />
+                        {new Date(item.createdAt).toLocaleDateString()}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] mt-4 leading-snug">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-[#4B5563] mt-4 leading-7">
+                      {item.shortDescription}
+                    </p>
+
+                    <NavLink
+                      to={`/news/details/${item.slug}`}
+                      className="mt-8 inline-flex items-center gap-3 text-[#0F766E] font-semibold hover:gap-4 transition-all"
+                    >
+                      Read More
+                      <FaArrowRight />
+                    </NavLink>
                   </div>
-
-                  <h3 className="font-['Playfair_Display'] text-2xl font-black text-[#0F172A]">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-[#4B5563] mt-4 leading-7">{item.desc}</p>
-
-                  <span className="mt-8 inline-flex items-center gap-3 text-[#0F766E] font-semibold group-hover:gap-5 transition-all">
-                    View News
-                    <FaArrowRight />
-                  </span>
-                </NavLink>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </main>

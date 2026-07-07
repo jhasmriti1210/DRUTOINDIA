@@ -53,8 +53,8 @@ const stagger = {
 
 const quickLinks = [
   { name: "Home", path: "/" },
-  { name: "About Us", path: "/about" },
-  { name: "News", path: "/news" },
+  { name: "About Druto", path: "/about" },
+  { name: "Blog", path: "/blog" },
   { name: "Contact Us", path: "/contact" },
 ];
 

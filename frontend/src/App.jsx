@@ -19,7 +19,6 @@ import JewelleryProducts from "./components/userPages/products/semiprecious&limi
 import SpicesProducts from "./components/userPages/products/spices,superfood&wellness";
 import SustainableProducts from "./components/userPages/products/sustainablepackaging&alternative";
 
-import NewsList from "./components/news/NewsList";
 import NewsDetails from "./components/news/NewsDetails";
 import NewsAdminLayout from "./components/admin/NewsAdminLayout";
 import AddNews from "./components/admin/AddNews";
@@ -77,7 +76,6 @@ function App() {
           element={<SustainableProducts />}
         />
 
-        <Route path="/news/:category" element={<NewsList />} />
         <Route path="/news/details/:slug" element={<NewsDetails />} />
 
         <Route path="/admin/news" element={<NewsAdminLayout />}>

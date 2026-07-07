@@ -17,7 +17,7 @@ const newsSchema = new mongoose.Schema(
 
         category: {
             type: String,
-            enum: ["druto", "industry"],
+            enum: ["druto", "industry", "rules"],
             required: true,
         },
 
@@ -32,6 +32,11 @@ const newsSchema = new mongoose.Schema(
         },
 
         image: {
+            type: String,
+            default: "",
+        },
+
+        imagePublicId: {
             type: String,
             default: "",
         },

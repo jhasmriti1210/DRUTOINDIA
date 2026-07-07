@@ -23,6 +23,8 @@ import NewsList from "./components/news/NewsList";
 import NewsDetails from "./components/news/NewsDetails";
 import AddNews from "./components/admin/AddNews";
 
+import Blog from "./components/userPages/blog";
+
 function App() {
   return (
     <>
@@ -38,6 +40,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/blog" element={<Blog />} />
         <Route
           path="/products/Textiles-handloom-Apparel"
           element={<TextileProducts />}

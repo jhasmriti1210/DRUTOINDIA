@@ -1,4 +1,5 @@
 import News from "../models/News.js";
+import cloudinary from "../config/cloudinary.js";
 
 const createSlug = (title) => {
     return title
@@ -6,6 +7,23 @@ const createSlug = (title) => {
         .trim()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/(^-|-$)/g, "");
+};
+
+const uploadToCloudinary = (fileBuffer) => {
+    return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+            {
+                folder: "druto-news",
+                resource_type: "image",
+            },
+            (error, result) => {
+                if (error) reject(error);
+                else resolve(result);
+            }
+        );
+
+        stream.end(fileBuffer);
+    });
 };
 
 export const createNews = async (req, res) => {
@@ -26,7 +44,14 @@ export const createNews = async (req, res) => {
             slug = `${slug}-${Date.now()}`;
         }
 
-        const image = req.file ? `/uploads/news/${req.file.filename}` : "";
+        let image = "";
+        let imagePublicId = "";
+
+        if (req.file) {
+            const uploaded = await uploadToCloudinary(req.file.buffer);
+            image = uploaded.secure_url;
+            imagePublicId = uploaded.public_id;
+        }
 
         const news = await News.create({
             title,
@@ -36,6 +61,7 @@ export const createNews = async (req, res) => {
             content,
             author,
             image,
+            imagePublicId,
         });
 
         res.status(201).json({
@@ -105,9 +131,73 @@ export const getSingleNews = async (req, res) => {
     }
 };
 
+export const updateNews = async (req, res) => {
+    try {
+        const { title, category, shortDescription, content, author } = req.body;
+
+        const oldNews = await News.findById(req.params.id);
+
+        if (!oldNews) {
+            return res.status(404).json({
+                success: false,
+                message: "News not found",
+            });
+        }
+
+        const updateData = {
+            title,
+            category,
+            shortDescription,
+            content,
+            author,
+        };
+
+        if (title && title !== oldNews.title) {
+            let newSlug = createSlug(title);
+            const existing = await News.findOne({
+                slug: newSlug,
+                _id: { $ne: req.params.id },
+            });
+
+            if (existing) {
+                newSlug = `${newSlug}-${Date.now()}`;
+            }
+
+            updateData.slug = newSlug;
+        }
+
+        if (req.file) {
+            if (oldNews.imagePublicId) {
+                await cloudinary.uploader.destroy(oldNews.imagePublicId);
+            }
+
+            const uploaded = await uploadToCloudinary(req.file.buffer);
+            updateData.image = uploaded.secure_url;
+            updateData.imagePublicId = uploaded.public_id;
+        }
+
+        const news = await News.findByIdAndUpdate(req.params.id, updateData, {
+            new: true,
+            runValidators: true,
+        });
+
+        res.status(200).json({
+            success: true,
+            message: "News updated successfully",
+            news,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Failed to update news",
+            error: error.message,
+        });
+    }
+};
+
 export const deleteNews = async (req, res) => {
     try {
-        const news = await News.findByIdAndDelete(req.params.id);
+        const news = await News.findById(req.params.id);
 
         if (!news) {
             return res.status(404).json({
@@ -115,6 +205,12 @@ export const deleteNews = async (req, res) => {
                 message: "News not found",
             });
         }
+
+        if (news.imagePublicId) {
+            await cloudinary.uploader.destroy(news.imagePublicId);
+        }
+
+        await News.findByIdAndDelete(req.params.id);
 
         res.status(200).json({
             success: true,

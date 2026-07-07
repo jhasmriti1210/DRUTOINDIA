@@ -32,8 +32,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-// Upload Folder
-app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+
 
 // =========================
 // Routes

@@ -25,3 +25,18 @@ export const createNews = async (formData) => {
 
     return res.data;
 };
+
+export const updateNews = async (id, formData) => {
+    const res = await axios.put(`${API_URL}/${id}`, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+    });
+
+    return res.data;
+};
+
+export const deleteNews = async (id) => {
+    const res = await axios.delete(`${API_URL}/${id}`);
+    return res.data;
+};

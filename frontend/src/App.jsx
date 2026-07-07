@@ -21,7 +21,10 @@ import SustainableProducts from "./components/userPages/products/sustainablepack
 
 import NewsList from "./components/news/NewsList";
 import NewsDetails from "./components/news/NewsDetails";
+import NewsAdminLayout from "./components/admin/NewsAdminLayout";
 import AddNews from "./components/admin/AddNews";
+import ManageNews from "./components/admin/ManageNews";
+import EditNews from "./components/admin/EditNews";
 
 import Blog from "./components/userPages/blog";
 
@@ -76,7 +79,12 @@ function App() {
 
         <Route path="/news/:category" element={<NewsList />} />
         <Route path="/news/details/:slug" element={<NewsDetails />} />
-        <Route path="/admin/add-news" element={<AddNews />} />
+
+        <Route path="/admin/news" element={<NewsAdminLayout />}>
+          <Route path="add" element={<AddNews />} />
+          <Route path="manage" element={<ManageNews />} />
+          <Route path="edit/:id" element={<EditNews />} />
+        </Route>
       </Routes>
 
       <Footer />

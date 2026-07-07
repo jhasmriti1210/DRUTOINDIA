@@ -209,7 +209,7 @@ const Navbar = () => {
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto px-6">
         <div className="h-20 flex justify-between items-center">
-          <NavLink to="/" className="flex items-center gap-2 select-none">
+          <NavLink to="/" className="flex items-center select-none">
             <img
               src="/logobg.png"
               alt="Druto India Logo"

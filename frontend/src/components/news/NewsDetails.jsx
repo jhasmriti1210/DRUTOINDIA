@@ -46,11 +46,11 @@ export default function NewsDetails() {
         <h1 className="text-3xl font-black text-[#0F172A]">News not found</h1>
 
         <NavLink
-          to="/news/druto"
+          to="/blog"
           className="inline-flex items-center gap-3 mt-6 text-[#0F766E] font-semibold"
         >
           <FaArrowLeft />
-          Back to News
+          Back to Blog
         </NavLink>
       </section>
     );
@@ -61,11 +61,12 @@ export default function NewsDetails() {
       <section className="pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 lg:pb-24 bg-[#FAF7F2] min-h-screen">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <NavLink
-            to={`/news/${news.category}`}
+            to="/blog"
+            state={{ selectedCategory: news.category }}
             className="inline-flex items-center gap-3 text-[#0F766E] font-semibold mb-8 hover:gap-4 transition-all"
           >
             <FaArrowLeft />
-            Back to {categoryLabels[news.category] || "News"}
+            Back to {categoryLabels[news.category] || "Blog"}
           </NavLink>
 
           {news.image && (

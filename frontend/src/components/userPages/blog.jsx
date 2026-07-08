@@ -65,7 +65,7 @@ export default function Blog() {
       <section
         className="relative min-h-[75vh] flex items-center justify-center overflow-hidden"
         style={{
-          backgroundImage: "url('/blog-bg.jpg')",
+          backgroundImage: "url('/blog.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

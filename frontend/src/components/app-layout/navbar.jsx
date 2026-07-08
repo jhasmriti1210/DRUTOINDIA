@@ -355,9 +355,9 @@ const Navbar = () => {
               </li>
             </ul>
 
-            <button className="w-11 h-11 rounded-full border border-[#D8D0C3] flex items-center justify-center text-[#0F172A] hover:bg-[#0F766E] hover:text-white transition">
+            {/* <button className="w-11 h-11 rounded-full border border-[#D8D0C3] flex items-center justify-center text-[#0F172A] hover:bg-[#0F766E] hover:text-white transition">
               <FaSearch size={16} />
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile Button */}
@@ -494,10 +494,10 @@ const Navbar = () => {
               </select>
             </div>
 
-            <button className="w-full flex items-center justify-center gap-3 bg-[#0F172A] hover:bg-[#0F766E] text-white py-3 rounded-full font-semibold transition">
+            {/* <button className="w-full flex items-center justify-center gap-3 bg-[#0F172A] hover:bg-[#0F766E] text-white py-3 rounded-full font-semibold transition">
               <FaSearch size={15} />
               Search
-            </button>
+            </button> */}
           </ul>
         </div>
       </div>

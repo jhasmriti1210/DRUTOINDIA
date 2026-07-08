@@ -50,11 +50,24 @@ const heroImages = [
   "/img6.png",
 ];
 const heroStats = [
-  { icon: <FaGlobe />, value: "MSME", text: "Exporter Support" },
-  { icon: <FaShip />, value: "End-to-End", text: "Shipment Execution" },
-  { icon: <FaBoxOpen />, value: "India", text: "Sourcing Partner" },
+  {
+    icon: <FaGlobe />,
+    value: "MSME",
+    text: "Exporter Support",
+    link: "/msme-buyers",
+  },
+  {
+    icon: <FaShip />,
+    value: "End-to-End",
+    text: "Shipment Execution",
+  },
+  {
+    icon: <FaBoxOpen />,
+    value: "India",
+    text: "Sourcing Partner",
+    link: "/overseas-buyers",
+  },
 ];
-
 const services = [
   {
     icon: <FaUsers />,
@@ -287,17 +300,29 @@ const Home = () => {
                   key={i}
                   variants={fadeUp}
                   whileHover={{ y: -8, scale: 1.03 }}
-                  className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-xl"
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <div className="text-[#5EEAD4] text-3xl mb-4 flex justify-center">
-                    {item.icon}
-                  </div>
+                  <NavLink
+                    to={item.link}
+                    className="group block bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-xl hover:bg-white/15 hover:border-[#5EEAD4]/40 transition-all duration-300"
+                  >
+                    <div className="text-[#5EEAD4] text-3xl mb-4 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                      {item.icon}
+                    </div>
 
-                  <h3 className="text-2xl font-black text-white">
-                    {item.value}
-                  </h3>
+                    <h3 className="text-2xl font-black text-white text-center">
+                      {item.value}
+                    </h3>
 
-                  <p className="text-white/75 mt-1">{item.text}</p>
+                    <p className="text-white/75 mt-2 text-center">
+                      {item.text}
+                    </p>
+
+                    <div className="mt-5 flex items-center justify-center gap-2 text-[#5EEAD4] font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                      Learn More
+                      <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
+                    </div>
+                  </NavLink>
                 </motion.div>
               ))}
             </motion.div>

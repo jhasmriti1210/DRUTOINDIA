@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import {
   FaBars,
   FaTimes,
-  FaSearch,
   FaPhoneAlt,
   FaMapMarkerAlt,
   FaLinkedinIn,
@@ -16,33 +15,41 @@ import {
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const [servicesOpen, setServicesOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
-  const [newsOpen, setNewsOpen] = useState(false);
 
   const [desktopServicesOpen, setDesktopServicesOpen] = useState(false);
   const [desktopProductsOpen, setDesktopProductsOpen] = useState(false);
-  const [desktopNewsOpen, setDesktopNewsOpen] = useState(false);
 
   const [selectedLang, setSelectedLang] = useState("English");
 
   useEffect(() => {
-    const handleScroll = () => setScroll(window.scrollY > 30);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      setScroll(currentScrollY > 30);
+
+      if (currentScrollY < 80) {
+        setShowNavbar(true);
+      } else if (currentScrollY > lastScrollY && !open) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY, open]);
 
   const serviceItems = [
     { name: "MSME Process", path: "/msme-buyers" },
     { name: "Buyer Process", path: "/overseas-buyers" },
-  ];
-
-  const newsItems = [
-    { name: "DRUTO INDIA", path: "/news/druto" },
-    { name: "INDUSTRY", path: "/news/industry" },
-
-    { name: "Rules & Regulations", path: "/news/rules" },
   ];
 
   const productItems = [
@@ -118,12 +125,13 @@ const Navbar = () => {
     setOpen(false);
     setServicesOpen(false);
     setProductsOpen(false);
-    setNewsOpen(false);
   };
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      } ${
         scroll
           ? "bg-[#FAF7F2]/95 backdrop-blur-lg shadow-md border-b border-[#E7DFD2]"
           : "bg-[#FAF7F2]"
@@ -131,7 +139,6 @@ const Navbar = () => {
     >
       <div id="google_translate_element" />
 
-      {/* Top Banner */}
       <div className="hidden md:block bg-[#0F172A] text-[#D8D8D8] text-sm">
         <div className="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between">
           <div className="flex items-center gap-8">
@@ -174,7 +181,6 @@ const Navbar = () => {
               <FaLinkedinIn size={13} />
             </a>
 
-            {/* Language Dropdown */}
             <div className="relative group">
               <button
                 type="button"
@@ -206,7 +212,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main Navbar */}
       <div className="max-w-7xl mx-auto px-6">
         <div className="h-20 flex justify-between items-center">
           <NavLink to="/" className="flex items-center select-none">
@@ -217,7 +222,6 @@ const Navbar = () => {
             />
           </NavLink>
 
-          {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-10">
             <ul className="flex items-center gap-8">
               <li>
@@ -236,7 +240,6 @@ const Navbar = () => {
                 </NavLink>
               </li>
 
-              {/* Services Dropdown */}
               <li
                 className="relative"
                 onMouseEnter={() => setDesktopServicesOpen(true)}
@@ -279,7 +282,6 @@ const Navbar = () => {
                 </div>
               </li>
 
-              {/* Products Dropdown */}
               <li
                 className="relative"
                 onMouseEnter={() => setDesktopProductsOpen(true)}
@@ -354,15 +356,13 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
-
-            {/* <button className="w-11 h-11 rounded-full border border-[#D8D0C3] flex items-center justify-center text-[#0F172A] hover:bg-[#0F766E] hover:text-white transition">
-              <FaSearch size={16} />
-            </button> */}
           </div>
 
-          {/* Mobile Button */}
           <button
-            onClick={() => setOpen(!open)}
+            onClick={() => {
+              setOpen(!open);
+              setShowNavbar(true);
+            }}
             className="lg:hidden text-[#0F172A]"
             aria-label="Toggle Menu"
           >
@@ -371,7 +371,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-500 ${
           open ? "max-h-[1200px]" : "max-h-0"
@@ -389,7 +388,6 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            {/* Mobile Services */}
             <li>
               <button
                 onClick={() => setServicesOpen(!servicesOpen)}
@@ -422,7 +420,6 @@ const Navbar = () => {
               </div>
             </li>
 
-            {/* Mobile Products */}
             <li>
               <button
                 onClick={() => setProductsOpen(!productsOpen)}
@@ -464,6 +461,7 @@ const Navbar = () => {
                 Blog
               </NavLink>
             </li>
+
             <li>
               <NavLink
                 to="/contact"
@@ -493,11 +491,6 @@ const Navbar = () => {
                 ))}
               </select>
             </div>
-
-            {/* <button className="w-full flex items-center justify-center gap-3 bg-[#0F172A] hover:bg-[#0F766E] text-white py-3 rounded-full font-semibold transition">
-              <FaSearch size={15} />
-              Search
-            </button> */}
           </ul>
         </div>
       </div>

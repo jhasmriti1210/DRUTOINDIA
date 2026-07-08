@@ -27,6 +27,96 @@ const highlights = [
 const CTA = () => {
   return (
     <section className=" bg-[#FAF7F2] overflow-hidden font-['Inter'] relative mb-10">
+      {/* RECOGNITIONS */}
+      <div className="max-w-7xl mx-auto px-6 mb-16">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          className="relative overflow-hidden rounded-[36px] bg-[#0F172A] border border-white/10 shadow-[0_30px_90px_rgba(15,23,42,0.22)] px-6 sm:px-10 lg:px-14 py-12"
+        >
+          <div className="absolute -top-24 -left-24 w-80 h-80 bg-[#0F766E]/30 rounded-full blur-[120px]" />
+          <div className="absolute -bottom-28 -right-24 w-80 h-80 bg-[#F5F0E6]/10 rounded-full blur-[120px]" />
+
+          <div className="relative z-10 grid lg:grid-cols-[1fr_1.1fr] gap-10 items-center">
+            <div>
+              <motion.p
+                variants={fadeUp}
+                className="font-['Playfair_Display'] uppercase tracking-[5px] text-[#5EEAD4] font-bold mb-4"
+              >
+                Recognized By
+              </motion.p>
+
+              <motion.h2
+                variants={fadeUp}
+                className="font-['Playfair_Display'] text-3xl md:text-5xl font-black text-white leading-tight"
+              >
+                Government Recognitions
+              </motion.h2>
+
+              <motion.p
+                variants={fadeUp}
+                className="text-white/70 mt-5 leading-8 max-w-xl"
+              >
+                DRUTO INDIA is recognized under Startup India and registered as
+                an Udyam enterprise, reflecting our commitment to transparent,
+                compliant, and professional trade operations.
+              </motion.p>
+            </div>
+
+            <motion.div
+              variants={stagger}
+              className="grid sm:grid-cols-2 gap-6"
+            >
+              {[
+                {
+                  title: "Startup India",
+                  subtitle: "DPIIT Recognition",
+                  logo: "/dpiit.png",
+                  link: "/startuppdf.pdf",
+                },
+                {
+                  title: "Udyam Registration",
+                  subtitle: "MSME Registered Enterprise",
+                  logo: "/udyam.png",
+                  link: "/MSME-DRUTO.pdf",
+                },
+              ].map((item) => (
+                <motion.a
+                  key={item.title}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variants={fadeUp}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group bg-white rounded-[30px] border border-white/10 p-7 shadow-xl"
+                >
+                  <div className="h-36 sm:h-40 flex items-center justify-center bg-[#FAF7F2] rounded-3xl px-6">
+                    <img
+                      src={item.logo}
+                      alt={item.title}
+                      className="max-h-28 sm:max-h-32 max-w-[90%] object-contain group-hover:scale-105 transition"
+                    />
+                  </div>
+
+                  {/* <h3 className="mt-6 font-['Playfair_Display'] text-2xl font-black text-[#0F172A]">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-[#4B5563] mt-2 text-sm">{item.subtitle}</p> */}
+
+                  <span className="mt-5 inline-flex items-center gap-2 text-[#0F766E] font-semibold group-hover:gap-3 transition-all">
+                    View Certificate
+                    <FaArrowRight className="text-sm" />
+                  </span>
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+
       <div className="absolute top-0 left-0 w-96 h-72 bg-[#0F766E]/10 rounded-full blur-[140px]"></div>
       <div className="absolute bottom-0 right-0 w-96 h-72 bg-[#0F172A]/10 rounded-full blur-[140px]"></div>
 

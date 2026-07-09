@@ -211,3 +211,5 @@
 2026-07-10 00:00:28.851 +05:30 [DBG] Starting: Processing notification exit
 2026-07-10 00:00:28.851 +05:30 [DBG] Starting: Routing Notification exit
 2026-07-10 00:00:28.851 +05:30 [VRB] Converting params for Notification exit to OmniSharp.Extensions.LanguageServer.Protocol.Models.ExitParams
+2026-07-10 00:49:27.211 +05:30 [INF] This only goes file...
+2026-07-10 00:49:27.648 +05:30 [INF] Foo

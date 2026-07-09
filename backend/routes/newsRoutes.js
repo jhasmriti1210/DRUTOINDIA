@@ -4,6 +4,7 @@ import {
     getAllNews,
     getSingleNews,
     deleteNews,
+    updateNews,
 } from "../controllers/newsController.js";
 
 import { uploadNewsImage } from "../middleware/upload.js";
@@ -15,6 +16,7 @@ router.get("/", getAllNews);
 router.get("/:slug", getSingleNews);
 router.delete("/:id", deleteNews);
 router.put("/:id", uploadNewsImage.single("image"), updateNews);
+
 
 
 export default router;

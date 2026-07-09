@@ -14,5 +14,7 @@ router.post("/", uploadNewsImage.single("image"), createNews);
 router.get("/", getAllNews);
 router.get("/:slug", getSingleNews);
 router.delete("/:id", deleteNews);
+router.put("/:id", uploadNewsImage.single("image"), updateNews);
+
 
 export default router;

@@ -1,6 +1,6 @@
 import News from "../models/News.js";
 import cloudinary from "../config/cloudinary.js";
-import { sendNewsToSubscribers } from "../services/newsEmailService.js";
+import { sendNewsToSubscribers } from "../services/emailservice.js";
 
 const createSlug = (title) => {
     return title

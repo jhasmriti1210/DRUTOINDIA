@@ -8,6 +8,7 @@ import connectDB from "./config/db.js";
 
 // Routes
 import newsRoutes from "./routes/newsRoutes.js";
+import subscriberRoutes from "./routes/subscriberRoutes.js";
 
 dotenv.config();
 
@@ -43,6 +44,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/news", newsRoutes);
+app.use("/api/subscribers", subscriberRoutes);
 
 // =========================
 // Error Handler

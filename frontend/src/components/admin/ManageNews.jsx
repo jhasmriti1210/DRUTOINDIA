@@ -134,7 +134,13 @@ export default function ManageNews() {
                   <span className="flex items-center gap-2 text-gray-500 text-sm">
                     <FaCalendarAlt />
 
-                    {new Date(item.createdAt).toLocaleDateString()}
+                    {new Date(
+                      item.publishDate || item.createdAt,
+                    ).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
                   </span>
                 </div>
 

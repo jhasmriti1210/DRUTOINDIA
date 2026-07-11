@@ -26,6 +26,7 @@ import ManageNews from "./components/admin/ManageNews";
 import EditNews from "./components/admin/EditNews";
 
 import Blog from "./components/userPages/blog";
+import Unsubscribe from "./components/userPages/Unsubscribe";
 
 function App() {
   return (
@@ -83,6 +84,7 @@ function App() {
           <Route path="manage" element={<ManageNews />} />
           <Route path="edit/:id" element={<EditNews />} />
         </Route>
+        <Route path="/unsubscribe/:token" element={<Unsubscribe />} />
       </Routes>
 
       <Footer />

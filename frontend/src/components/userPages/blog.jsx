@@ -9,6 +9,7 @@ import {
   FaCalendar,
 } from "react-icons/fa6";
 import { getNews } from "../services/newsApi";
+import NewsletterSubscribe from "./NewsletterSubscribe";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 45 },
@@ -178,7 +179,13 @@ export default function Blog() {
 
                       <span className="flex items-center gap-2 text-xs text-[#6B7280]">
                         <FaCalendar />
-                        {new Date(item.createdAt).toLocaleDateString()}
+                        {new Date(
+                          item.publishDate || item.createdAt,
+                        ).toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
                       </span>
                     </div>
 
@@ -204,6 +211,7 @@ export default function Blog() {
           )}
         </div>
       </section>
+      <NewsletterSubscribe />
     </main>
   );
 }

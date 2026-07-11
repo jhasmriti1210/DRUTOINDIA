@@ -1,5 +1,6 @@
 import News from "../models/News.js";
 import cloudinary from "../config/cloudinary.js";
+import { sendNewsToSubscribers } from "../services/newsEmailService.js";
 
 const createSlug = (title) => {
     return title
@@ -62,6 +63,8 @@ export const createNews = async (req, res) => {
             author,
             image,
             imagePublicId,
+            publishDate:
+                req.body.publishDate || new Date(),
         });
 
         res.status(201).json({
@@ -69,14 +72,23 @@ export const createNews = async (req, res) => {
             message: "News created successfully",
             news,
         });
+        sendNewsToSubscribers(news).catch((error) => {
+            console.error(
+                "Subscriber email notification failed:",
+                error,
+            );
+        });
     } catch (error) {
-        res.status(500).json({
+        console.error("Create news error:", error);
+
+        return res.status(500).json({
             success: false,
             message: "Failed to create news",
             error: error.message,
         });
     }
 };
+
 
 export const getAllNews = async (req, res) => {
     try {
@@ -88,7 +100,10 @@ export const getAllNews = async (req, res) => {
             filter.category = category;
         }
 
-        const news = await News.find(filter).sort({ createdAt: -1 });
+        const news = await News.find(filter).sort({
+            publishDate: -1,
+            createdAt: -1,
+        });
 
         res.status(200).json({
             success: true,
@@ -133,7 +148,14 @@ export const getSingleNews = async (req, res) => {
 
 export const updateNews = async (req, res) => {
     try {
-        const { title, category, shortDescription, content, author } = req.body;
+        const {
+            title,
+            category,
+            shortDescription,
+            content,
+            author,
+            publishDate,
+        } = req.body;
 
         const oldNews = await News.findById(req.params.id);
 
@@ -152,8 +174,13 @@ export const updateNews = async (req, res) => {
             author,
         };
 
+        if (publishDate) {
+            updateData.publishDate = publishDate;
+        }
+
         if (title && title !== oldNews.title) {
             let newSlug = createSlug(title);
+
             const existing = await News.findOne({
                 slug: newSlug,
                 _id: { $ne: req.params.id },
@@ -172,29 +199,35 @@ export const updateNews = async (req, res) => {
             }
 
             const uploaded = await uploadToCloudinary(req.file.buffer);
+
             updateData.image = uploaded.secure_url;
             updateData.imagePublicId = uploaded.public_id;
         }
 
-        const news = await News.findByIdAndUpdate(req.params.id, updateData, {
-            new: true,
-            runValidators: true,
-        });
+        const news = await News.findByIdAndUpdate(
+            req.params.id,
+            updateData,
+            {
+                new: true,
+                runValidators: true,
+            },
+        );
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             message: "News updated successfully",
             news,
         });
     } catch (error) {
-        res.status(500).json({
+        console.error("Update news error:", error);
+
+        return res.status(500).json({
             success: false,
             message: "Failed to update news",
             error: error.message,
         });
     }
 };
-
 export const deleteNews = async (req, res) => {
     try {
         const news = await News.findById(req.params.id);

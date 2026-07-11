@@ -50,6 +50,10 @@ const newsSchema = new mongoose.Schema(
             type: Boolean,
             default: true,
         },
+        publishDate: {
+            type: Date,
+            default: Date.now,
+        }
     },
     { timestamps: true }
 );

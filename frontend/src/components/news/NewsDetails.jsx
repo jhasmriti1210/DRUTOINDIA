@@ -94,7 +94,13 @@ export default function NewsDetails() {
 
               <span className="inline-flex items-center gap-2">
                 <FaCalendarAlt />
-                {new Date(news.createdAt).toLocaleDateString()}
+                {new Date(
+                  news.publishDate || news.createdAt,
+                ).toLocaleDateString("en-GB", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
               </span>
             </div>
 

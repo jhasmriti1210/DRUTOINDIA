@@ -1,33 +1,33 @@
 import { Resend } from "resend";
-import Subscriber from "../models/Subscriber.js";
+import Subscriber from "../models/subscriber";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const escapeHtml = (value = "") => {
-    return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 };
 
 const categoryLabels = {
-    druto: "DRUTO Updates",
-    industry: "Industry News",
-    rules: "Rules & Regulations",
+  druto: "DRUTO Updates",
+  industry: "Industry News",
+  rules: "Rules & Regulations",
 };
 
 const createEmailHtml = (news, subscriber) => {
-    const frontendUrl =
-        process.env.FRONTEND_URL || "http://localhost:5173";
+  const frontendUrl =
+    process.env.FRONTEND_URL || "http://localhost:5173";
 
-    const articleUrl = `${frontendUrl}/news/details/${news.slug}`;
+  const articleUrl = `${frontendUrl}/news/details/${news.slug}`;
 
-    const unsubscribeUrl = `${frontendUrl}/unsubscribe/${subscriber.unsubscribeToken}`;
+  const unsubscribeUrl = `${frontendUrl}/unsubscribe/${subscriber.unsubscribeToken}`;
 
-    const imageHtml = news.image
-        ? `
+  const imageHtml = news.image
+    ? `
       <img
         src="${escapeHtml(news.image)}"
         alt="${escapeHtml(news.title)}"
@@ -40,9 +40,9 @@ const createEmailHtml = (news, subscriber) => {
         "
       />
     `
-        : "";
+    : "";
 
-    return `
+  return `
     <!DOCTYPE html>
     <html lang="en">
       <head>
@@ -101,8 +101,8 @@ const createEmailHtml = (news, subscriber) => {
                 "
               >
                 ${escapeHtml(
-        categoryLabels[news.category] || "Latest News",
-    )}
+    categoryLabels[news.category] || "Latest News",
+  )}
               </p>
             </div>
 
@@ -188,76 +188,76 @@ const createEmailHtml = (news, subscriber) => {
 };
 
 export const sendNewsToSubscribers = async (news) => {
-    if (!process.env.RESEND_API_KEY) {
-        console.error("RESEND_API_KEY is missing");
-        return;
+  if (!process.env.RESEND_API_KEY) {
+    console.error("RESEND_API_KEY is missing");
+    return;
+  }
+
+  const subscribers = await Subscriber.find({
+    isActive: true,
+  }).lean();
+
+  if (subscribers.length === 0) {
+    console.log("No active news subscribers found");
+    return;
+  }
+
+  let successful = 0;
+  let failed = 0;
+
+  for (const subscriber of subscribers) {
+    try {
+      const articleUrl = `${process.env.FRONTEND_URL || "http://localhost:5173"
+        }/news/details/${news.slug}`;
+
+      const unsubscribeUrl = `${process.env.FRONTEND_URL || "http://localhost:5173"
+        }/unsubscribe/${subscriber.unsubscribeToken}`;
+
+      const { error } = await resend.emails.send({
+        from:
+          process.env.EMAIL_FROM ||
+          "DRUTO INDIA <onboarding@resend.dev>",
+
+        to: subscriber.email,
+
+        subject: `${categoryLabels[news.category] || "Latest News"}: ${news.title
+          }`,
+
+        html: createEmailHtml(news, subscriber),
+
+        headers: {
+          "List-Unsubscribe": `<${unsubscribeUrl}>`,
+          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+        },
+
+        tags: [
+          {
+            name: "category",
+            value: news.category,
+          },
+        ],
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      successful += 1;
+
+      console.log(`News email sent to ${subscriber.email}`);
+    } catch (error) {
+      failed += 1;
+
+      console.error(
+        `Unable to send news email to ${subscriber.email}:`,
+        error.message,
+      );
     }
+  }
 
-    const subscribers = await Subscriber.find({
-        isActive: true,
-    }).lean();
-
-    if (subscribers.length === 0) {
-        console.log("No active news subscribers found");
-        return;
-    }
-
-    let successful = 0;
-    let failed = 0;
-
-    for (const subscriber of subscribers) {
-        try {
-            const articleUrl = `${process.env.FRONTEND_URL || "http://localhost:5173"
-                }/news/details/${news.slug}`;
-
-            const unsubscribeUrl = `${process.env.FRONTEND_URL || "http://localhost:5173"
-                }/unsubscribe/${subscriber.unsubscribeToken}`;
-
-            const { error } = await resend.emails.send({
-                from:
-                    process.env.EMAIL_FROM ||
-                    "DRUTO INDIA <onboarding@resend.dev>",
-
-                to: subscriber.email,
-
-                subject: `${categoryLabels[news.category] || "Latest News"}: ${news.title
-                    }`,
-
-                html: createEmailHtml(news, subscriber),
-
-                headers: {
-                    "List-Unsubscribe": `<${unsubscribeUrl}>`,
-                    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-                },
-
-                tags: [
-                    {
-                        name: "category",
-                        value: news.category,
-                    },
-                ],
-            });
-
-            if (error) {
-                throw new Error(error.message);
-            }
-
-            successful += 1;
-
-            console.log(`News email sent to ${subscriber.email}`);
-        } catch (error) {
-            failed += 1;
-
-            console.error(
-                `Unable to send news email to ${subscriber.email}:`,
-                error.message,
-            );
-        }
-    }
-
-    console.log({
-        totalSubscribers: subscribers.length,
-        successful,
-        failed,
-    });
+  console.log({
+    totalSubscribers: subscribers.length,
+    successful,
+    failed,
+  });
 };

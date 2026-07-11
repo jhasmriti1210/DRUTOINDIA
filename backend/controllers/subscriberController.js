@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import Subscriber from "../models/Subscriber.js";
+import Subscriber from "../models/subscriber.js";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

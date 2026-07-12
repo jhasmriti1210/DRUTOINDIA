@@ -36,7 +36,7 @@ const categories = [
 ];
 
 export default function Blog() {
-  const [selectedCategory, setSelectedCategory] = useState("druto");
+  const [selectedCategory, setSelectedCategory] = useState("industry");
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
 

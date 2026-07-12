@@ -155,7 +155,7 @@ export default function Blog() {
               No news available yet.
             </p>
           ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
               {news.map((item) => (
                 <motion.div
                   key={item._id}
@@ -193,9 +193,9 @@ export default function Blog() {
                       {item.title}
                     </h3>
 
-                    <p className="text-[#4B5563] mt-4 leading-7">
+                    {/* <p className="text-[#4B5563] mt-4 leading-7">
                       {item.shortDescription}
-                    </p>
+                    </p> */}
 
                     <NavLink
                       to={`/news/details/${item.slug}`}

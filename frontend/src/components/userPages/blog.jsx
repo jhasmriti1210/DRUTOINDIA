@@ -18,15 +18,16 @@ const fadeUp = {
 
 const categories = [
   {
-    key: "druto",
-    title: "DRUTO Updates",
-    icon: <FaBuilding />,
-  },
-  {
     key: "industry",
     title: "Industry News",
     icon: <FaGlobe />,
   },
+  {
+    key: "druto",
+    title: "DRUTO Updates",
+    icon: <FaBuilding />,
+  },
+
   {
     key: "rules",
     title: "Rules & Regulations",

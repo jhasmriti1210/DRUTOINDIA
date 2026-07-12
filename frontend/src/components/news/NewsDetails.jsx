@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { FaArrowLeft, FaCalendarAlt, FaUser } from "react-icons/fa";
 import { getSingleNews } from "../services/newsApi";
-import Footer from "../app-layout/footer";
 
 const categoryLabels = {
   druto: "DRUTO UPDATES",
@@ -112,8 +111,6 @@ export default function NewsDetails() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

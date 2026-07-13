@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   FaBars,
@@ -14,9 +14,6 @@ import {
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [scroll, setScroll] = useState(false);
-  const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   const [servicesOpen, setServicesOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
@@ -25,27 +22,6 @@ const Navbar = () => {
   const [desktopProductsOpen, setDesktopProductsOpen] = useState(false);
 
   const [selectedLang, setSelectedLang] = useState("English");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      setScroll(currentScrollY > 30);
-
-      if (currentScrollY < 80) {
-        setShowNavbar(true);
-      } else if (currentScrollY > lastScrollY && !open) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, open]);
 
   const serviceItems = [
     { name: "MSME Process", path: "/msme-buyers" },
@@ -128,15 +104,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
-      } ${
-        scroll
-          ? "bg-[#FAF7F2]/95 backdrop-blur-lg shadow-md border-b border-[#E7DFD2]"
-          : "bg-[#FAF7F2]"
-      }`}
-    >
+    <nav className="fixed top-0 left-0 w-full z-50 bg-[#FAF7F2] shadow-md border-b border-[#E7DFD2]">
       <div id="google_translate_element" />
 
       <div className="hidden md:block bg-[#0F172A] text-[#D8D8D8] text-sm">
@@ -359,10 +327,7 @@ const Navbar = () => {
           </div>
 
           <button
-            onClick={() => {
-              setOpen(!open);
-              setShowNavbar(true);
-            }}
+            onClick={() => setOpen(!open)}
             className="lg:hidden text-[#0F172A]"
             aria-label="Toggle Menu"
           >

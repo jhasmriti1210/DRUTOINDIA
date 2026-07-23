@@ -3,7 +3,7 @@ import Navbar from "./components/app-layout/navbar";
 import Footer from "./components/app-layout/footer";
 import Home from "./components/userPages/home";
 import About from "./components/userPages/about";
-
+import FloatingWhatsApp from "./components/userPages/home/FloatingWhatsApp";
 import PrivacyPolicy from "./components/userPages/privacyPolicy";
 import MSMEBuyers from "./components/userPages/msme_buyer";
 import OverseasBuyers from "./components/userPages/overseas_buyer";
@@ -86,6 +86,7 @@ function App() {
         </Route>
         <Route path="/unsubscribe/:token" element={<Unsubscribe />} />
       </Routes>
+      <FloatingWhatsApp />
 
       <Footer />
     </>

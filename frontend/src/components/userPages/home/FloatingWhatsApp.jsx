@@ -11,7 +11,7 @@ export default function FloatingWhatsApp() {
       href={`https://wa.me/${phoneNumber}?text=${message}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-24 z-50 group"
+      className="fixed bottom-4 right-24 z-50 group"
     >
       <span className="absolute right-20 top-1/2 -translate-y-1/2 bg-[#0F172A] text-white px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap shadow-lg">
         Chat with Us

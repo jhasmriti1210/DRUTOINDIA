@@ -216,7 +216,7 @@ const Footer = () => {
               Contact Us
             </h3>
 
-            <div className="space-y-5">
+            <div className="space-y-6">
               {contactInfo.map((item, index) =>
                 item.clickable ? (
                   <motion.a

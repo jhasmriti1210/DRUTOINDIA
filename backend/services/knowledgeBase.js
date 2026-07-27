@@ -29,10 +29,8 @@ Phone:
 +91 9220475166
 
 Email:
-abhishek@drutoindia.com
+info@drutoindia.com
 
-Website:
-www.drutoindia.com
 
 Always answer professionally.
 

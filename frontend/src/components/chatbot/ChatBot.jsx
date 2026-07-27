@@ -9,7 +9,7 @@ export default function ChatBot() {
     <>
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-24 right-6 bg-[#0F766E] hover:bg-[#0c6558] text-white w-16 h-16 rounded-full shadow-xl flex items-center justify-center z-50"
+        className="fixed bottom-6 right-6 bg-[#0F766E] hover:bg-[#0c6558] text-white w-12 h-12 rounded-full shadow-xl flex items-center justify-center z-50"
       >
         <MessageCircle size={28} />
       </button>

@@ -27,6 +27,7 @@ import EditNews from "./components/admin/EditNews";
 
 import Blog from "./components/userPages/blog";
 import Unsubscribe from "./components/userPages/Unsubscribe";
+import Chatbot from "./components/chatbot/ChatBot";
 
 function App() {
   return (
@@ -89,6 +90,8 @@ function App() {
       <FloatingWhatsApp />
 
       <Footer />
+
+      <Chatbot />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function FloatingWhatsApp() {
-  const phoneNumber = "919220475166"; // Replace with your WhatsApp number
+  const phoneNumber = "919220475166";
   const message = encodeURIComponent(
     "Hello DRUTO INDIA, I'm interested in your export management services.",
   );
@@ -17,7 +17,7 @@ export default function FloatingWhatsApp() {
         Chat with Us
       </span>
 
-      <div className="bg-[#25D366] hover:bg-[#20ba5a] w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+      <div className="bg-[#25D366] hover:bg-[#20ba5a] w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110">
         <FaWhatsapp className="text-white text-4xl" />
       </div>
     </a>

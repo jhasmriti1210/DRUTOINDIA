@@ -9,6 +9,9 @@ import connectDB from "./config/db.js";
 // Routes
 import newsRoutes from "./routes/newsRoutes.js";
 import subscriberRoutes from "./routes/subscriberRoutes.js";
+import chatbotRoutes from "./routes/chatbotRoutes.js";
+
+
 
 dotenv.config();
 
@@ -45,6 +48,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/news", newsRoutes);
 app.use("/api/subscribers", subscriberRoutes);
+app.use("/api/chat", chatbotRoutes);
 
 // =========================
 // Error Handler

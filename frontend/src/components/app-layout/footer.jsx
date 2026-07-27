@@ -14,7 +14,7 @@ import {
 const contactInfo = [
   {
     icon: <FaMapMarkerAlt />,
-    text: "JAITPUR, DELHI, INDIA",
+    text: "Innov8 Okhla 211, Okhla Industrial Estate Phase 3, New Delhi - 110020",
     clickable: false,
   },
   {

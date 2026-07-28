@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxCgc2Hb4aHQ88cSRbG4AKkVKrDyfTTMgclmorKoZiioVsxVm36e2L0_noQ0NAGtRNz4Q/exec";
+  "https://script.google.com/macros/s/AKfycbzWYzSBcNBECOdL85RmHXrt1zxuFlHct39WHESPcMu1cmMG5hvLE1k9xzh726HSxAB1/exec";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 45 },

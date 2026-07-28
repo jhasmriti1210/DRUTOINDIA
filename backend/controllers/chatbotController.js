@@ -1,4 +1,5 @@
-import ai from "../services/geminiService.js";
+import client from "../services/openrouterService.js";
+import Chat from "../models/Chat.js";
 import knowledge from "../services/knowledgeBase.js";
 import conversationFlow from "../services/conversationFlow.js";
 
@@ -6,24 +7,47 @@ export const chat = async (req, res) => {
 
     try {
 
-        const { message } = req.body;
+        const { message, sessionId } = req.body;
 
         // Start Chat
         if (message === "start") {
 
-            return res.json({
-                reply: conversationFlow.start.reply,
-                options: conversationFlow.start.options
+            await Chat.create({
+                sessionId,
+                role: "user",
+                content: "start",
             });
 
+            await Chat.create({
+                sessionId,
+                role: "assistant",
+                content: conversationFlow.start.reply,
+            });
+
+            return res.json({
+                reply: conversationFlow.start.reply,
+                options: conversationFlow.start.options,
+            });
         }
 
         // Foreign Buyer
         if (message === "🌍 I am a Foreign Buyer") {
 
+            await Chat.create({
+                sessionId,
+                role: "user",
+                content: message,
+            });
+
+            await Chat.create({
+                sessionId,
+                role: "assistant",
+                content: conversationFlow.buyer.reply,
+            });
+
             return res.json({
                 reply: conversationFlow.buyer.reply,
-                options: conversationFlow.buyer.options
+                options: conversationFlow.buyer.options,
             });
 
         }
@@ -31,41 +55,75 @@ export const chat = async (req, res) => {
         // Manufacturer
         if (message === "🏭 I am an Indian Manufacturer") {
 
+            await Chat.create({
+                sessionId,
+                role: "user",
+                content: message,
+            });
+
+            await Chat.create({
+                sessionId,
+                role: "assistant",
+                content: conversationFlow.manufacturer.reply,
+            });
+
             return res.json({
                 reply: conversationFlow.manufacturer.reply,
-                options: conversationFlow.manufacturer.options
+                options: conversationFlow.manufacturer.options,
             });
 
         }
 
+        await Chat.create({
+            sessionId,
+            role: "user",
+            content: message,
+        });
+
+        const chats = await Chat.find({ sessionId })
+            .sort({ createdAt: -1 })
+            .limit(20);
+
+        const messages = chats
+            .reverse()
+            .map((chat) => ({
+                role: chat.role,
+                content: chat.content,
+            }));
+
+
         // Gemini Fallback
 
-        const prompt = `
 
-${knowledge}
 
-Customer:
+        const completion = await client.chat.completions.create({
+            model: "openrouter/free",
 
-${message}
+            messages: [
+                {
+                    role: "system",
+                    content: knowledge,
+                },
 
-`;
+                ...messages,
+            ],
 
-        const response = await ai.models.generateContent({
+            max_tokens: 500,
+            temperature: 0.7,
+        });
 
-            model: "models/gemini-flash-latest",
+        const reply = completion.choices[0].message.content;
 
-            contents: prompt
-
+        await Chat.create({
+            sessionId,
+            role: "assistant",
+            content: reply,
         });
 
         res.json({
-
-            reply: response.text,
-
-            options: []
-
+            reply,
+            options: [],
         });
-
     }
 
     catch (err) {
@@ -77,7 +135,10 @@ ${message}
             });
         }
 
-        console.error(err);
+
+        console.error("OpenRouter Error:");
+        console.error(err.status);
+        console.error(err.error || err.message);
 
         res.status(500).json({
             reply: "Sorry, something went wrong.",

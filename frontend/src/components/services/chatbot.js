@@ -5,9 +5,14 @@ export const BACKEND_URL =
 
 const API_URL = `${BACKEND_URL}/api/chat`;
 
-console.log("Backend URL:", API_URL);
+export const askBot = async (
+    message,
+    sessionId
+) => {
+    const res = await axios.post(API_URL, {
+        message,
+        sessionId,
+    });
 
-export const askBot = async (message) => {
-    const res = await axios.post(API_URL, { message });
     return res.data;
 };

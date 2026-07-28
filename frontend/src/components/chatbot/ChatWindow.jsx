@@ -2,12 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { X, SendHorizontal } from "lucide-react";
 import Message from "./Message";
 import { askBot } from "../services/chatbot";
+import { v4 as uuid } from "uuid";
+import botLogo from "../../../assets/botlogo.jpeg";
 
 export default function ChatWindow({ onClose }) {
   const [messages, setMessages] = useState([]);
   const [options, setOptions] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const [sessionId] = useState(uuid());
 
   const bottomRef = useRef(null);
 
@@ -26,13 +30,15 @@ export default function ChatWindow({ onClose }) {
     try {
       setLoading(true);
 
-      const data = await askBot("start");
+      const data = await askBot("start", sessionId);
+
+      console.log("START RESPONSE");
+      console.log(data);
 
       setMessages([
         {
           sender: "bot",
           text: data.reply,
-          options: data.options || [],
         },
       ]);
 
@@ -64,7 +70,7 @@ export default function ChatWindow({ onClose }) {
     setLoading(true);
 
     try {
-      const data = await askBot(question);
+      const data = await askBot(question, sessionId);
 
       setMessages((prev) => [
         ...prev,
@@ -103,10 +109,17 @@ export default function ChatWindow({ onClose }) {
       {/* Header */}
 
       <div className="bg-[#0F172A] text-white px-5 py-4 flex justify-between items-center">
-        <div>
-          <h2 className="font-bold text-lg">Atlas</h2>
+        <div className="flex items-center gap-3">
+          <img
+            src={botLogo}
+            alt="Atlas"
+            className="w-10 h-10 rounded-full object-cover border border-white"
+          />
 
-          <p className="text-xs text-gray-300">DRUTO INDIA • Online</p>
+          <div>
+            <h2 className="font-bold text-lg">Atlas</h2>
+            <p className="text-xs text-gray-300">DRUTO INDIA • Online</p>
+          </div>
         </div>
 
         <button onClick={onClose} className="hover:text-red-400">
@@ -142,9 +155,11 @@ export default function ChatWindow({ onClose }) {
         {loading && (
           <div className="flex justify-start mb-4">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-full bg-[#0F766E] text-white flex items-center justify-center font-bold">
-                A
-              </div>
+              <img
+                src={botLogo}
+                alt="Atlas"
+                className="w-9 h-9 rounded-full object-cover"
+              />
 
               <div className="bg-white border px-4 py-3 rounded-2xl shadow-sm text-gray-500 text-sm animate-pulse">
                 Atlas is typing...

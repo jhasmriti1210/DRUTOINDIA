@@ -1,3 +1,5 @@
+import botLogo from "../../../assets/botlogo.jpeg";
+
 export default function Message({ sender, text, options = [], onOptionClick }) {
   const isUser = sender === "user";
 
@@ -6,9 +8,11 @@ export default function Message({ sender, text, options = [], onOptionClick }) {
       <div className="flex items-end gap-2 max-w-[85%]">
         {/* Bot Avatar */}
         {!isUser && (
-          <div className="w-10 h-10 rounded-full bg-[#0F766E] text-white flex items-center justify-center font-bold text-sm shadow">
-            A
-          </div>
+          <img
+            src={botLogo}
+            alt="Atlas"
+            className="w-9 h-9 rounded-full object-cover shadow"
+          />
         )}
 
         <div>

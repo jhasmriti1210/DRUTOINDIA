@@ -1,4 +1,4 @@
-export default function Message({ sender, text }) {
+export default function Message({ sender, text, options = [], onOptionClick }) {
   const isUser = sender === "user";
 
   return (
@@ -6,26 +6,43 @@ export default function Message({ sender, text }) {
       <div className="flex items-end gap-2 max-w-[85%]">
         {/* Bot Avatar */}
         {!isUser && (
-          <div className="w-9 h-9 rounded-full bg-[#0F766E] text-white flex items-center justify-center font-bold text-sm shadow">
-            D
+          <div className="w-10 h-10 rounded-full bg-[#0F766E] text-white flex items-center justify-center font-bold text-sm shadow">
+            A
           </div>
         )}
 
-        {/* Message Bubble */}
-        <div
-          className={`px-4 py-3 rounded-2xl shadow-sm text-sm leading-6 whitespace-pre-wrap break-words
-          ${
-            isUser
-              ? "bg-[#0F766E] text-white rounded-br-md"
-              : "bg-white border border-gray-200 text-gray-800 rounded-bl-md"
-          }`}
-        >
-          {text}
+        <div>
+          {/* Message Bubble */}
+          <div
+            className={`px-4 py-3 rounded-2xl shadow-sm text-sm leading-6 whitespace-pre-wrap break-words
+            ${
+              isUser
+                ? "bg-[#0F766E] text-white rounded-br-md"
+                : "bg-white border border-gray-200 text-gray-800 rounded-bl-md"
+            }`}
+          >
+            {text}
+          </div>
+
+          {/* Quick Reply Buttons */}
+          {!isUser && options.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-3">
+              {options.map((option) => (
+                <button
+                  key={option}
+                  onClick={() => onOptionClick(option)}
+                  className="px-4 py-2 rounded-full border border-[#0F766E] text-[#0F766E] bg-white hover:bg-[#0F766E] hover:text-white transition text-sm font-medium shadow-sm"
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* User Avatar */}
         {isUser && (
-          <div className="w-9 h-9 rounded-full bg-gray-300 text-gray-700 flex items-center justify-center font-semibold text-sm shadow">
+          <div className="w-10 h-10 rounded-full bg-gray-300 text-gray-700 flex items-center justify-center font-semibold text-sm shadow">
             U
           </div>
         )}

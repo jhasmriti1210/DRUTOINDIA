@@ -105,7 +105,7 @@ export default function ChatWindow({ onClose }) {
   };
 
   return (
-    <div className="fixed bottom-24 right-6 w-[390px] h-[620px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden z-50">
+    <div className="fixed bottom-24 right-6 w-[390px] h-[480px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden z-50">
       {/* Header */}
 
       <div className="bg-[#0F172A] text-white px-5 py-4 flex justify-between items-center">

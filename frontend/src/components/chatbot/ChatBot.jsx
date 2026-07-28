@@ -9,7 +9,7 @@ export default function ChatBot() {
     <>
       <button
         onClick={() => setOpen(!open)}
-        className="group fixed bottom-6 right-6 z-50 flex items-center justify-center
+        className="group fixed bottom-4 right-6 z-50 flex items-center justify-center
                    w-12 h-12 rounded-full bg-white shadow-2xl
                    hover:scale-110 transition-all duration-300"
       >
@@ -24,7 +24,7 @@ export default function ChatBot() {
                      group-hover:translate-x-0
                      transition-all duration-300"
         >
-          Chat with Atlas
+          💬 Chat with Atlas
         </span>
 
         {/* Bot Icon */}

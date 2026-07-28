@@ -2,6 +2,7 @@ import client from "../services/openrouterService.js";
 import Chat from "../models/Chat.js";
 import knowledge from "../services/knowledgeBase.js";
 import conversationFlow from "../services/conversationFlow.js";
+import developerKnowledge from "../services/developerKnowledge.js";
 
 export const chat = async (req, res) => {
 
@@ -95,14 +96,17 @@ export const chat = async (req, res) => {
         // Gemini Fallback
 
 
-
         const completion = await client.chat.completions.create({
             model: "openrouter/free",
 
             messages: [
                 {
                     role: "system",
-                    content: knowledge,
+                    content: `
+${knowledge}
+
+${developerKnowledge}
+`,
                 },
 
                 ...messages,

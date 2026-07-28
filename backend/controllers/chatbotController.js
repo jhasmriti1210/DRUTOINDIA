@@ -1,5 +1,5 @@
 import client from "../services/openrouterService.js";
-import Chat from "../models/Chat.js";
+import Chat from "../models/chat.js";
 import knowledge from "../services/knowledgeBase.js";
 import conversationFlow from "../services/conversationFlow.js";
 import developerKnowledge from "../services/developerKnowledge.js";

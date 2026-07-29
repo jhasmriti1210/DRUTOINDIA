@@ -105,10 +105,10 @@ export default function ChatWindow({ onClose }) {
   };
 
   return (
-    <div className="fixed bottom-24 right-6 w-[390px] h-[480px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden z-50">
+    <div className="fixed bottom-24 right-6 w-[390px] h-[480px] bg-white rounded-2xl shadow-lg border border-gray-200 flex flex-col overflow-hidden z-50">
       {/* Header */}
 
-      <div className="bg-[#0F172A] text-white px-5 py-4 flex justify-between items-center">
+      <div className="bg-white text-black px-5 py-4 shadow-2xl flex justify-between items-center">
         <div className="flex items-center gap-3">
           <img
             src={botLogo}
@@ -118,7 +118,7 @@ export default function ChatWindow({ onClose }) {
 
           <div>
             <h2 className="font-bold text-lg">Atlas</h2>
-            <p className="text-xs text-gray-300">DRUTO INDIA • Online</p>
+            <p className="text-xs text-gray-900">DRUTO INDIA • Online</p>
           </div>
         </div>
 

@@ -3,7 +3,7 @@ import { X, SendHorizontal } from "lucide-react";
 import Message from "./Message";
 import { askBot } from "../services/chatbot";
 import { v4 as uuid } from "uuid";
-import botLogo from "../../../assets/botlogo.jpeg";
+import botLogo from "../../../assets/atlasbot.png";
 
 export default function ChatWindow({ onClose }) {
   const [messages, setMessages] = useState([]);

@@ -1,4 +1,4 @@
-import botLogo from "../../../assets/botlogo.jpeg";
+import botLogo from "../../../assets/atlasbot.png";
 
 export default function Message({ sender, text, options = [], onOptionClick }) {
   const isUser = sender === "user";

@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 import botLogo from "../../../assets/atlasbot.png";
 
 export default function Message({ sender, text, options = [], onOptionClick }) {
@@ -18,14 +19,32 @@ export default function Message({ sender, text, options = [], onOptionClick }) {
         <div>
           {/* Message Bubble */}
           <div
-            className={`px-4 py-3 rounded-2xl shadow-sm text-sm leading-6 whitespace-pre-wrap break-words
+            className={`px-4 py-3 rounded-2xl shadow-sm text-sm leading-6 break-words
             ${
               isUser
                 ? "bg-[#0F766E] text-white rounded-br-md"
                 : "bg-white border border-gray-200 text-gray-800 rounded-bl-md"
             }`}
           >
-            {text}
+            <ReactMarkdown
+              components={{
+                p: ({ children }) => (
+                  <p className="mb-2 last:mb-0">{children}</p>
+                ),
+                ul: ({ children }) => (
+                  <ul className="list-disc ml-5 my-2">{children}</ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className="list-decimal ml-5 my-2">{children}</ol>
+                ),
+                li: ({ children }) => <li className="mb-1">{children}</li>,
+                strong: ({ children }) => (
+                  <strong className="font-semibold">{children}</strong>
+                ),
+              }}
+            >
+              {text}
+            </ReactMarkdown>
           </div>
 
           {/* Quick Reply Buttons */}

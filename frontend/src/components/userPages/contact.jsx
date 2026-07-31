@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzWYzSBcNBECOdL85RmHXrt1zxuFlHct39WHESPcMu1cmMG5hvLE1k9xzh726HSxAB1/exec";
+  "https://script.google.com/macros/s/AKfycbxWpHT82xpx-RI0L0J5h0nApu224enYVJ7ijZXmPbJ_UNiY40zgcotAiLqyJib76lgi/exec";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 45 },
@@ -308,9 +308,12 @@ const Contact = () => {
 
     if (!validateRequiredFields()) return;
 
+    let toastId;
+
     try {
       setIsSubmitting(true);
-      const toastId = toast.loading("Submitting your inquiry...");
+
+      toastId = toast.loading("Submitting your inquiry...");
 
       const payload = {
         formType: activeTab,
@@ -319,41 +322,40 @@ const Contact = () => {
         ...formData,
       };
 
-      const response = await fetch(SCRIPT_URL, {
+      await fetch(SCRIPT_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
         },
         body: JSON.stringify(payload),
       });
 
-      const result = await response.json();
+      // Since no-cors doesn't allow reading response,
+      // assume submission reached Apps Script
 
-      if (result.success) {
+      toast.update(toastId, {
+        render: "Inquiry submitted successfully!",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
+
+      setFormData({});
+      setIsBotChecked(false);
+    } catch (error) {
+      console.error("Submission Error:", error);
+
+      if (toastId) {
         toast.update(toastId, {
-          render: "Inquiry submitted successfully!",
-          type: "success",
-          isLoading: false,
-          autoClose: 3000,
-        });
-        setFormData({});
-        setIsBotChecked(false);
-      } else {
-        toast.update(toastId, {
-          render: "Failed to submit inquiry.",
+          render: "Submission failed. Please try again.",
           type: "error",
           isLoading: false,
           autoClose: 3000,
         });
+      } else {
+        toast.error("Submission failed. Please try again.");
       }
-    } catch (error) {
-      console.error(error);
-      toast.update(toastId, {
-        render: "Submission failed. Please try again.",
-        type: "error",
-        isLoading: false,
-        autoClose: 3000,
-      });
     } finally {
       setIsSubmitting(false);
     }

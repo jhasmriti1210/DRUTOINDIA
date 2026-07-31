@@ -93,7 +93,6 @@ const formFields = {
     { label: "GST Number", type: "text" },
     { label: "IEC Number", type: "text" },
 
-    { label: "Number of Employees", type: "text" },
     {
       label: "Export Experience",
       type: "select",

@@ -22,7 +22,6 @@ export default function ChatWindow({ onClose }) {
     });
   }, [messages, loading]);
 
-  // Start conversation automatically
   useEffect(() => {
     startConversation();
   }, []);

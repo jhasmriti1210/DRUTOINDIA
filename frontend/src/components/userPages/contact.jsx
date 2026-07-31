@@ -74,24 +74,25 @@ const countries = [
 const formFields = {
   msme: [
     { label: "Company Name", type: "text", required: true },
+    { label: "Email", type: "email", required: true },
     { label: "First Name", type: "text", required: true },
     { label: "Last Name", type: "text", required: true },
     { label: "Title / Designation", type: "text" },
-    { label: "Email", type: "email", required: true },
+
     { label: "Work Phone", type: "tel", required: true },
     { label: "Mobile / WhatsApp", type: "tel" },
-    { label: "Fax", type: "text" },
+
     { label: "Address", type: "text" },
     { label: "Address 2", type: "text" },
     { label: "City", type: "text", required: true },
     { label: "State", type: "text", required: true },
     { label: "Zip / Post Code", type: "text" },
-    { label: "Country", type: "select", required: true, options: countries },
+
     { label: "Website", type: "text" },
-    { label: "Social Media / LinkedIn", type: "text" },
+
     { label: "GST Number", type: "text" },
     { label: "IEC Number", type: "text" },
-    { label: "Annual Turnover", type: "text" },
+
     { label: "Number of Employees", type: "text" },
     {
       label: "Export Experience",
@@ -99,40 +100,27 @@ const formFields = {
       required: true,
       options: ["New Exporter", "Existing Exporter", "Occasional Exporter"],
     },
-    {
-      label: "We are a",
-      type: "select",
-      required: true,
-      options: [
-        "Manufacturer",
-        "MSME",
-        "Exporter",
-        "Product Brand",
-        "Trader",
-        "Other",
-      ],
-    },
-    { label: "About Your Company", type: "text", required: true },
+
     {
       label: "Territories / Countries Interested in Exporting To",
       type: "text",
       required: true,
     },
+
     {
-      label: "Types of Products Your Company Manufactures",
-      type: "text",
-      required: true,
+      label: "Packaging Capability",
+      type: "select",
+      options: ["Yes", "No"],
     },
-    { label: "Production Capacity", type: "text" },
-    { label: "Packaging Capability", type: "text" },
   ],
 
   buyer: [
     { label: "Company Name", type: "text", required: true },
+    { label: "Email", type: "email", required: true },
     { label: "First Name", type: "text", required: true },
     { label: "Last Name", type: "text", required: true },
     { label: "Title / Designation", type: "text" },
-    { label: "Email", type: "email", required: true },
+
     { label: "Work Phone", type: "tel", required: true },
     { label: "Mobile / WhatsApp", type: "tel" },
     { label: "Address", type: "text" },
@@ -143,8 +131,7 @@ const formFields = {
     { label: "Country", type: "select", required: true, options: countries },
     { label: "Website", type: "text" },
     { label: "Social Media / LinkedIn", type: "text" },
-    { label: "Number of Customers", type: "text" },
-    { label: "Number of Salespeople on Staff", type: "text" },
+
     {
       label: "We are a",
       type: "select",
@@ -159,7 +146,7 @@ const formFields = {
         "Other",
       ],
     },
-    { label: "Annual Turnover", type: "text" },
+
     {
       label: "Information Required",
       type: "select",
@@ -170,6 +157,7 @@ const formFields = {
         "Supplier Information",
         "Sourcing Support",
         "Shipment Support",
+        "Export Management Execution",
         "Other",
       ],
     },
@@ -204,19 +192,7 @@ const formFields = {
 };
 
 const textAreas = {
-  msme: [
-    {
-      label: "Comments / Special Requests",
-      placeholder:
-        "Share your export goals, product details, target countries, documentation status, challenges, or support required...",
-      required: true,
-    },
-    {
-      label: "Request for Quotation Details",
-      placeholder:
-        "Mention product details, packaging, shipment size, existing buyer inquiry, or target export plan...",
-    },
-  ],
+  msme: [],
   buyer: [
     {
       label: "Request for Quotation Details / Special Request",

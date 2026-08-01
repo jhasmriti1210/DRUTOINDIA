@@ -63,6 +63,20 @@ const products = [
     fullDesc:
       "Our export-quality canvas tote bags are manufactured using durable cotton canvas fabric and can be customized with logos, branding, colors, and sizes. Suitable for retail brands, promotional campaigns, shopping, and corporate gifting worldwide.",
   },
+  {
+    name: "Stationary and Paper Goods",
+    image: "/sustainable/canvas-tote-bags.png",
+    desc: "Eco-friendly notebooks, journals, and paper products.",
+    fullDesc:
+      "Our sustainable stationery and paper goods collection includes notebooks, journals, planners, greeting cards, gift wrapping papers, and office essentials crafted from high-quality and eco-friendly materials. Designed for businesses, retailers, educational institutions, and corporate gifting, these products can be customized with branding, logos, colors, and packaging to meet international export standards.",
+  },
+  {
+    name: "Banana Fabrics",
+    image: "/sustainable/canvas-tote-bags.png",
+    desc: "Sustainable textiles made from natural banana fiber.",
+    fullDesc:
+      "Our premium banana fabric products are crafted from natural banana fibers, offering an eco-friendly and biodegradable alternative to conventional textiles. Known for their durability, unique texture, and sustainable appeal, banana fabrics are ideal for apparel, home furnishings, accessories, and lifestyle products. Available in customized designs, we cater to global brands and buyers seeking environmentally responsible textile solutions.",
+  },
 ];
 
 export default function SustainablePackagingAlternatives() {

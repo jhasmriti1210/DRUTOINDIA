@@ -63,6 +63,27 @@ const products = [
     fullDesc:
       "Handcrafted festive decorations and cultural décor items designed for global retail and gifting markets. These products bring Indian craftsmanship, tradition, and celebration-focused design to international buyers.",
   },
+  {
+    name: "Ceramic & Pottery",
+    image: "/handicrafts/festive-artifacts.png",
+    desc: "Handcrafted ceramic and pottery products with artistic designs.",
+    fullDesc:
+      "Our handcrafted ceramic and pottery collection showcases traditional Indian artistry combined with contemporary designs. From decorative vases and tableware to customized pottery pieces, these products are crafted with quality materials and skilled craftsmanship. Ideal for home décor, hospitality, gifting, and global retail markets.",
+  },
+  {
+    name: "Decorative Lighting",
+    image: "/handicrafts/festive-artifacts.png",
+    desc: "Artistic handcrafted lighting for elegant spaces.",
+    fullDesc:
+      "Our decorative lighting range features handcrafted lamps, lanterns, and artistic light fixtures designed to enhance residential and commercial spaces. Combining traditional craftsmanship with modern aesthetics, these sustainable and stylish lighting solutions are suitable for interior designers, retailers, hospitality projects, and export markets worldwide.",
+  },
+  {
+    name: "Soft Furnishing",
+    image: "/handicrafts/festive-artifacts.png",
+    desc: "Premium handcrafted textiles for home interiors.",
+    fullDesc:
+      "Our soft furnishing collection includes handcrafted cushions, throws, curtains, rugs, and textile décor products made with quality fabrics and traditional techniques. Designed for comfort, elegance, and durability, these products can be customized for global home décor brands, hotels, retailers, and lifestyle markets.",
+  },
 ];
 
 export default function HandicraftsHomeDecor() {
